@@ -42,4 +42,4 @@ We use the [Enron Email Dataset](https://www.kaggle.com/datasets/wcukierski/enro
 - [ ] **Semantic Kernel Integration**: Register plugin that uses pre-generated style JSON to guide AI email reply generation
 
 ## ✅ Done  
-- ✅ Created basic agent: `PoetAgent` in `basicAgent.py`
+- ✅ Created basic agent: `BasicAgent` in `basicAgent.py`
