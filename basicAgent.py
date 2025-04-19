@@ -4,13 +4,10 @@ from openai import AsyncOpenAI
 
 from dotenv import load_dotenv
 
-
-
 from semantic_kernel.kernel import Kernel
 from semantic_kernel.connectors.ai.open_ai import OpenAIChatCompletion
 from semantic_kernel.agents import ChatCompletionAgent
 from semantic_kernel.contents import ChatHistory
-
 
 from semantic_kernel.agents.open_ai import OpenAIAssistantAgent
 from semantic_kernel.contents import AuthorRole, ChatMessageContent
@@ -22,6 +19,8 @@ from semantic_kernel.contents.function_call_content import FunctionCallContent
 from semantic_kernel.contents.function_result_content import FunctionResultContent
 from semantic_kernel.functions import KernelArguments, kernel_function
 
+import asyncio 
+
 load_dotenv()
 
 client = AsyncOpenAI(
@@ -30,7 +29,6 @@ client = AsyncOpenAI(
 )
 
 kernel = Kernel()
-# add plug later
 service_id = "github-agent"
 
 chat_service = OpenAIChatCompletion(
@@ -50,7 +48,7 @@ agent = ChatCompletionAgent(
 )
 
 async def main():
-    # Define the chat history
+    print(">>> Entering main()")  # Debug
     chat_history = ChatHistory()
 
     user_inputs = [
@@ -58,7 +56,7 @@ async def main():
     ]
 
     for user_input in user_inputs:
-    # Add the user input to the chat history
+        print(f">>> User input: {user_input}")  # Debug
         chat_history.add_user_message(user_input)
 
         agent_name: str | None = None
@@ -66,36 +64,33 @@ async def main():
         function_calls = []
         function_results = {}
 
-        # Collect the agent's response with function call tracking
-        async for content in agent.invoke_stream(chat_history):
-            if not agent_name and hasattr(content, 'name'):
-                agent_name = content.name
+        try:
+            async for content in agent.invoke_stream(chat_history):
+                # print(f">>> Received content: {content}")  # Debug
 
-            # Track function calls and results
-            for item in content.items:
-                if isinstance(item, FunctionCallContent):
-                    call_info = f"Calling: {item.function_name}({item.arguments})"
-                    function_calls.append(call_info)
-                elif isinstance(item, FunctionResultContent):
-                    result_info = f"Result: {item.result}"
-                    function_calls.append(result_info)
-                    # Store function results
-                    function_results[item.function_name] = item.result
+                if not agent_name and hasattr(content, 'name'):
+                    agent_name = content.name
 
-            # Add content to response if it's not a function-related message
-            if (hasattr(content, 'content') and content.content and content.content.strip() and
-                not any(isinstance(item, (FunctionCallContent, FunctionResultContent))
-                        for item in content.items)):
-                full_response += content.content
+                for item in content.items:
+                    if isinstance(item, FunctionCallContent):
+                        call_info = f"Calling: {item.function_name}({item.arguments})"
+                        print(">>> FunctionCallContent:", call_info)  # Debug
+                        function_calls.append(call_info)
+                    elif isinstance(item, FunctionResultContent):
+                        result_info = f"Result: {item.result}"
+                        print(">>> FunctionResultContent:", result_info)  # Debug
+                        function_calls.append(result_info)
+                        function_results[item.function_name] = item.result
+                #  if we want know if call some func , change this part 
+                if (hasattr(content, 'content') and content.content and content.content.strip() and
+                    not any(isinstance(item, (FunctionCallContent, FunctionResultContent))
+                            for item in content.items)):
+                    full_response += content.content
+        except Exception as e:
+            print(">>> Exception occurred during streaming:", e)  # Debug
 
-        print(full_response)
-    await main()
+        print(">>> Final response:\n", full_response)
 
-
-
-#     args = KernelArguments(input="Write a haiku about Semantic Kernel.")
-#     async for response in agent.invoke(args):
-#         if hasattr(response, "content"):
-#             print(response.content)
-
-# asyncio.run(main())
+#  asyncio.run
+if __name__ == "__main__":
+    asyncio.run(main())
