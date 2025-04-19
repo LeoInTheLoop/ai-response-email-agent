@@ -1,24 +1,45 @@
 # Email Style Analyzer & Reply Generator
 
-## Overview  
-This project analyzes a sender's email writing style from the Enron Email Dataset and creates a JSON template for generating future replies in the same style. The system uses GPT (via Semantic Kernel in Python) to extract stylistic elements and stores them for consistent reply generation.
+## 🧠 Overview  
+This project analyzes a sender's email writing style using the Enron Email Dataset and generates a JSON-based template for consistent, AI-powered reply generation. It leverages GPT (via [Semantic Kernel](https://github.com/microsoft/semantic-kernel)) to extract stylistic patterns and apply them to future replies.
 
-## Features  
-- **Email Analysis**: Extracts writing style characteristics from a sender's emails  
-- **Style Template Generation**: Creates a JSON template capturing:  
-  - Tone (formal/informal)  
-  - Common phrases  
-  - Sign-off patterns  
-  - Language level  
-  - Style notes  
-- **AI-Powered Reply Generation**: Uses the style template to generate context-appropriate replies matching the sender's style  
+## ✨ Features  
+- **Email Style Analysis**  
+  Extracts writing characteristics from a sender’s emails.
 
-## Dataset  
-We use the [Enron Email Dataset from Kaggle](https://www.kaggle.com/datasets/wcukierski/enron-email-dataset/data).
+- **Style Template Generation**  
+  Automatically creates a JSON template with key stylistic elements:
+  - `tone`: formal / informal  
+  - `common_phrases`: frequently used phrases  
+  - `sign_offs`: typical email closings  
+  - `language_level`: e.g., native, intermediate  
+  - `style_notes`: other stylistic observations
 
-## How It Works  
-1. **Email Extraction**: Filter emails from a specific sender  
-2. **Style Analysis**: GPT analyzes each email's stylistic elements  
-3. **Template Creation**: Compiles results into a JSON style template  
-4. **Reply Generation**: Answers new emails using the template  
+- **AI-Powered Reply Generation**  
+  Uses the style template to craft new replies that match the sender’s style.
 
+## 📁 Dataset  
+We use the [Enron Email Dataset](https://www.kaggle.com/datasets/wcukierski/enron-email-dataset/data) from Kaggle, which contains thousands of real business emails exchanged among Enron employees.
+
+## ⚙️ How It Works  
+1. **Email Extraction**  
+   - Filter emails from a specific sender  
+   - Collect a sample (e.g., ~100 emails) for style analysis  
+
+2. **Style Analysis**  
+   - Use GPT to extract tone, language level, patterns, and phrases  
+
+3. **Template Creation**  
+   - Compile results into a single JSON style profile  
+
+4. **Reply Generation**  
+   - Given a new email, load the style template and generate a reply in the sender’s style
+
+## 🛠 To-Do  
+- [ ] **Email Extraction**: Write a function to filter emails from one sender (~100 emails)  
+- [ ] **Style Analysis**: Use GPT to analyze and output a JSON style template  
+- [ ] **Agent Prompt Design**: Create a basic agent (e.g., `PoetAgent`) and define its prompt behavior  
+- [ ] **Semantic Kernel Integration**: Register plugin that uses pre-generated style JSON to guide AI email reply generation
+
+## ✅ Done  
+- ✅ Created basic agent: `PoetAgent` in `basicAgent.py`

@@ -18,12 +18,29 @@ from semantic_kernel.connectors.ai import FunctionChoiceBehavior
 from semantic_kernel.contents.function_call_content import FunctionCallContent
 from semantic_kernel.contents.function_result_content import FunctionResultContent
 from semantic_kernel.functions import KernelArguments, kernel_function
+from semantic_kernel.connectors.ai.prompt_execution_settings import PromptExecutionSettings
+
 
 import asyncio 
 
 load_dotenv()
 
+AI_MODEL = "gpt-4o-mini"
+AI_INSTRUCTIONS= "Generate professional email replies for Zara customer service"
+
+USER_INPUT_HISTORY = [
+        "Hello, I have a question about my recent order #12345",
+    ]
+
+PROMPT_SETTING=PromptExecutionSettings(
+    temperature=0.7,  # How creative
+    top_p=0.9, #How wide a vocabulary net to cast
+    max_tokens=500 #Maximum reply length limit
+)
+
+
 client = AsyncOpenAI(
+    # set your own GITHUB_TOKEN
     api_key=os.environ.get("GITHUB_TOKEN"),
     base_url="https://models.inference.ai.azure.com/"
 )
@@ -32,7 +49,7 @@ kernel = Kernel()
 service_id = "github-agent"
 
 chat_service = OpenAIChatCompletion(
-    ai_model_id="gpt-4o-mini",
+    ai_model_id=AI_MODEL,
     async_client=client,
     service_id=service_id
 )
@@ -40,10 +57,10 @@ kernel.add_service(chat_service)
 
 agent = ChatCompletionAgent(
     kernel=kernel,
-    name="PoetAgent",
-    instructions="Write poetic responses about Semantic Kernel.",
+    name="BasicAgent",
+    instructions=AI_INSTRUCTIONS,
     arguments=KernelArguments(
-        settings=kernel.get_prompt_execution_settings_from_service_id(service_id)
+        settings=PROMPT_SETTING
     )
 )
 
@@ -51,9 +68,7 @@ async def main():
     print(">>> Entering main()")  # Debug
     chat_history = ChatHistory()
 
-    user_inputs = [
-        "hello word",
-    ]
+    user_inputs = USER_INPUT_HISTORY
 
     for user_input in user_inputs:
         print(f">>> User input: {user_input}")  # Debug
