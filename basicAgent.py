@@ -25,6 +25,11 @@ import asyncio
 
 load_dotenv()
 
+# This is a simple example of using the OpenAIChatCompletion agent to generate email replies
+# first, apply a github token to the environment variable GITHUB_TOKEN in your .env file
+# here is link to the github token:  https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
+
+# and below is the prarameters you can set for the agent
 AI_MODEL = "gpt-4o-mini"
 AI_INSTRUCTIONS= "Generate professional email replies for Zara customer service"
 
@@ -39,6 +44,8 @@ PROMPT_SETTING=PromptExecutionSettings(
 )
 
 
+
+# below is framework for the agent
 client = AsyncOpenAI(
     # set your own GITHUB_TOKEN
     api_key=os.environ.get("GITHUB_TOKEN"),
