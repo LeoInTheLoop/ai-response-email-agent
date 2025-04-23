@@ -41,5 +41,27 @@ We use the [Enron Email Dataset](https://www.kaggle.com/datasets/wcukierski/enro
 - [ ] **Agent Prompt Design**: Create a basic agent (e.g., `PoetAgent`) and define its prompt behavior  
 - [ ] **Semantic Kernel Integration**: Register plugin that uses pre-generated style JSON to guide AI email reply generation
 
+### Backed
+- [ ] Set up Flask application.
+- [ ] Implement API endpoints for handling requests.
+- [ ] Integrate with Azure for deployment.
+
+### Frontend
+- [ ] Develop the add-in interface.
+- [ ] Integrate the add-in with the email client (e.g., Gmail).
+
+
+### Functions (Backend and Frontend)
+- [ ] Main functions of the add-in.
+- [ ] Backend processes for generating answers.
+- [ ] Frontend interface: text field for input, dropdown for selecting responses.
+
+
+### Feedback
+- [ ] How users can provide feedback on the add-in.
+
+
+
+
 ## ✅ Done  
 - ✅ Created basic agent: `BasicAgent` in `basicAgent.py`
