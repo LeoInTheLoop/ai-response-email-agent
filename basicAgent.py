@@ -31,7 +31,7 @@ load_dotenv()
 
 # and below is the prarameters you can set for the agent
 AI_MODEL = "gpt-4o-mini"
-AI_INSTRUCTIONS= "Generate professional email replies for Zara customer service"
+AI_INSTRUCTIONS= "Generate every email replies for user"
 
 USER_INPUT_HISTORY = [
         "Hello, I have a question about my recent order #12345",

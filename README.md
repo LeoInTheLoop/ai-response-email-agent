@@ -43,3 +43,12 @@ We use the [Enron Email Dataset](https://www.kaggle.com/datasets/wcukierski/enro
 
 ## ✅ Done  
 - ✅ Created basic agent: `BasicAgent` in `basicAgent.py`
+
+
+我们怎么运作
+前端用add in ，basic button   总之最好能得到将要回复的信息，减少中间  像 对话框
+后端flask 
+  - 当第一次打开的 时候用history 训练并产生json （ 后期向量 rag）
+  - 当单个邮件进来 调用json 返回
+
+simmlar app ai email writer（gmail add on）
