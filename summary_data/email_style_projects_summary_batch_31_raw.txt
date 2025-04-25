@@ -1,0 +1,78 @@
+{
+ "overall": { "tone": {
+ "formal": ["regards", "thank you for your time", "please confirm"], "casual": ["thanks", "anytime", "let me know"], "concise": ["what are my choices", "anytime after", "thanks for the info"]
+ },
+ "style": "The writing style is generally direct and to the point, with a mix of formal and casual tones depending on the recipient. Phillip often uses short sentences and polite requests.",
+ "projects": [
+ {
+ "name": "General Contractor Coordination",
+ "collaborators": ["johnnie.brown@sanantonio.com", "gary@creativepanel.com"],
+ "details": "Coordination with Johnnie Brown for general contracting and price confirmation for panel purchases."
+ },
+ {
+ "name": "Data Organization for Presentation",
+ "collaborators": ["matt@enron.com", "tim.belden@enron.com"],
+ "details": "Discussion regarding the organization of CEMS and WSCC data for a presentation."
+ }
+ ],
+ "characteristic_phrases": ["let me know", "thank you for your time", "anytime after"],
+ "frequent_words": ["thank", "let", "know", "price", "data"]
+ },
+ "gary@creativepanel.com": {
+ "tone": {
+ "formal": ["thank you for your time", "please confirm"], "casual": ["excited about", "let me know"], "concise": ["can you confirm", "will you please email"]
+ },
+ "style": "The style is polite and slightly formal, with a focus on clarity and requests for confirmation.",
+ "projects": [
+ {
+ "name": "General Contractor Coordination",
+ "collaborators": ["johnnie.brown@sanantonio.com", "gary@creativepanel.com"],
+ "details": "Coordination with Johnnie Brown for general contracting and price confirmation for panel purchases."
+ }
+ ],
+ "characteristic_phrases": ["thank you for your time", "can you confirm", "excited about"],
+ "frequent_words": ["price", "confirm", "factory", "distributor", "plans"]
+ },
+ "gary.taylor@enron.com": {
+ "tone": {
+ "formal": [], "casual": ["thanks"], "concise": ["thanks for the info"]
+ },
+ "style": "The style is very brief and casual, with a straightforward acknowledgment.",
+ "projects": [],
+ "characteristic_phrases": ["thanks"],
+ "frequent_words": ["thanks", "info"]
+ },
+ "felix.buitron@enron.com": {
+ "tone": {
+ "formal": [], "casual": [], "concise": ["anytime after"]
+ },
+ "style": "The style is extremely concise and to the point, with minimal elaboration.",
+ "projects": [],
+ "characteristic_phrases": ["anytime after"],
+ "frequent_words": ["anytime"]
+ },
+ "tim.belden@enron.com": {
+ "tone": {
+ "formal": [], "casual": [], "concise": ["let me know"]
+ },
+ "style": "The style is direct and analytical, focusing on data and decision-making.",
+ "projects": [
+ {
+ "name": "Data Organization for Presentation",
+ "collaborators": ["matt@enron.com", "tim.belden@enron.com"],
+ "details": "Discussion regarding the organization of CEMS and WSCC data for a presentation."
+ }
+ ],
+ "characteristic_phrases": ["let me know"],
+ "frequent_words": ["data", "wscc", "monitoring", "reliability"]
+ },
+ "ina.rangel@enron.com": {
+ "tone": {
+ "formal": [], "casual": [], "concise": ["what are my choices"]
+ },
+ "style": "The style is very brief and straightforward, focusing on obtaining information.",
+ "projects": [],
+ "characteristic_phrases": ["what are my choices"],
+ "frequent_words": ["choices", "dates"]
+ }
+}

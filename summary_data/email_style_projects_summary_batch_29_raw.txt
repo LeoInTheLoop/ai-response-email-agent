@@ -1,0 +1,61 @@
+{
+ "overall": { "tone": {
+ "formal": ["please", "I need", "Can you help"], "casual": ["testing", "thanks"], "concise": ["How about", "please add"]
+ },
+ "style": "Direct and to the point, often using short sentences.",
+ "projects": [],
+ "characteristic_phrases": ["I need", "please add", "testing"],
+ "frequent_words": ["please", "add", "need", "testing", "how about"]
+ },
+ "celeste.roberts@enron.com": {
+ "tone": {
+ "formal": ["I need", "Can you help"], "casual": [], "concise": []
+ },
+ "style": "Direct and straightforward, with a clear request.",
+ "projects": [
+ {
+ "name": "West Gas Trading Desk",
+ "collaborators": ["celeste.roberts@enron.com"],
+ "details": "Request for two associates/analysts."
+ }
+ ],
+ "characteristic_phrases": ["I need", "Can you help", "voice mail"],
+ "frequent_words": ["need", "assoc.", "analyst", "west", "desk"]
+ },
+ "al.pollard@enron.com": {
+ "tone": {
+ "formal": [], "casual": [], "concise": ["How about"]
+ },
+ "style": "Very brief and to the point.",
+ "projects": [],
+ "characteristic_phrases": ["How about"],
+ "frequent_words": ["Tuesday", "11:15", "building"]
+ },
+ "ywang@enron.com": {
+ "tone": {
+ "formal": ["please"], "casual": [], "concise": ["add"]
+ },
+ "style": "Direct and succinct.",
+ "projects": [],
+ "characteristic_phrases": ["please add"],
+ "frequent_words": ["please", "add", "mike", "grigsby", "distribution", "list"]
+ },
+ "brendas@surffree.com": {
+ "tone": {
+ "formal": [], "casual": ["testing"], "concise": []
+ },
+ "style": "Very informal and minimal.",
+ "projects": [],
+ "characteristic_phrases": ["testing"],
+ "frequent_words": ["testing"]
+ },
+ "ina.rangel@enron.com": {
+ "tone": {
+ "formal": [], "casual": [], "concise": []
+ },
+ "style": "Forwarding information with minimal commentary.",
+ "projects": [],
+ "characteristic_phrases": [],
+ "frequent_words": []
+ }
+}

@@ -1,0 +1,85 @@
+{
+ "overall": {
+ "tone": {
+ "formal": ["authorization", "thank you", "please"],
+ "casual": ["let's", "talk about", "try and email me"],
+ "concise": ["call with questions", "info about", "keep the office open"]
+ },
+ "style": "The writing style is direct and to the point, often using short sentences and clear instructions. There is a mix of casual and formal tones depending on the recipient.",
+ "projects": [],
+ "characteristic_phrases": ["let's keep", "try and email me", "call the bank"],
+ "frequent_words": ["account", "vacancies", "office", "unit", "authorization"]
+ },
+ "stagecoachmama@hotmail.com": {
+ "tone": {
+ "formal": [],
+ "casual": ["let's", "talk about", "try and email me"],
+ "concise": ["info about", "keep the office open", "call the bank"]
+ },
+ "style": "The style is friendly and informal, with a focus on collaboration and daily updates.",
+ "projects": [
+ {
+ "name": "Unit for Wade",
+ "collaborators": ["stagecoachmama@hotmail.com"],
+ "details": "Discussion about a unit for Wade during a visit to Seguin."
+ }
+ ],
+ "characteristic_phrases": ["let's keep", "try and email me", "talk about"],
+ "frequent_words": ["account", "vacancies", "office", "unit", "authorization"]
+ },
+ "tara.sweitzer@enron.com": {
+ "tone": {
+ "formal": ["authorization", "thank you"],
+ "casual": [],
+ "concise": ["call with questions"]
+ },
+ "style": "The writing style is formal and straightforward, focusing on specific instructions and authorizations.",
+ "projects": [],
+ "characteristic_phrases": ["call with questions", "authorization", "thank you"],
+ "frequent_words": ["authorization", "book", "route", "products", "changes"]
+ },
+ "john.lavorato@enron.com": {
+ "tone": {
+ "formal": [],
+ "casual": [],
+ "concise": []
+ },
+ "style": "The style is analytical and focused on gathering information regarding the Commission meeting.",
+ "projects": [],
+ "characteristic_phrases": ["hope this info helps", "behind closed doors", "fixed price cap"],
+ "frequent_words": ["discussions", "price", "cap", "Commission", "order"]
+ },
+ "matthew.lenhart@enron.com": {
+ "tone": {
+ "formal": [],
+ "casual": [],
+ "concise": []
+ },
+ "style": "The style is informative, sharing market intelligence in a straightforward manner.",
+ "projects": [],
+ "characteristic_phrases": [],
+ "frequent_words": ["Gas", "Transportation", "Market", "Intelligence", "Pipeline"]
+ },
+ "jane.tholt@enron.com": {
+ "tone": {
+ "formal": [],
+ "casual": [],
+ "concise": []
+ },
+ "style": "The style is informative, sharing market intelligence in a straightforward manner.",
+ "projects": [],
+ "characteristic_phrases": [],
+ "frequent_words": ["Gas", "Transportation", "Market", "Intelligence", "Pipeline"]
+ },
+ "steven.south@enron.com": {
+ "tone": {
+ "formal": [],
+ "casual": [],
+ "concise": []
+ },
+ "style": "The style is informative, sharing market intelligence in a straightforward manner.",
+ "projects": [],
+ "characteristic_phrases": [],
+ "frequent_words": ["Gas", "Transportation", "Market", "Intelligence", "Pipeline"]
+ }
+}

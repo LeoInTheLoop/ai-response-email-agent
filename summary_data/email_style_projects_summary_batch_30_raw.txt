@@ -1,0 +1,91 @@
+{
+ "overall": {
+ "tone": {
+ "formal": ["please", "attached", "confirm receipt"],
+ "casual": ["thanks", "let's pick a day", "everything looks good"],
+ "concise": ["I can do", "I have spoken", "please sign me up"]
+ },
+ "style": "The writing style is direct and to the point, often using short sentences. The tone varies from formal to casual depending on the recipient.",
+ "projects": [],
+ "characteristic_phrases": ["please sign me up", "let's pick a day", "confirm receipt"],
+ "frequent_words": ["please", "sign", "I have", "attached", "good"]
+ },
+ "matthew.lenhart@enron.com": {
+ "tone": {
+ "formal": ["please", "attached"],
+ "casual": ["thanks"],
+ "concise": ["I have spoken"]
+ },
+ "style": "The style is straightforward and professional, with a focus on clarity.",
+ "projects": [
+ {
+ "name": "Natural Gas Customers",
+ "collaborators": ["scott.neal@enron.com", "hunter.shively@enron.com", "elsa.villarreal@enron.com", "thomas.martin@enron.com"],
+ "details": "Discussion regarding active natural gas customers in the Global Counterparty database."
+ }
+ ],
+ "characteristic_phrases": ["please", "attached", "thanks"],
+ "frequent_words": ["natural", "gas", "customers", "attached", "please"]
+ },
+ "kenneth.shulklapper@enron.com": {
+ "tone": {
+ "formal": ["please", "attached"],
+ "casual": ["thanks"],
+ "concise": ["I have spoken"]
+ },
+ "style": "The style is straightforward and professional, with a focus on clarity.",
+ "projects": [
+ {
+ "name": "Natural Gas Customers",
+ "collaborators": ["scott.neal@enron.com", "hunter.shively@enron.com", "elsa.villarreal@enron.com", "thomas.martin@enron.com"],
+ "details": "Discussion regarding active natural gas customers in the Global Counterparty database."
+ }
+ ],
+ "characteristic_phrases": ["please", "attached", "thanks"],
+ "frequent_words": ["natural", "gas", "customers", "attached", "please"]
+ },
+ "ina.rangel@enron.com": {
+ "tone": {
+ "formal": ["please"],
+ "casual": ["thanks"],
+ "concise": ["sign me up"]
+ },
+ "style": "The style is polite and direct, with a clear request.",
+ "projects": [],
+ "characteristic_phrases": ["please sign me up", "thanks"],
+ "frequent_words": ["please", "sign", "me", "up", "thanks"]
+ },
+ "al.pollard@enron.com": {
+ "tone": {
+ "formal": ["I can do"],
+ "casual": ["let's pick a day"],
+ "concise": ["not in good enough shape"]
+ },
+ "style": "The style is friendly and informal, with a personal touch.",
+ "projects": [],
+ "characteristic_phrases": ["let's pick a day", "not in good enough shape"],
+ "frequent_words": ["I", "can", "do", "lunch", "day"]
+ },
+ "brendas@tgn.net": {
+ "tone": {
+ "formal": ["attached", "please email me back"],
+ "casual": [],
+ "concise": ["the word document attached"]
+ },
+ "style": "The style is professional and informative, focusing on providing necessary details.",
+ "projects": [],
+ "characteristic_phrases": ["please email me back", "attached"],
+ "frequent_words": ["attached", "document", "notice", "consent", "form"]
+ },
+ "jsmith@austintx.com": {
+ "tone": {
+ "formal": ["let me know"],
+ "casual": ["everything looks good"],
+ "concise": ["I have spoken"]
+ },
+ "style": "The style is direct and collaborative, seeking input and confirmation.",
+ "projects": [],
+ "characteristic_phrases": ["let me know", "everything looks good"],
+ "frequent_words": ["I", "have", "spoken", "let", "know"]
+ }
+}

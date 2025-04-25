@@ -1,0 +1,61 @@
+{
+ "overall": { "tone": {
+ "formal": ["thank you", "can you", "please advise"], "casual": ["thanks", "you need to", "I will vouch"], "concise": ["still good", "you need to", "here is"]
+ },
+ "style": "Direct and to the point, often providing necessary context without excessive detail.",
+ "projects": [],
+ "characteristic_phrases": ["you need to", "can you", "thank you"],
+ "frequent_words": ["need", "can", "you", "address", "thank"]
+ },
+ "frank.ermis@enron.com": {
+ "tone": {
+ "formal": ["thank you", "please advise"], "casual": ["thanks", "you need to"], "concise": ["basis", "period", "terms"]
+ },
+ "style": "Polite and straightforward, focusing on specific requests and information sharing.",
+ "projects": [
+ {
+ "name": "Stanfield Term Pricing",
+ "collaborators": ["michael.ettinger@enron.com", "keith.holst@enron.com"],
+ "details": "Follow-up on a bid submitted to Clark County PUD for term pricing."
+ }
+ ],
+ "characteristic_phrases": ["basis", "term pricing", "thanks"],
+ "frequent_words": ["basis", "term", "pricing", "Stanfield", "thanks"]
+ },
+ "stagecoachmama@hotmail.com": {
+ "tone": {
+ "formal": ["you need to", "I will vouch"], "casual": ["thanks", "you need to"], "assertive": ["priority", "must", "can't"]
+ },
+ "style": "Supportive yet firm, emphasizing the importance of personal responsibilities.",
+ "projects": [],
+ "characteristic_phrases": ["you need to", "I will vouch", "priority"],
+ "frequent_words": ["need", "vehicle", "situation", "priority", "vouch"]
+ },
+ "mac.d.hargrove@rssmb.com": {
+ "tone": {
+ "formal": ["I don't know why"], "concise": ["still good"], "neutral": []
+ },
+ "style": "Brief and factual, addressing a specific inquiry without elaboration.",
+ "projects": [],
+ "characteristic_phrases": ["still good", "I don't know"],
+ "frequent_words": ["still", "good", "know", "why", "returned"]
+ },
+ "tim.heizenrader@enron.com": {
+ "tone": {
+ "formal": ["can you authorize"], "concise": ["on another note", "thank you"], "analytical": ["forecast", "flows", "insight"]
+ },
+ "style": "Analytical and direct, combining requests with observations and inquiries.",
+ "projects": [],
+ "characteristic_phrases": ["can you", "on another note", "thank you"],
+ "frequent_words": ["can", "you", "authorize", "forecast", "flows"]
+ },
+ "fletcher.sturm@enron.com": {
+ "tone": {
+ "formal": [], "casual": [], "concise": []
+ },
+ "style": "Very brief, likely informal, sharing a draft without much context.",
+ "projects": [],
+ "characteristic_phrases": ["1st draft", "wish list"],
+ "frequent_words": ["1st", "draft", "wish", "list", "for"]
+ }
+}

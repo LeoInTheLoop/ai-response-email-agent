@@ -1,0 +1,68 @@
+{
+ "overall": {
+ "tone": {
+ "formal": ["schedule", "thoughts", "business meetings"],
+ "casual": ["way to go", "let's shoot for", "play golf"],
+ "concise": ["Here is our forecast", "test successful"]
+ },
+ "style": "Direct and to the point, often using short sentences. The communication is generally polite but can be informal depending on the recipient.",
+ "projects": [],
+ "characteristic_phrases": ["business meetings", "way to go", "let's shoot for"],
+ "frequent_words": ["business", "meetings", "schedule", "suggest", "forecast"]
+ },
+ "tim.belden@enron.com": {
+ "tone": {
+ "formal": ["forecast"],
+ "casual": [],
+ "concise": ["Here is our forecast"]
+ },
+ "style": "Very concise and straightforward, providing only essential information.",
+ "projects": [],
+ "characteristic_phrases": ["forecast"],
+ "frequent_words": ["forecast"]
+ },
+ "john.lavorato@enron.com": {
+ "tone": {
+ "formal": ["business meetings", "suggest", "productive"],
+ "casual": ["play golf", "way to go"],
+ "concise": []
+ },
+ "style": "Detailed and analytical, providing suggestions and opinions on improving meetings.",
+ "projects": [],
+ "characteristic_phrases": ["business meetings", "suggest", "Austin"],
+ "frequent_words": ["business", "meetings", "suggest", "trip", "productive"]
+ },
+ "leah.arsdall@enron.com": {
+ "tone": {
+ "formal": [],
+ "casual": ["way to go"],
+ "concise": ["test successful"]
+ },
+ "style": "Very brief and informal, focusing on a quick acknowledgment.",
+ "projects": [],
+ "characteristic_phrases": ["test successful", "way to go"],
+ "frequent_words": ["test"]
+ },
+ "randall.gay@enron.com": {
+ "tone": {
+ "formal": ["schedule", "thoughts"],
+ "casual": [],
+ "concise": []
+ },
+ "style": "Direct and to the point, requesting specific information.",
+ "projects": [],
+ "characteristic_phrases": ["schedule", "thoughts"],
+ "frequent_words": ["schedule", "salary", "level", "changes"]
+ },
+ "greg.piper@enron.com": {
+ "tone": {
+ "formal": [],
+ "casual": ["let's shoot for"],
+ "concise": []
+ },
+ "style": "Very brief and casual, focusing on scheduling.",
+ "projects": [],
+ "characteristic_phrases": ["let's shoot for"],
+ "frequent_words": ["Tuesday"]
+ }
+}

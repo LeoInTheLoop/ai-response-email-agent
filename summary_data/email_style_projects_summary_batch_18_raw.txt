@@ -1,0 +1,68 @@
+{
+ "overall": { "tone": {
+ "formal": ["regard", "let me know", "please"],
+ "casual": ["thanks", "let's", "on another note"],
+ "concise": ["can you", "please add", "I got your email"]
+ },
+ "style": "Direct and to the point, often providing clear instructions or requests.",
+ "projects": [
+ {
+ "name": "Rent Roll Spreadsheet Modifications",
+ "collaborators": ["stagecoachmama@hotmail.com"],
+ "details": "Modifications to the rent roll spreadsheet including formulas and column adjustments."
+ }
+ ],
+ "characteristic_phrases": ["let me know", "please add", "I got your email"],
+ "frequent_words": ["please", "add", "let's", "can", "manager"]
+ },
+ "colleen.sullivan@enron.com": {
+ "tone": {
+ "formal": ["please", "on another note"],
+ "casual": ["thanks", "how are you"],
+ "concise": ["add", "do you have"]
+ },
+ "style": "Polite and friendly, with a mix of casual inquiry.",
+ "projects": [],
+ "characteristic_phrases": ["please add", "how is Patti", "on another note"],
+ "frequent_words": ["please", "add", "how", "is", "Patti"]
+ },
+ "brad.mcsherry@enron.com": {
+ "tone": {
+ "formal": ["with regard to", "let me know"],
+ "assertive": ["I would like", "I have no doubt"],
+ "concise": ["issues", "promote"]
+ },
+ "style": "Direct and assertive, providing clear recommendations and expectations.",
+ "projects": [],
+ "characteristic_phrases": ["with regard to", "let me know", "I would like"],
+ "frequent_words": ["regard", "promote", "let", "know", "issues"]
+ },
+ "bruce.ferrell@enron.com": {
+ "tone": {
+ "formal": ["can you"],
+ "concise": ["stop by", "set up"],
+ "direct": ["my reuters"]
+ },
+ "style": "Very brief and to the point, with a straightforward request.",
+ "projects": [],
+ "characteristic_phrases": ["can you", "stop by", "set up"],
+ "frequent_words": ["can", "you", "stop", "by", "set"]
+ },
+ "stagecoachmama@hotmail.com": {
+ "tone": {
+ "formal": ["please", "let's work together"],
+ "casual": ["see if you can", "starting to look better"],
+ "concise": ["add these modifications", "after we get"]
+ },
+ "style": "Detailed and instructive, providing specific steps for tasks.",
+ "projects": [
+ {
+ "name": "Rent Roll Spreadsheet Modifications",
+ "collaborators": ["stagecoachmama@hotmail.com"],
+ "details": "Modifications to the rent roll spreadsheet including formulas and column adjustments."
+ }
+ ],
+ "characteristic_phrases": ["let's work together", "see if you can", "starting to look better"],
+ "frequent_words": ["see", "if", "you", "can", "add"]
+ }
+}

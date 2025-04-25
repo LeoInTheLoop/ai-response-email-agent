@@ -1,0 +1,68 @@
+{
+ "overall": { "tone": {
+ "formal": ["approval", "please", "discuss"],
+ "casual": ["thanks", "how is", "you will probably"],
+ "concise": ["you have", "it is", "can you oblige"]
+ },
+ "style": "Direct and to the point, with a mix of casual and formal elements. The writing is clear and often includes specific requests.",
+ "projects": [
+ {
+ "name": "ENA Fileplan Project",
+ "collaborators": ["ina.rangel@enron.com"],
+ "details": "Project requiring approval from Ina Rangel."
+ },
+ {
+ "name": "Spreadsheet Analysis",
+ "collaborators": ["stagecoachmama@hotmail.com"],
+ "details": "Creating and analyzing spreadsheets related to budget and utility costs."
+ }
+ ],
+ "characteristic_phrases": ["you have my approval", "how is progress", "please open this excel file"],
+ "frequent_words": ["approval", "email", "spreadsheet", "file", "progress"]
+ },
+ "ina.rangel@enron.com": {
+ "tone": {
+ "formal": ["approval"],
+ "casual": [],
+ "concise": []
+ },
+ "style": "Very concise and straightforward, with a focus on providing approval.",
+ "projects": [
+ {
+ "name": "ENA Fileplan Project",
+ "collaborators": ["ina.rangel@enron.com"],
+ "details": "Project requiring approval from Ina Rangel."
+ }
+ ],
+ "characteristic_phrases": ["you have my approval"],
+ "frequent_words": ["approval"]
+ },
+ "stagecoachmama@hotmail.com": {
+ "tone": {
+ "formal": ["please", "discuss"],
+ "casual": ["how is", "you will probably", "great chance"],
+ "concise": ["it is", "open this excel file"]
+ },
+ "style": "Casual yet directive, with a focus on collaboration and progress on tasks.",
+ "projects": [
+ {
+ "name": "Spreadsheet Analysis",
+ "collaborators": ["stagecoachmama@hotmail.com"],
+ "details": "Creating and analyzing spreadsheets related to budget and utility costs."
+ }
+ ],
+ "characteristic_phrases": ["how is progress", "please open this excel file", "great chance for you to practice"],
+ "frequent_words": ["spreadsheet", "file", "progress", "input", "analysis"]
+ },
+ "keith.holst@enron.com": {
+ "tone": {
+ "formal": ["request", "can you oblige"],
+ "casual": [],
+ "concise": []
+ },
+ "style": "Formal and informative, primarily focused on relaying requests and forwarding information.",
+ "projects": [],
+ "characteristic_phrases": ["can you oblige", "request from Steve Kean"],
+ "frequent_words": ["request", "update", "table", "attached", "thanks"]
+ }
+}

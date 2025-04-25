@@ -1,0 +1,80 @@
+{
+ "overall": {
+ "tone": {
+ "formal": ["regards", "please advise"],
+ "casual": ["thanks", "no"],
+ "concise": ["basically", "any detail"]
+ },
+ "style": "Direct and to the point, often asking for clarification or providing brief updates.",
+ "projects": [],
+ "characteristic_phrases": ["basically", "any detail", "I will get back to you"],
+ "frequent_words": ["gas", "cost", "delivery", "points", "energy"]
+ },
+ "stouchstone@natsource.com": {
+ "tone": {
+ "formal": [],
+ "casual": ["no"],
+ "concise": ["no"]
+ },
+ "style": "Very brief and to the point.",
+ "projects": [],
+ "characteristic_phrases": ["no"],
+ "frequent_words": ["no"]
+ },
+ "ray.alvarez@enron.com": {
+ "tone": {
+ "formal": [],
+ "casual": [],
+ "concise": ["basically", "any detail"]
+ },
+ "style": "Polite and inquisitive, seeking specific information.",
+ "projects": [
+ {
+ "name": "FERC's Prospective Mitigation and Monitoring Plan for CA",
+ "collaborators": ["ray.alvarez@enron.com"],
+ "details": "Inquiry about the gas cost proxy and clarification on specific language."
+ }
+ ],
+ "characteristic_phrases": ["any detail", "can you help", "clarification"],
+ "frequent_words": ["gas", "cost", "proxy", "delivery", "California"]
+ },
+ "keith.holst@enron.com": {
+ "tone": {
+ "formal": [],
+ "casual": [],
+ "concise": []
+ },
+ "style": "Forwarding a message without additional commentary.",
+ "projects": [],
+ "characteristic_phrases": [],
+ "frequent_words": []
+ },
+ "torrey.moorer@enron.com": {
+ "tone": {
+ "formal": [],
+ "casual": [],
+ "concise": []
+ },
+ "style": "Forwarding a request without personal input.",
+ "projects": [
+ {
+ "name": "FT-Denver book on EOL",
+ "collaborators": ["torrey.moorer@enron.com", "paul.t.lucci@enron.com"],
+ "details": "Request to bridge financial deals on EOL to the FT-Denver book."
+ }
+ ],
+ "characteristic_phrases": [],
+ "frequent_words": []
+ },
+ "scott.carter@chase.com": {
+ "tone": {
+ "formal": [],
+ "casual": [],
+ "concise": ["basically"]
+ },
+ "style": "Informative and explanatory, providing insights based on knowledge.",
+ "projects": [],
+ "characteristic_phrases": ["I will get back to you", "basically", "my best guess"],
+ "frequent_words": ["energy", "price", "sales", "market", "risk"]
+ }
+}

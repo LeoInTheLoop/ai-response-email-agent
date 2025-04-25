@@ -1,0 +1,78 @@
+{
+ "overall": { "tone": {
+ "formal": ["please advise", "I look forward to hearing from you", "regards"], "casual": ["thanks", "let me know", "feel free to call"], "concise": ["I will", "what about", "can you find out"]
+ },
+ "style": "The writing style is direct and to the point, often including specific details and requests. The sentences are generally short and focused.",
+ "projects": [
+ {
+ "name": "Westgate Property",
+ "collaborators": ["george.richards@austin.rr.com", "larry.lewter@mail.sanmarcos.net"],
+ "details": "A project in Austin expected to produce over40% return over3 years, with approved zoning and fast-tracked development."
+ },
+ {
+ "name": "Chelsea Villas",
+ "collaborators": ["jsmith@austintx.com"],
+ "details": "Inquiry about the rent roll and site plans related to the Burnet deal."
+ }
+ ],
+ "characteristic_phrases": ["I will let you know", "can you find out", "I regret that it took so long"],
+ "frequent_words": ["project", "site", "plans", "email", "calendar"]
+ },
+ "tori.kuykendall@enron.com": {
+ "tone": {
+ "formal": ["please advise", "I look forward to hearing from you"], "casual": ["thanks", "let me know"], "concise": ["I will", "what about"]
+ },
+ "style": "The writing style is straightforward and informative, with a focus on providing necessary details.",
+ "projects": [],
+ "characteristic_phrases": ["please advise", "I look forward to hearing from you", "let me know"],
+ "frequent_words": ["survey", "email", "calendar", "location", "permission"]
+ },
+ "keith.holst@enron.com": {
+ "tone": {
+ "formal": ["I look forward to hearing from you", "please advise"], "casual": ["let me know", "feel free to call"], "concise": ["I will", "what about"]
+ },
+ "style": "The writing style is detailed and analytical, often including specific project information and requests for feedback.",
+ "projects": [
+ {
+ "name": "Westgate Property",
+ "collaborators": ["george.richards@austin.rr.com", "larry.lewter@mail.sanmarcos.net"],
+ "details": "A project in Austin expected to produce over40% return over3 years, with approved zoning and fast-tracked development."
+ }
+ ],
+ "characteristic_phrases": ["I will send you", "please respond", "I regret that it took so long"],
+ "frequent_words": ["project", "return", "Austin", "investment", "site"]
+ },
+ "jsmith@austintx.com": {
+ "tone": {
+ "formal": ["please advise"], "casual": ["let me know", "I will"], "concise": ["what about", "can you find out"]
+ },
+ "style": "The writing style is direct and practical, focusing on specific tasks and inquiries.",
+ "projects": [
+ {
+ "name": "Chelsea Villas",
+ "collaborators": ["jsmith@austintx.com"],
+ "details": "Inquiry about the rent roll and site plans related to the Burnet deal."
+ }
+ ],
+ "characteristic_phrases": ["I will let you know", "can you find out", "what about"],
+ "frequent_words": ["Chelsea", "Villas", "site", "plans", "rent"]
+ },
+ "john.lavorato@enron.com": {
+ "tone": {
+ "formal": ["please advise"], "casual": ["let me know"], "concise": ["what about"]
+ },
+ "style": "The writing style is technical and focused on data, often requiring specific responses.",
+ "projects": [],
+ "characteristic_phrases": ["the reason", "what about", "is mapped differently"],
+ "frequent_words": ["benchmark", "report", "selling", "transport", "positions"]
+ },
+ "frank.hayden@enron.com": {
+ "tone": {
+ "formal": ["please advise"], "casual": ["let me know"], "concise": ["why is", "what about"]
+ },
+ "style": "The writing style is analytical and inquisitive, often asking for clarification on technical matters.",
+ "projects": [],
+ "characteristic_phrases": ["why is", "what about", "is mapped differently"],
+ "frequent_words": ["aeco", "basis", "low", "correlation", "Nymex"]
+ }
+}

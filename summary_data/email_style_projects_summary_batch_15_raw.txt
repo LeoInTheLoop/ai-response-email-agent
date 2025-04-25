@@ -1,0 +1,73 @@
+{
+ "overall": { "tone": {
+ "formal": ["please", "thank you", "appreciate"],
+ "concise": ["can you", "here is", "we need"],
+ "friendly": ["Hi", "Cooper", "Phillip"]
+ },
+ "style": "Direct and to the point, with a focus on clarity and brevity.",
+ "projects": [
+ {
+ "name": "Team Selection Form - Executive Impact & Influence",
+ "collaborators": ["christi.smith@lrinet.com", "dnowak@enron.com", "debe@fsddatasvc.com"],
+ "details": "Request for completion of the Team Selection form with necessary details."
+ },
+ {
+ "name": "Outlook Migration",
+ "collaborators": [],
+ "details": "Gathering user information for a successful migration from Notes to Outlook."
+ }
+ ],
+ "characteristic_phrases": ["Can you", "please respond", "we need"],
+ "frequent_words": ["access", "team", "information", "email", "thank"]
+ },
+ "cooper.richey@enron.com": {
+ "tone": {
+ "formal": ["please", "thank you"],
+ "concise": ["can you", "he is"],
+ "friendly": ["Cooper", "Phillip"]
+ },
+ "style": "Direct and straightforward, with a clear request.",
+ "projects": [],
+ "characteristic_phrases": ["Can you give", "new west power site", "analyst in our group"],
+ "frequent_words": ["access", "new", "power", "site", "Jay Reitmeyer"]
+ },
+ "ina.rangel@enron.com": {
+ "tone": {
+ "formal": ["thank you", "appreciate"],
+ "concise": ["we need", "please respond"],
+ "friendly": ["Hi Phillip", "thank you for your assistance"]
+ },
+ "style": "Polite and informative, providing context and details.",
+ "projects": [
+ {
+ "name": "Team Selection Form - Executive Impact & Influence",
+ "collaborators": ["christi.smith@lrinet.com", "dnowak@enron.com", "debe@fsddatasvc.com"],
+ "details": "Request for completion of the Team Selection form with necessary details."
+ }
+ ],
+ "characteristic_phrases": ["we appreciate", "we need to receive", "thank you for your assistance"],
+ "frequent_words": ["team", "selection", "form", "information", "email"]
+ },
+ "debe@fsddatasvc.com": {
+ "tone": {
+ "formal": ["please", "thank you"],
+ "concise": ["here is"],
+ "assertive": ["I did not distinguish"]
+ },
+ "style": "Brief and factual, focusing on the delivery of information.",
+ "projects": [],
+ "characteristic_phrases": ["John Lavorato-M", "Mike Grigsby-D", "Scott Neal-P"],
+ "frequent_words": ["John", "Lavorato", "Mike", "Grigsby", "D"]
+ },
+ "kolinge@enron.com": {
+ "tone": {
+ "formal": ["please"],
+ "concise": ["here is"],
+ "neutral": ["I did not distinguish"]
+ },
+ "style": "Direct and straightforward, providing necessary information.",
+ "projects": [],
+ "characteristic_phrases": ["Here is a spreadsheet", "September Socal trades", "I did not distinguish"],
+ "frequent_words": ["spreadsheet", "September", "Socal", "trades", "buys"]
+ }
+}

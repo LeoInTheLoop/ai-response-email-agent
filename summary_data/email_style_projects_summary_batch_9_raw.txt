@@ -1,0 +1,57 @@
+{
+ "overall": { "tone": {
+ "formal": ["regards", "please advise", "I would like to review"],
+ "casual": ["let me know", "what is up", "thanks"],
+ "concise": ["I need to see", "please get back", "as soon as possible"]
+ },
+ "style": "The writing style is direct and detailed, often including specific questions and requests for information. Phillip uses a structured format for inquiries, especially regarding project details.",
+ "projects": [
+ {
+ "name": "Westgate Project",
+ "collaborators": ["cbpres@austin.rr.com", "pallen70@hotmail.com", "retwell@mail.sanmarcos.net"],
+ "details": "A real estate development project in Austin, focusing on ownership structure, investment returns, and construction details."
+ }
+ ],
+ "characteristic_phrases": ["let me know", "I need to see", "please get back to me"],
+ "frequent_words": ["project", "investment", "land", "loan", "construction"]
+ },
+ "cbpres@austin.rr.com": {
+ "tone": {
+ "formal": ["regards", "please advise", "I would like to review"],
+ "casual": ["let me know", "what is up", "thanks"],
+ "concise": ["I need to see", "please get back", "as soon as possible"]
+ },
+ "style": "The writing style is structured and detailed, with a focus on specific inquiries and a clear request for information.",
+ "projects": [
+ {
+ "name": "Westgate Project",
+ "collaborators": ["pallen70@hotmail.com", "retwell@mail.sanmarcos.net"],
+ "details": "A real estate development project in Austin, focusing on ownership structure, investment returns, and construction details."
+ }
+ ],
+ "characteristic_phrases": ["let me know", "I need to see", "please get back to me"],
+ "frequent_words": ["project", "investment", "land", "loan", "construction"]
+ },
+ "pallen70@hotmail.com": {
+ "tone": {
+ "formal": ["regards", "please advise"],
+ "casual": ["let me know", "thanks"],
+ "concise": ["I need to see", "please get back"]
+ },
+ "style": "The writing style is straightforward and focused, often forwarding important documents and summarizing key points.",
+ "projects": [],
+ "characteristic_phrases": ["let me know", "I need to see", "please get back to me"],
+ "frequent_words": ["project", "investment", "land", "loan", "construction"]
+ },
+ "jsmith@austintx.com": {
+ "tone": {
+ "formal": ["please advise"],
+ "casual": ["what is up", "thanks"],
+ "concise": ["I need to see", "as soon as possible"]
+ },
+ "style": "The writing style is brief and to the point, often asking for specific information or updates.",
+ "projects": [],
+ "characteristic_phrases": ["what is up", "I need to see", "please get back to me"],
+ "frequent_words": ["Burnet", "site plan", "approval", "property", "closing"]
+ }
+}

@@ -1,0 +1,98 @@
+{
+ "overall": { "tone": {
+ "formal": ["please note", "I need", "thank you"], "casual": ["hey", "thanks", "let's"], "concise": ["I would look", "I need", "please advise"]
+ },
+ "style": "Direct and to the point, often using short sentences. The communication is polite but straightforward.",
+ "projects": [
+ {
+ "name": "Project Elvis and Cactus Open Gas Position",
+ "collaborators": ["andy.chen@enron.com", "michael.ettinger@enron.com", "frank.vickers@enron.com", "saji.john@enron.com", "john.arnold@enron.com"],
+ "details": "Discussion regarding net open positions for gas trading."
+ },
+ {
+ "name": "West Gas Trading Desk Staffing",
+ "collaborators": ["jana.giovannini@enron.com", "celeste.roberts@enron.com"],
+ "details": "Request for associates and analysts for the west gas trading desk."
+ },
+ {
+ "name": "Systems Meeting",
+ "collaborators": ["kimberly.hillis@enron.com", "jeffrey.shankman@enron.com", "hunter.shively@enron.com", "ina.rangel@enron.com"],
+ "details": "Scheduled meeting regarding systems on July18."
+ }
+ ],
+ "characteristic_phrases": ["I need", "please note", "let's try"],
+ "frequent_words": ["project", "assoc", "gas", "desk", "meeting"]
+ },
+ "keith.holst@enron.com": {
+ "tone": {
+ "formal": ["please note", "let's try"], "casual": ["let's"], "concise": ["I need"]
+ },
+ "style": "Direct and informative, with a focus on project details.",
+ "projects": [
+ {
+ "name": "Project Elvis and Cactus Open Gas Position",
+ "collaborators": ["andy.chen@enron.com", "michael.ettinger@enron.com", "frank.vickers@enron.com", "saji.john@enron.com", "john.arnold@enron.com"],
+ "details": "Discussion regarding net open positions for gas trading."
+ }
+ ],
+ "characteristic_phrases": ["let's try", "please note", "project"],
+ "frequent_words": ["project", "gas", "position", "open", "call"]
+ },
+ "randall.gay@enron.com": {
+ "tone": {
+ "formal": ["I need", "please advise"], "casual": ["hey"], "concise": ["I need"]
+ },
+ "style": "Polite and straightforward, with a focus on staffing needs.",
+ "projects": [
+ {
+ "name": "West Gas Trading Desk Staffing",
+ "collaborators": ["jana.giovannini@enron.com", "celeste.roberts@enron.com"],
+ "details": "Request for associates and analysts for the west gas trading desk."
+ }
+ ],
+ "characteristic_phrases": ["I need", "please advise", "staffing"],
+ "frequent_words": ["assoc", "analyst", "desk", "need", "help"]
+ },
+ "matthew.lenhart@enron.com": {
+ "tone": {
+ "formal": ["please note"], "casual": [], "concise": []
+ },
+ "style": "Minimalist and direct, lacking detailed context.",
+ "projects": [],
+ "characteristic_phrases": [],
+ "frequent_words": []
+ },
+ "mike.grigsby@enron.com": {
+ "tone": {
+ "formal": ["please note"], "casual": [], "concise": []
+ },
+ "style": "Minimalist and direct, lacking detailed context.",
+ "projects": [],
+ "characteristic_phrases": [],
+ "frequent_words": []
+ },
+ "ina.rangel@enron.com": {
+ "tone": {
+ "formal": ["please note"], "casual": [], "concise": []
+ },
+ "style": "Direct and informative, focused on meeting details.",
+ "projects": [
+ {
+ "name": "Systems Meeting",
+ "collaborators": ["kimberly.hillis@enron.com", "jeffrey.shankman@enron.com", "hunter.shively@enron.com"],
+ "details": "Scheduled meeting regarding systems on July18."
+ }
+ ],
+ "characteristic_phrases": ["please note", "meeting", "scheduled"],
+ "frequent_words": ["systems", "meeting", "scheduled", "please", "note"]
+ },
+ "jsmith@austintx.com": {
+ "tone": {
+ "formal": [], "casual": [], "concise": []
+ },
+ "style": "Very brief and to the point.",
+ "projects": [],
+ "characteristic_phrases": [],
+ "frequent_words": []
+ }
+}

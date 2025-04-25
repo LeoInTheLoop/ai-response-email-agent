@@ -1,0 +1,91 @@
+{
+ "overall": {
+ "tone": {
+ "formal": ["imperative", "assistance", "completed"],
+ "casual": ["thanks", "hi", "fyi"],
+ "concise": ["resumes of whom?", "compare your california production"]
+ },
+ "style": "Direct and to the point, often using short sentences and straightforward language.",
+ "projects": [
+ {
+ "name": "Executive Impact & Influence Program",
+ "collaborators": ["christi.smith@lrinet.com", "dnowak@enron.com"],
+ "details": "Requires completion of Team Selection information for administration."
+ }
+ ],
+ "characteristic_phrases": ["thank you for your assistance", "please respond", "here is a spreadsheet"],
+ "frequent_words": ["information", "team", "email", "feedback", "production"]
+ },
+ "john.lavorato@enron.com": {
+ "tone": {
+ "formal": ["resumes", "whom"],
+ "casual": [],
+ "concise": ["resumes of whom?"]
+ },
+ "style": "Very brief and direct, with a focus on clarity.",
+ "projects": [],
+ "characteristic_phrases": ["resumes of whom?"],
+ "frequent_words": ["resumes"]
+ },
+ "ina.rangel@enron.com": {
+ "tone": {
+ "formal": ["imperative", "assistance", "completed"],
+ "casual": [],
+ "concise": []
+ },
+ "style": "Polite and formal, with a focus on providing necessary information.",
+ "projects": [
+ {
+ "name": "Executive Impact & Influence Program",
+ "collaborators": ["christi.smith@lrinet.com", "dnowak@enron.com"],
+ "details": "Requires completion of Team Selection information for administration."
+ }
+ ],
+ "characteristic_phrases": ["thank you for your assistance", "we have not received", "it is imperative"],
+ "frequent_words": ["information", "team", "email", "feedback", "completed"]
+ },
+ "dexter@intelligencepress.com": {
+ "tone": {
+ "formal": [],
+ "casual": [],
+ "concise": []
+ },
+ "style": "Informal and straightforward, sharing information without much elaboration.",
+ "projects": [],
+ "characteristic_phrases": [],
+ "frequent_words": []
+ },
+ "mike.grigsby@enron.com": {
+ "tone": {
+ "formal": [],
+ "casual": ["fyi"],
+ "concise": []
+ },
+ "style": "Brief and informative, typically forwarding relevant information.",
+ "projects": [],
+ "characteristic_phrases": ["fyi"],
+ "frequent_words": []
+ },
+ "frank.ermis@enron.com": {
+ "tone": {
+ "formal": [],
+ "casual": ["fyi"],
+ "concise": []
+ },
+ "style": "Similar to communication with Mike Grigsby, brief and to the point.",
+ "projects": [],
+ "characteristic_phrases": ["fyi"],
+ "frequent_words": []
+ },
+ "rich@pira.com": {
+ "tone": {
+ "formal": [],
+ "casual": [],
+ "concise": []
+ },
+ "style": "Direct and analytical, focusing on specific data comparisons.",
+ "projects": [],
+ "characteristic_phrases": [],
+ "frequent_words": ["compare", "production", "numbers"]
+ }
+}

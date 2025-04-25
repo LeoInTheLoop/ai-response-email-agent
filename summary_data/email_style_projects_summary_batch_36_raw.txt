@@ -1,0 +1,73 @@
+{
+ "overall": { "tone": {
+ "formal": ["I would like", "please advise", "congratulations"],
+ "casual": ["thanks", "sounds great", "maybe we could"],
+ "concise": ["I will respond", "total is", "your choice"]
+ },
+ "style": "Phillip's writing style is generally friendly and conversational, often including personal touches and inquiries about the recipient's life. He tends to use complete sentences and provides detailed information when necessary.",
+ "projects": [],
+ "characteristic_phrases": ["I would like", "sounds great", "your choice"],
+ "frequent_words": ["balance", "total", "months", "job", "opinion"]
+ },
+ "jsmith@austintx.com": {
+ "tone": {
+ "formal": ["I will respond", "owner financing", "do you have an opinion"],
+ "casual": ["tempted to hold", "sounds great"],
+ "concise": ["$35 Million expansion", "250 jobs"]
+ },
+ "style": "The style is direct and to the point, focusing on business matters while maintaining a casual tone.",
+ "projects": [
+ {
+ "name": "91 acres expansion",
+ "collaborators": ["jsmith@austintx.com"],
+ "details": "Discussion about a $35 Million expansion adding250 jobs in Burnet."
+ }
+ ],
+ "characteristic_phrases": ["I will respond", "do you have an opinion", "$35 Million expansion"],
+ "frequent_words": ["expansion", "jobs", "opinion", "acre", "financing"]
+ },
+ "al.pollard@enron.com": {
+ "tone": {
+ "formal": ["I hope we can", "congratulations on the new baby"],
+ "casual": ["I was glad to hear", "that's great"],
+ "friendly": ["let's grab lunch", "I would like to hear more"]
+ },
+ "style": "The style is warm and friendly, incorporating personal anecdotes and a conversational tone.",
+ "projects": [],
+ "characteristic_phrases": ["I was glad to hear", "congratulations on the new baby", "let's grab lunch"],
+ "frequent_words": ["glad", "baby", "busy", "new job", "lunch"]
+ },
+ "jeffrey.gossett@enron.com": {
+ "tone": {
+ "formal": ["I thought I'd bring it to your attention"],
+ "concise": ["let me know", "suggested fix"],
+ "analytical": ["transport loss", "mapping issue"]
+ },
+ "style": "The style is analytical and detailed, focusing on specific issues and providing thorough explanations.",
+ "projects": [],
+ "characteristic_phrases": ["transport loss", "let me know", "suggested fix"],
+ "frequent_words": ["transport", "mapping", "loss", "p&l", "Clay Basin"]
+ },
+ "maryrichards7@hotmail.com": {
+ "tone": {
+ "formal": ["I can spread it over", "does $10/hr sound fair"],
+ "casual": ["your choice", "I would like"],
+ "concise": ["total is", "6 or12 months"]
+ },
+ "style": "The style is straightforward and practical, focusing on financial arrangements with a friendly touch.",
+ "projects": [],
+ "characteristic_phrases": ["total is", "your choice", "does $10/hr sound fair"],
+ "frequent_words": ["balance", "total", "months", "payout", "loan"]
+ },
+ "hunter.shively@enron.com": {
+ "tone": {
+ "formal": [],
+ "casual": [],
+ "concise": []
+ },
+ "style": "The style is minimal and lacks detail, likely due to the nature of the communication.",
+ "projects": [],
+ "characteristic_phrases": [],
+ "frequent_words": []
+ }
+}

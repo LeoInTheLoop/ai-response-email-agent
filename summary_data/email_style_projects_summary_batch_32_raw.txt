@@ -1,0 +1,119 @@
+{
+ "overall": {
+ "tone": {
+ "formal": ["please", "request", "appreciated"],
+ "casual": ["thanks", "have a good weekend", "talk to you next week"],
+ "concise": ["What is GIS info?", "Can you do this?", "Have a good weekend"]
+ },
+ "style": "The writing style is generally direct and concise, with a mix of casual and formal tones depending on the recipient. Phillip often uses short sentences and is polite in his communication.",
+ "projects": [
+ {
+ "name": "GIS Information Update",
+ "collaborators": ["ina.rangel@enron.com"],
+ "details": "Phillip is reminding Ina to update GIS information as part of a company-wide initiative."
+ },
+ {
+ "name": "West Power Strategy Materials",
+ "collaborators": ["mike.grigsby@enron.com", "keith.holst@enron.com"],
+ "details": "Phillip forwards materials related to the West Power strategy for an upcoming meeting."
+ },
+ {
+ "name": "Gas Storage Model",
+ "collaborators": ["kenneth.shulklapper@enron.com"],
+ "details": "Phillip is involved in discussions regarding the back-testing of a gas storage model."
+ }
+ ],
+ "characteristic_phrases": ["have a good weekend", "I will read it", "please do so"],
+ "frequent_words": ["GIS", "information", "weekend", "update", "model"]
+ },
+ "stagecoachmama@hotmail.com": {
+ "tone": {
+ "formal": [],
+ "casual": ["have a good weekend", "I am glad you are enjoying"],
+ "concise": ["I got your email", "I will read it this weekend"]
+ },
+ "style": "The style is friendly and casual, with a personal touch. Phillip expresses interest in Lucy's job and shares personal plans.",
+ "projects": [],
+ "characteristic_phrases": ["have a good weekend", "I will read it", "I am glad you are enjoying"],
+ "frequent_words": ["email", "weekend", "job", "paid holiday", "rules"]
+ },
+ "ina.rangel@enron.com": {
+ "tone": {
+ "formal": ["please", "request"],
+ "casual": [],
+ "concise": ["What is GIS info?", "Can you do this?"]
+ },
+ "style": "The style is direct and to the point, with a focus on clarity and urgency.",
+ "projects": [
+ {
+ "name": "GIS Information Update",
+ "collaborators": ["ina.rangel@enron.com"],
+ "details": "Phillip is reminding Ina to update GIS information as part of a company-wide initiative."
+ }
+ ],
+ "characteristic_phrases": ["What is GIS info?", "Can you do this?", "reminder"],
+ "frequent_words": ["GIS", "info", "update", "do", "this"]
+ },
+ "mike.grigsby@enron.com": {
+ "tone": {
+ "formal": [],
+ "casual": [],
+ "concise": []
+ },
+ "style": "The style is straightforward, primarily focused on sharing information without additional commentary.",
+ "projects": [
+ {
+ "name": "West Power Strategy Materials",
+ "collaborators": ["mike.grigsby@enron.com", "keith.holst@enron.com"],
+ "details": "Phillip forwards materials related to the West Power strategy for an upcoming meeting."
+ }
+ ],
+ "characteristic_phrases": [],
+ "frequent_words": []
+ },
+ "keith.holst@enron.com": {
+ "tone": {
+ "formal": [],
+ "casual": [],
+ "concise": []
+ },
+ "style": "The style is straightforward, primarily focused on sharing information without additional commentary.",
+ "projects": [
+ {
+ "name": "West Power Strategy Materials",
+ "collaborators": ["mike.grigsby@enron.com", "keith.holst@enron.com"],
+ "details": "Phillip forwards materials related to the West Power strategy for an upcoming meeting."
+ }
+ ],
+ "characteristic_phrases": [],
+ "frequent_words": []
+ },
+ "kenneth.shulklapper@enron.com": {
+ "tone": {
+ "formal": [],
+ "casual": [],
+ "concise": []
+ },
+ "style": "The style is primarily focused on sharing information without additional commentary.",
+ "projects": [
+ {
+ "name": "Gas Storage Model",
+ "collaborators": ["kenneth.shulklapper@enron.com"],
+ "details": "Phillip is involved in discussions regarding the back-testing of a gas storage model."
+ }
+ ],
+ "characteristic_phrases": [],
+ "frequent_words": []
+ },
+ "stouchstone@natsource.com": {
+ "tone": {
+ "formal": [],
+ "casual": ["are you going to use a real time messenger?"],
+ "concise": []
+ },
+ "style": "The style is casual and informal, reflecting a friendly inquiry.",
+ "projects": [],
+ "characteristic_phrases": ["are you going to use a real time messenger?"],
+ "frequent_words": ["voice", "healed", "real time messenger"]
+ }
+}

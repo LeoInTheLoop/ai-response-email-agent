@@ -1,0 +1,58 @@
+{
+ "overall": { "tone": {
+ "formal": ["Mr.", "appropriate", "forwarded", "regards"], "casual": ["thanks", "here are", "please"], "concise": ["Here are", "Follow these steps", "I have forwarded"]
+ },
+ "style": "The writing style is generally direct and informative, with a focus on clarity and instruction. Phillip tends to use bullet points or numbered lists for clarity when providing steps or details.",
+ "projects": [
+ {
+ "name": "Consolidated positions",
+ "collaborators": ["richard.burchfield@enron.com", "keith.holst@enron.com", "beth.perlman@enron.com"],
+ "details": "Documenting the requirements for consolidated physical/financial positions and transport trade capture."
+ }
+ ],
+ "characteristic_phrases": ["Here are", "I have forwarded", "please follow these steps"],
+ "frequent_words": ["positions", "requirements", "consolidated", "trade", "capture"]
+ },
+ "buck.buckner@honeywell.com": {
+ "tone": {
+ "formal": ["Mr.", "appropriate", "forwarded"], "concise": ["I have forwarded", "Her phone number is"], "assertive": ["Enron Energy Services is the appropriate Enron entity."]
+ },
+ "style": "The style is formal and concise, providing clear information and instructions without unnecessary elaboration.",
+ "projects": [],
+ "characteristic_phrases": ["Enron Energy Services", "I have forwarded", "Her phone number is"],
+ "frequent_words": ["gas", "delivered", "appropriate", "entity", "request"]
+ },
+ "stagecoachmama@hotmail.com": {
+ "tone": {
+ "casual": ["here are", "please follow these steps"], "concise": ["Open them and save", "Click on Save As"], "friendly": ["Lucy,"]
+ },
+ "style": "The writing style is casual and instructional, using a friendly tone while providing step-by-step guidance.",
+ "projects": [],
+ "characteristic_phrases": ["Here are the rentrolls", "please follow these steps", "Open them and save"],
+ "frequent_words": ["rentroll", "save", "folder", "click", "appropriate"]
+ },
+ "keith.holst@enron.com": {
+ "tone": {
+ "formal": ["Below is the issues & to do list", "I believe there has been good communication"], "assertive": ["we need to focus on the objectives", "this is critical"], "concise": ["What needs to happen", "I have been involved"]
+ },
+ "style": "The style is formal and detailed, providing comprehensive information and clear directives regarding project management.",
+ "projects": [
+ {
+ "name": "Consolidated positions",
+ "collaborators": ["richard.burchfield@enron.com", "beth.perlman@enron.com"],
+ "details": "Focus on documenting the requirements for consolidated physical/financial positions and transport trade capture."
+ }
+ ],
+ "characteristic_phrases": ["Below is the issues & to do list", "we need to focus", "this is critical"],
+ "frequent_words": ["positions", "requirements", "consolidated", "trade", "capture"]
+ },
+ "david.delainey@enron.com": {
+ "tone": {
+ "casual": ["Dave,"], "concise": ["Here are the names", "the origination side is very sparse"], "informal": ["very sparse"]
+ },
+ "style": "The writing style is casual and straightforward, providing information without excessive detail.",
+ "projects": [],
+ "characteristic_phrases": ["Here are the names", "the origination side is very sparse"],
+ "frequent_words": ["names", "west desk", "members", "category", "sparse"]
+ }
+}

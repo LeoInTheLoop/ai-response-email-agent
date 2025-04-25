@@ -1,0 +1,56 @@
+{
+ "overall": { "tone": {
+ "formal": ["observations", "estimated", "additional EPS", "valuation", "report"],
+ "casual": ["thanks", "play devil's advocate", "what do you think"],
+ "concise": ["current price", "total", "can you take a look"]
+ },
+ "style": "The writing style is direct and analytical, often using bullet points or calculations to present information clearly. The tone is professional yet approachable.",
+ "projects": [
+ {
+ "name": "EOG Analysis",
+ "collaborators": ["mac.d.hargrove@rssmb.com"],
+ "details": "Analyzing gas sales and prices to evaluate stock potential."
+ },
+ {
+ "name": "Apartment Complex Purchase",
+ "collaborators": ["mac.d.hargrove@rssmb.com"],
+ "details": "Using proceeds from exercising options to buy another apartment complex."
+ }
+ ],
+ "characteristic_phrases": ["thanks for the research report", "can you take a look", "play devil's advocate"],
+ "frequent_words": ["gas", "prices", "report", "EOG", "stock"]
+ },
+ "mac.d.hargrove@rssmb.com": {
+ "tone": {
+ "formal": ["observations", "estimated", "additional EPS", "valuation"],
+ "casual": ["thanks", "play devil's advocate", "what do you think"],
+ "concise": ["current price", "total", "can you take a look"]
+ },
+ "style": "The writing style is analytical and straightforward, often including calculations and requests for feedback.",
+ "projects": [
+ {
+ "name": "EOG Analysis",
+ "collaborators": ["mac.d.hargrove@rssmb.com"],
+ "details": "Analyzing gas sales and prices to evaluate stock potential."
+ },
+ {
+ "name": "Apartment Complex Purchase",
+ "collaborators": ["mac.d.hargrove@rssmb.com"],
+ "details": "Using proceeds from exercising options to buy another apartment complex."
+ }
+ ],
+ "characteristic_phrases": ["thanks for the research report", "can you take a look", "play devil's advocate"],
+ "frequent_words": ["gas", "prices", "report", "EOG", "stock"]
+ },
+ "pallen70@hotmail.com": {
+ "tone": {
+ "formal": ["daily duties", "report"],
+ "casual": ["thanks", "call you tomorrow", "will you mention"],
+ "concise": ["cost", "total", "resolved"]
+ },
+ "style": "The writing style is informal and conversational, often including updates and requests for assistance.",
+ "projects": [],
+ "characteristic_phrases": ["call you tomorrow", "thanks", "daily report"],
+ "frequent_words": ["daily", "report", "cost", "tenant", "problem"]
+ }
+}

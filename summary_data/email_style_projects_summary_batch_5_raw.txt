@@ -1,0 +1,75 @@
+{
+ "overall": {
+ "tone": {
+ "formal": ["Sincerely", "Please", "I understand"],
+ "casual": ["Thanks", "Let me know", "I think"],
+ "concise": ["Please use", "If you have", "I am concerned"]
+ },
+ "style": "Direct and professional, with a focus on clarity and detail.",
+ "projects": [
+ {
+ "name": "San Juan Index",
+ "collaborators": ["lkuch@mh.com", "jeffrey.hodge@enron.com"],
+ "details": "Concern regarding potential manipulation of the El Paso San Juan monthly index."
+ }
+ ],
+ "characteristic_phrases": ["Please use", "I am concerned", "Let me know"],
+ "frequent_words": ["San Juan", "index", "trades", "prices", "October"]
+ },
+ "bs_stone@yahoo.com": {
+ "tone": {
+ "formal": ["Please", "Sincerely"],
+ "casual": ["Let me know", "Thanks"],
+ "concise": ["Please use", "If you have"]
+ },
+ "style": "Polite and straightforward, with a focus on specific requests.",
+ "projects": [],
+ "characteristic_phrases": ["Please use", "Let me know", "October payment"],
+ "frequent_words": ["payment", "check", "October", "second", "tossed"]
+ },
+ "stouchstone@natsource.com": {
+ "tone": {
+ "formal": [],
+ "casual": ["I think"],
+ "concise": []
+ },
+ "style": "Brief and informal, with a personal touch.",
+ "projects": [],
+ "characteristic_phrases": ["I think", "good CPA"],
+ "frequent_words": ["Fletch", "CPA", "doing", "own"]
+ },
+ "lkuch@mh.com": {
+ "tone": {
+ "formal": ["Sincerely", "I am concerned"],
+ "casual": [],
+ "concise": ["As we discussed", "Please see"]
+ },
+ "style": "Detailed and analytical, providing thorough explanations and data.",
+ "projects": [
+ {
+ "name": "San Juan Index",
+ "collaborators": ["jeffrey.hodge@enron.com"],
+ "details": "Concern regarding potential manipulation of the El Paso San Juan monthly index."
+ }
+ ],
+ "characteristic_phrases": ["I am concerned", "Please see", "high physical prices"],
+ "frequent_words": ["San Juan", "index", "trades", "prices", "market"]
+ },
+ "jeffrey.hodge@enron.com": {
+ "tone": {
+ "formal": ["Sincerely", "I am concerned"],
+ "casual": [],
+ "concise": ["As we discussed", "Please see"]
+ },
+ "style": "Detailed and analytical, similar to the communication with Liane Kuch.",
+ "projects": [
+ {
+ "name": "San Juan Index",
+ "collaborators": ["lkuch@mh.com"],
+ "details": "Concern regarding potential manipulation of the El Paso San Juan monthly index."
+ }
+ ],
+ "characteristic_phrases": ["I am concerned", "Please see", "high physical prices"],
+ "frequent_words": ["San Juan", "index", "trades", "prices", "market"]
+ }
+}

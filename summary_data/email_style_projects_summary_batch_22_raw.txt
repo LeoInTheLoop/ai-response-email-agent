@@ -1,0 +1,84 @@
+{
+ "overall": { "tone": {
+ "formal": ["please advise", "can you oblige", "I hope you will take advantage"],
+ "concise": ["I tried to run the model", "I am out of the office"],
+ "friendly": ["thanks", "let me know"]
+ },
+ "style": "Direct and to the point, often using short sentences and straightforward language.",
+ "projects": [
+ {
+ "name": "Transportation Model",
+ "collaborators": ["keith.holst@enron.com", "colleen.sullivan@enron.com"],
+ "details": "Discussion about the transportation model and addressing any issues with its functionality."
+ },
+ {
+ "name": "Request from Steve Kean",
+ "collaborators": ["keith.holst@enron.com", "alan.comnes@enron.com"],
+ "details": "Updating a table for Steve Kean regarding gas side information."
+ }
+ ],
+ "characteristic_phrases": ["I am out of the office", "can you oblige", "please plan to attend"],
+ "frequent_words": ["transportation", "model", "update", "request", "gas"]
+ },
+ "keith.holst@enron.com": {
+ "tone": {
+ "formal": ["please plan to attend", "I hope you will take advantage"],
+ "concise": ["I am out of the office", "can you oblige"],
+ "friendly": ["thanks", "let me know"]
+ },
+ "style": "Polite and direct, often providing necessary information without excessive detail.",
+ "projects": [
+ {
+ "name": "Transportation Model",
+ "collaborators": ["colleen.sullivan@enron.com", "andrew.h.lewis@enron.com"],
+ "details": "Meeting to discuss the transportation model and address any issues."
+ },
+ {
+ "name": "Request from Steve Kean",
+ "collaborators": ["alan.comnes@enron.com"],
+ "details": "Updating a table for Steve Kean regarding gas side information."
+ }
+ ],
+ "characteristic_phrases": ["please plan to attend", "I hope you will take advantage", "can you oblige"],
+ "frequent_words": ["transportation", "model", "update", "request", "gas"]
+ },
+ "stephen.harrington@enron.com": {
+ "tone": {
+ "concise": ["cash", "Hehub", "Chicago"],
+ "formal": [],
+ "friendly": []
+ },
+ "style": "Very brief and to the point, primarily listing items without additional context.",
+ "projects": [],
+ "characteristic_phrases": ["cash", "Hehub", "Chicago"],
+ "frequent_words": ["cash", "Hehub", "Chicago", "PEPL", "Katy"]
+ },
+ "sunil.dalal@enron.com": {
+ "tone": {
+ "concise": ["I tried to run the model", "it did not work"],
+ "formal": [],
+ "friendly": []
+ },
+ "style": "Direct and straightforward, focusing on the issue at hand.",
+ "projects": [],
+ "characteristic_phrases": ["I tried to run the model", "it did not work"],
+ "frequent_words": ["model", "run", "did", "not", "work"]
+ },
+ "colleen.sullivan@enron.com": {
+ "tone": {
+ "formal": ["please plan to attend", "I hope you will take advantage"],
+ "concise": ["I am out of the office"],
+ "friendly": []
+ },
+ "style": "Polite and informative, providing details about meetings and expectations.",
+ "projects": [
+ {
+ "name": "Transportation Model",
+ "collaborators": ["keith.holst@enron.com", "andrew.h.lewis@enron.com"],
+ "details": "Meeting to discuss the transportation model and address any issues."
+ }
+ ],
+ "characteristic_phrases": ["please plan to attend", "I hope you will take advantage", "can you oblige"],
+ "frequent_words": ["transportation", "model", "attend", "issues", "discuss"]
+ }
+}
