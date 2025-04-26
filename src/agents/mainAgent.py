@@ -26,7 +26,7 @@ class SummaryDataHelper:
     def get_overall_summary(self):
         return self.data.get('overall', {})
 
-summary_helper = SummaryDataHelper("summary_data/email_style_projects_summary_total.json")
+summary_helper = SummaryDataHelper("../../data/summary_data/email_style_projects_summary_total.json")
 
 class EmailStylePlugin:
     """

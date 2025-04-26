@@ -208,7 +208,7 @@ async def main():
             continue
 
         # 保存每一批原始AI输出
-        with open(f"summary_data/email_style_projects_summary_batch_{idx+1}_raw.txt", "w", encoding="utf-8") as f:
+        with open(f"../../data/summary_data/email_style_projects_summary_batch_{idx+1}_raw.txt", "w", encoding="utf-8") as f:
             f.write(full_response)
 
         try:
@@ -244,7 +244,7 @@ async def main():
 
     if all_summaries:
         merged = merge_summaries(all_summaries)
-        with open("summary_data/email_style_projects_summary_total.json", "w", encoding="utf-8") as f:
+        with open("../../data/summary_data/email_style_projects_summary_total.json", "w", encoding="utf-8") as f:
             json.dump(merged, f, ensure_ascii=False, indent=2)
         print("Final merged summary saved as email_style_projects_summary_total.json")
     else:
