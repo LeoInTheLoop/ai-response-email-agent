@@ -15,13 +15,15 @@ from semantic_kernel.contents.function_call_content import FunctionCallContent
 from semantic_kernel.contents.function_result_content import FunctionResultContent
 from openai import AsyncOpenAI
 
+from utils.email_parser import get_email_summary_text
+
 print("Loading environment...")
 load_dotenv()
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 print("GITHUB_TOKEN:", GITHUB_TOKEN is not None)
 assert GITHUB_TOKEN, "Please set your GITHUB_TOKEN environment variable"
 AI_MODEL = "gpt-4o-mini"  
-csv_path = "train_dataset/phillip_allen_emails.csv"
+csv_path = "../../data/train_dataset/phillip_allen_emails.csv"
 user_email = "phillip.allen@enron.com"
 MAX_EMAIL_PROCESS = 20
 
@@ -30,35 +32,7 @@ df = pd.read_csv(csv_path)
 df = df.head(MAX_EMAIL_PROCESS) if MAX_EMAIL_PROCESS > 0 else df
 print("CSV loaded, shape:", df.shape)
 
-def get_email_summary_text(df):
-    entries = []
-    for idx, row in df.iterrows():
-        msg = row.get('message', '')
-        # use re
-        from_ = re.search(r'From:\s*(.*)', msg)
-        to = re.search(r'To:\s*(.*)', msg)
-        cc = re.search(r'X-cc:\s*(.*)', msg)
-        bcc = re.search(r'X-bcc:\s*(.*)', msg)
-        subject = re.search(r'Subject:\s*(.*)', msg)
-        
-        # body
-        body_start = msg.find('\n\n')
-        body = msg[body_start+2:] if body_start != -1 else ''
-        from_ = from_.group(1).strip() if from_ else ''
-        to = to.group(1).strip() if to else ''
-        cc = cc.group(1).strip() if cc else ''
-        bcc = bcc.group(1).strip() if bcc else ''
-        subject = subject.group(1).strip() if subject else ''
-        entries.append(
-            f"""From: {from_}
-To: {to}
-CC: {cc}
-BCC: {bcc}
-Subject: {subject}
-Body: {body.strip()}
--------------------------------"""
-        )
-    return "\n".join(entries)
+
 
 INSTRUCTIONS_BASE = """
 Given the following email history involving {user_email} (showing sender, receiver, subject, and body), analyze how the main user (the sender: {user_email}) communicates with each recipient.
@@ -254,3 +228,40 @@ async def main():
 if __name__ == "__main__":
     print("Running asyncio main()")
     asyncio.run(main())
+
+
+async def analyze_emails(df):
+    # global csv_path, user_email
+    # user_email = os.getenv("USER_EMAIL", "your_default_email@example.com")  # 记得补你的默认邮箱
+    # BATCH_SIZE = 5
+    # all_summaries = []
+
+    # for idx, batch_df in enumerate(batch_email_generator(df, BATCH_SIZE)):
+    #     email_history_text = get_email_summary_text(batch_df)
+    #     batch_instructions = INSTRUCTIONS_BASE.format(user_email=user_email) + \
+    #         "\nNew email history:\n" + email_history_text + \
+    #         "\nReturn the JSON summary only."
+        
+    #     agent = ChatCompletionAgent(
+    #         kernel=kernel,
+    #         name="ExtractAgent",
+    #         instructions=batch_instructions,
+    #         arguments=KernelArguments(
+    #             settings=PROMPT_SETTING
+    #         )
+    #     )
+    #     full_response, err = await process_one_batch(agent, email_history_text)
+    #     if not full_response:
+    #         continue
+    #     try:
+    #         batch_json = json.loads(full_response)
+    #     except Exception as e:
+    #         continue
+    #     all_summaries.append(batch_json)
+
+    # if all_summaries:
+    #     merged = merge_summaries(all_summaries)
+    #     return merged
+    # else:
+    #     return {"error": "No summary generated."}
+    return True
