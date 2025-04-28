@@ -1,0 +1,35 @@
+{
+    "oauthScopes": [
+      "https://www.googleapis.com/auth/gmail.addons.execute",
+      "https://www.googleapis.com/auth/gmail.compose",
+      "https://www.googleapis.com/auth/gmail.readonly"
+    ],
+    "addOns": {
+      "common": {
+        "name": "AI Email Reply Generator",
+        "layoutProperties": {
+          "primaryColor": "#4285F4",
+          "secondaryColor": "#FFFFFF"
+        }
+      },
+      "gmail": {
+        "homepageTrigger": {
+          "httpTrigger": {
+            "url": "https://sheepdog-set-donkey.ngrok-free.app/homepage"
+        },
+        "contextualTriggers": [
+          {
+            "unconditional": {},
+            "httpTrigger": {
+                "url": "https://sheepdog-set-donkey.ngrok-free.app/contextual"
+              }
+          }
+        ]
+      }
+    },
+    "urlFetchWhitelist": [
+      "https://sheepdog-set-donkey.ngrok-free.app"
+    ],
+    "runtimeVersion": "V8"
+  }
+}
