@@ -3,7 +3,6 @@ import json
 import pandas as pd
 import asyncio
 from dotenv import load_dotenv
-import re
 
 from semantic_kernel.kernel import Kernel
 from semantic_kernel.connectors.ai.open_ai import OpenAIChatCompletion
@@ -11,88 +10,70 @@ from semantic_kernel.agents import ChatCompletionAgent
 from semantic_kernel.contents import ChatHistory
 from semantic_kernel.functions import KernelArguments
 from semantic_kernel.connectors.ai.prompt_execution_settings import PromptExecutionSettings
-from semantic_kernel.contents.function_call_content import FunctionCallContent
-from semantic_kernel.contents.function_result_content import FunctionResultContent
 from openai import AsyncOpenAI
 
-from utils.email_parser import get_email_summary_text
+from utils_email import get_email_summary_text
+import re
 
+# Load environment variables
 print("Loading environment...")
 load_dotenv()
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
-print("GITHUB_TOKEN:", GITHUB_TOKEN is not None)
 assert GITHUB_TOKEN, "Please set your GITHUB_TOKEN environment variable"
-AI_MODEL = "gpt-4o-mini"  
-csv_path = "../../data/train_dataset/phillip_allen_emails.csv"
-user_email = "phillip.allen@enron.com"
-MAX_EMAIL_PROCESS = 20
+AI_MODEL = "gpt-4o-mini"
 
-print("Loading CSV:", csv_path)
-df = pd.read_csv(csv_path)
-df = df.head(MAX_EMAIL_PROCESS) if MAX_EMAIL_PROCESS > 0 else df
-print("CSV loaded, shape:", df.shape)
+# Initialize JSON format template
+# Initialize JSON format template with a serializable placeholder
+extract_format = [
+  {
+    "context": "describe the typical situation where this style is used",
+    "tone": "summarize the tone, e.g., formal / friendly / direct / humorous",
+    "greeting": [
+      "example greeting phrase 1",
+      "example greeting phrase 2"
+    ],
+    "closing": [
+      "example closing phrase 1",
+      "example closing phrase 2"
+    ],
+    "patterns": [
+      "example sentence structure or phrase often used"
+    ],
+    "keywords": [
+      "frequently used words or expressions"
+    ],
+    "signature": "typical way the user signs off"
+  }
+]
 
-
-
+# Define instruction template
 INSTRUCTIONS_BASE = """
-Given the following email history involving {user_email} (showing sender, receiver, subject, and body), analyze how the main user (the sender: {user_email}) communicates with each recipient.
+You are an email style analysis assistant.
 
-For each communication partner (recipient), extract and summarize:
-- tone: A mapping where keys are types of tone used by the sender (e.g. "formal", "casual", "concise", "friendly", "assertive", etc.) and values are the corresponding frequent words/phrases that typify each tone (for example: "formal": ["regards", "please advise"], "casual": ["thanks", "see you"]). Please include at least 2-3 tone types if possible.
-- style: Description of writing style with this person (examples: short sentences, polite, direct, detailed, analytic, etc.)
-- projects: For any project mentioned, provide a list of objects each containing:
-    - name: Project name
-    - collaborators: List of collaborators (preferably as email addresses)
-    - details: Any short description or context about this project.
-- characteristic_phrases: List at least 3 typical words or frequent expressions you recognize in these emails with this recipient.
-- frequent_words: List the top 5-10 frequent words or expressions, ignoring common stop-words and generic terms.
+Given several emails written by the same user, your task is to identify different writing styles the user tends to use, if any. These styles might vary by context — for example: talking to friends, clients, colleagues, or replying quickly on mobile.
 
-Return your answer as a valid JSON dictionary in the following format:
+For each style you find, output the following as a JSON object:
 
-{{
-  "overall": {{ 
-    "tone": {{
-      "formal": "...",
-      "casual": "...",
-      ...
-    }},
-    "style": "...",
-    "projects": [
-      {{
-        "name": "...",
-        "collaborators": ["...", "..."],
-        "details": "..."
-      }}
-    ],
-    "characteristic_phrases": ["...", "...", "..."],
-    "frequent_words": ["...", "...", "..."]
-  }},
-  "recipient_email_1": {{
-    "tone": {{
-      "formal": ["frequent words or phrases..."], 
-      "casual": ["frequent words or phrases..."], 
-      "concise": ["frequent words or phrases..."],
-      ...
-    }},
-    "style": "...",
-    "projects": [
-      {{
-        "name": "...",
-        "collaborators": ["...", "..."],
-        "details": "..."
-      }}
-    ],
-    "characteristic_phrases": ["...", "...", "..."],
-    "frequent_words": ["...", "...", "..."]
-  }},
-  ...,
+- context: what kind of situation this style is used in (you can summarize from the email thread or recipient)
+- tone: a brief description of tone (e.g. friendly, concise, formal)
+- greeting: typical greeting phrases used, not names
+- closing: common closing lines
+- patterns: sentence patterns or structures the user repeats
+- keywords: specific words or phrases the user tends to use
+- signature: how the user usually ends the email
 
-}}
+Output a JSON array of such objects. If the user has only one general style, return just one object in the array.
 
-If a field cannot be extracted, set its value to null or an empty list.
+Do not invent content. Only summarize what you observe from the user's actual emails.
 
-You must only return valid JSON. Do not include any additional text outside the JSON object.
+Here are the user's emails:
+===
+{user_email}
+===
+Format is :
+{extract_format}
 """
+
 PROMPT_SETTING = PromptExecutionSettings(
     temperature=0.2,
     top_p=0.9,
@@ -102,7 +83,7 @@ PROMPT_SETTING = PromptExecutionSettings(
 print("Creating AsyncOpenAI client")
 client = AsyncOpenAI(
     api_key=GITHUB_TOKEN,
-    base_url="https://models.inference.ai.azure.com/"  
+    base_url="https://models.inference.ai.azure.com/"
 )
 print("AsyncOpenAI client created")
 
@@ -116,30 +97,9 @@ chat_service = OpenAIChatCompletion(
 )
 kernel.add_service(chat_service)
 
-print("Initializing ChatCompletionAgent")
-# --- Loop over batches ---
 def batch_email_generator(df, batch_size):
     for start in range(0, len(df), batch_size):
-        yield df.iloc[start : start + batch_size]
-
-def combine_json(summary1, summary2):
-    
-    if not summary1: return summary2
-    if not summary2: return summary1
-    result = summary1.copy()
-    for k, v in summary2.items():
-        if k not in result:
-            result[k] = v
-        elif isinstance(result[k], list) and isinstance(v, list):
-          
-            result[k].extend([item for item in v if item not in result[k]])
-        elif isinstance(result[k], dict) and isinstance(v, dict):
-            for kk, vv in v.items():
-                if kk not in result[k]:
-                    result[k][kk] = vv
-                elif isinstance(result[k][kk], list) and isinstance(vv, list):
-                    result[k][kk].extend([item for item in vv if item not in result[k][kk]])
-    return result
+        yield df.iloc[start:start + batch_size]
 
 async def process_one_batch(agent, user_input):
     chat_history = ChatHistory()
@@ -147,33 +107,33 @@ async def process_one_batch(agent, user_input):
     full_response = ""
     try:
         async for content in agent.invoke_stream(chat_history):
-            if (hasattr(content, 'content') and content.content.strip() and
-                not any(isinstance(item, (FunctionCallContent, FunctionResultContent)) for item in content.items)):
+            if hasattr(content, 'content') and content.content.strip():
                 full_response += content.content
     except Exception as e:
         print("Error during agent.invoke_stream:", e)
         return None, str(e)
     return full_response, None
 
-async def main():
-    print("Starting main()")
-    BATCH_SIZE = 5  # 建议先设小一点确保json不会被截断
+async def analyze_emails(df, user_email):
+    print("Starting analyze_emails()")
+    BATCH_SIZE = 5
     all_summaries = []
+
     for idx, batch_df in enumerate(batch_email_generator(df, BATCH_SIZE)):
         print(f"\n---- Processing batch {idx+1} ----")
         email_history_text = get_email_summary_text(batch_df)
         print(f"Batch {idx+1}, history length: {len(email_history_text)}")
 
-        batch_instructions = INSTRUCTIONS_BASE.format(user_email=user_email) + \
-            "\nNew email history:\n" + email_history_text + \
-            "\nReturn the JSON summary only."
+        batch_instructions = INSTRUCTIONS_BASE.format(
+            user_email=user_email,
+            extract_format=json.dumps(extract_format, ensure_ascii=False, indent=2)
+        )
+
         agent = ChatCompletionAgent(
             kernel=kernel,
             name="ExtractAgent",
             instructions=batch_instructions,
-            arguments=KernelArguments(
-                settings=PROMPT_SETTING
-            )
+            arguments=KernelArguments(settings=PROMPT_SETTING)
         )
 
         full_response, err = await process_one_batch(agent, email_history_text)
@@ -181,87 +141,58 @@ async def main():
             print(f"Batch {idx+1}: Error or empty response:", err)
             continue
 
-        # 保存每一批原始AI输出
-        with open(f"../../data/summary_data/email_style_projects_summary_batch_{idx+1}_raw.txt", "w", encoding="utf-8") as f:
+        # Save raw AI output for debugging
+        raw_path = f"../../data/summary_data/email_style_projects_summary_batch_{idx+1}_raw.txt"
+        with open(raw_path, "w", encoding="utf-8") as f:
             f.write(full_response)
+        print(f"Saved raw output to {raw_path}")
 
         try:
-            batch_json = json.loads(full_response)
-            print(f"Batch {idx+1}: JSON loaded successfully")
+            # Clean up and extract JSON block from response
+            json_match = re.search(r"\[.*\]", full_response, re.DOTALL)
+            if json_match:
+                json_text = json_match.group(0).strip()
+                batch_json = json.loads(json_text)
+                if not isinstance(batch_json, list):
+                    batch_json = [batch_json]
+                print(f"Batch {idx+1}: Parsed {len(batch_json)} style(s)")
+                all_summaries.append(batch_json)
+            else:
+                print(f"Batch {idx+1}: No JSON array found in output.")
+        except json.JSONDecodeError as e:
+            print(f"Batch {idx+1}: JSON decode error:", e)
         except Exception as e:
-            print(f"Batch {idx+1}: Failed to parse JSON, skip merge. Exception:", e)
-            continue
+            print(f"Batch {idx+1}: Unexpected error during JSON parsing:", e)
 
-        all_summaries.append(batch_json)
-
-    # 合并所有批次的 summary
     def merge_summaries(summaries_list):
-        result = {}
-        for summary in summaries_list:
-            for k, v in summary.items():
-                if k not in result:
-                    result[k] = v
-                else:
-                    # 合并 recipient 节点
-                    for field in ['tone', 'style', 'projects', 'characteristic_phrases', 'frequent_words']:
-                        if isinstance(v.get(field), list):
-                            if field not in result[k] or not isinstance(result[k][field], list):
-                                result[k][field] = []
-                            result[k][field].extend([item for item in v[field] if item not in result[k][field]])
-                        elif isinstance(v.get(field), dict):
-                            if field not in result[k] or not isinstance(result[k][field], dict):
-                                result[k][field] = {}
-                            result[k][field].update(v[field])
-                        elif v.get(field) and (not result[k].get(field)):
-                            result[k][field] = v[field]
-        return result
+        all_styles = []
+        seen = set()
+        for batch in summaries_list:
+            for style in batch:
+                style_str = json.dumps(style, sort_keys=True)
+                if style_str not in seen:
+                    seen.add(style_str)
+                    all_styles.append(style)
+        return all_styles
 
     if all_summaries:
         merged = merge_summaries(all_summaries)
-        with open("../../data/summary_data/email_style_projects_summary_total.json", "w", encoding="utf-8") as f:
+        output_path = "../../data/summary_data/email_style_projects_summary_total.json"
+        with open(output_path, "w", encoding="utf-8") as f:
             json.dump(merged, f, ensure_ascii=False, indent=2)
-        print("Final merged summary saved as email_style_projects_summary_total.json")
+        print(f"Final merged summary saved as {output_path}")
     else:
         print("No summary generated.")
-
-
+# Entry point for testing
 if __name__ == "__main__":
-    print("Running asyncio main()")
-    asyncio.run(main())
+    user_email = "phillip.allen@enron.com"
+    MAX_EMAIL_PROCESS = 20
+    csv_path = "../../data/train_dataset/phillip_allen_emails.csv"
 
+    # Read and preprocess CSV
+    print("Loading CSV:", csv_path)
+    df = pd.read_csv(csv_path)
+    df = df.head(MAX_EMAIL_PROCESS) if MAX_EMAIL_PROCESS > 0 else df
+    print("CSV loaded, shape:", df.shape)
 
-async def analyze_emails(df):
-    # global csv_path, user_email
-    # user_email = os.getenv("USER_EMAIL", "your_default_email@example.com")  # 记得补你的默认邮箱
-    # BATCH_SIZE = 5
-    # all_summaries = []
-
-    # for idx, batch_df in enumerate(batch_email_generator(df, BATCH_SIZE)):
-    #     email_history_text = get_email_summary_text(batch_df)
-    #     batch_instructions = INSTRUCTIONS_BASE.format(user_email=user_email) + \
-    #         "\nNew email history:\n" + email_history_text + \
-    #         "\nReturn the JSON summary only."
-        
-    #     agent = ChatCompletionAgent(
-    #         kernel=kernel,
-    #         name="ExtractAgent",
-    #         instructions=batch_instructions,
-    #         arguments=KernelArguments(
-    #             settings=PROMPT_SETTING
-    #         )
-    #     )
-    #     full_response, err = await process_one_batch(agent, email_history_text)
-    #     if not full_response:
-    #         continue
-    #     try:
-    #         batch_json = json.loads(full_response)
-    #     except Exception as e:
-    #         continue
-    #     all_summaries.append(batch_json)
-
-    # if all_summaries:
-    #     merged = merge_summaries(all_summaries)
-    #     return merged
-    # else:
-    #     return {"error": "No summary generated."}
-    return True
+    asyncio.run(analyze_emails(df, user_email))

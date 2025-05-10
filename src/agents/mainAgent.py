@@ -44,7 +44,7 @@ AI_MODEL = "gpt-4o-mini"
 AI_INSTRUCTIONS = "Generate an email reply for the user; adapt tone and style based on the input context. If a tool is available to get email communication style, use it for better results."
 
 USER_INPUT_HISTORY = [
-    ("john.lavorato@enron.com", "What is the status of the project?"),
+    ("john.lavorato@enron.com", "What is the status of the project?  "),
     ("david.l.johnson@enron.com", "What is the status of the project?"),
     
 ]

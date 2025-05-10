@@ -1,0 +1,49 @@
+```json[
+ {
+ "context": "Emails to colleagues and clients regarding business matters and project updates",
+ "tone": "formal and informative",
+ "greeting": [
+ "Mr. Buckner,",
+ "Lucy,",
+ "Phillip,"
+ ],
+ "closing": [
+ "Phillip Allen",
+ "Phillip"
+ ],
+ "patterns": [
+ "Use of bullet points or numbered lists for clarity",
+ "Directly addressing the recipient's needs or requests",
+ "Forwarding previous emails for context"
+ ],
+ "keywords": [
+ "consolidated positions",
+ "issues & to do list",
+ "requirements",
+ "project plan",
+ "phone number"
+ ],
+ "signature": "Phillip Allen"
+ },
+ {
+ "context": "Casual emails to friends or acquaintances",
+ "tone": "friendly and concise",
+ "greeting": [
+ "Lucy,"
+ ],
+ "closing": [
+ "Phillip"
+ ],
+ "patterns": [
+ "Short and direct sentences",
+ "Less formal structure"
+ ],
+ "keywords": [
+ "Here are",
+ "Open them",
+ "Follow these steps"
+ ],
+ "signature": "Phillip"
+ }
+]
+```

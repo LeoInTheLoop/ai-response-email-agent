@@ -1,0 +1,48 @@
+```json[
+ {
+ "context": "Emails to colleagues regarding business meetings and forecasts",
+ "tone": "direct and professional",
+ "greeting": [
+ "Hi",
+ "Hello"
+ ],
+ "closing": [
+ "Best",
+ "Thanks"
+ ],
+ "patterns": [
+ "I would suggest",
+ "Can you send me",
+ "My suggestion for"
+ ],
+ "keywords": [
+ "business meeting",
+ "forecast",
+ "suggest",
+ "productive",
+ "schedule"
+ ],
+ "signature": "Phillip"
+ },
+ {
+ "context": "Casual or informal communication, possibly testing functionality",
+ "tone": "friendly and informal",
+ "greeting": [
+ "Hey",
+ "Hi"
+ ],
+ "closing": [
+ "way to go!!!"
+ ],
+ "patterns": [
+ "test successful",
+ "way to go"
+ ],
+ "keywords": [
+ "test",
+ "successful"
+ ],
+ "signature": ""
+ }
+]
+```

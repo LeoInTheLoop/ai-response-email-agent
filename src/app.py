@@ -76,46 +76,8 @@ def callback(request: Request):
 
 @app.get("/analyze")
 async def analyze(access_token: str):
-    # # 拉取 sent emails
-    # headers = {"Authorization": f"Bearer {access_token}"}
-    # sent_items_url = (
-    #     "https://graph.microsoft.com/v1.0/me/mailFolders/sentItems/messages"
-    #     "?$top=20&$select=subject,body,from,toRecipients,ccRecipients,bccRecipients"
-    # )
-    # response = requests.get(sent_items_url, headers=headers)
-    # if not response.ok:
-    #     return {"error": response.text}
+    
 
-    # items = response.json().get("value", [])
-    # if not items:
-    #     return {"error": "No sent emails found."}
-
-    # # 处理成 DataFrame 格式（模拟 CSV）
-    # data = []
-    # for item in items:
-    #     sender = item.get("from", {}).get("emailAddress", {}).get("address", "")
-    #     to = ", ".join([r.get("emailAddress", {}).get("address", "") for r in item.get("toRecipients", [])])
-    #     cc = ", ".join([r.get("emailAddress", {}).get("address", "") for r in item.get("ccRecipients", [])])
-    #     bcc = ", ".join([r.get("emailAddress", {}).get("address", "") for r in item.get("bccRecipients", [])])
-    #     subject = item.get("subject", "")
-
-    #     body_content = item.get("body", {}).get("content", "")
-    #     text = unescape(body_content)
-    #     text = re.sub(r"<[^>]+>", "", text)
-    #     text = re.sub(r"\s+", " ", text).strip()
-
-    #     message_full = f"From: {sender}\nTo: {to}\nX-cc: {cc}\nX-bcc: {bcc}\nSubject: {subject}\n{text}"
-
-    #     data.append({
-    #         "message": message_full
-    #     })
-
-    # df = pd.DataFrame(data)
-
-    # # 调用 trainerAgent 分析逻辑
-    # result_json = await analyze_emails(df)
-
-    # return result_json
     return {"message": "This is a placeholder for the analyze endpoint."}
 @app.get("/returnEmail")
 async def returnEmail(access_token: str):

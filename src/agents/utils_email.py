@@ -1,3 +1,4 @@
+import re
 def get_email_summary_text(df):
     entries = []
     for idx, row in df.iterrows():
