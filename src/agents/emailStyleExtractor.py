@@ -12,7 +12,7 @@ from semantic_kernel.functions import KernelArguments
 from semantic_kernel.connectors.ai.prompt_execution_settings import PromptExecutionSettings
 from openai import AsyncOpenAI
 
-from .utils_email import get_email_summary_text
+from utils_email import get_email_summary_text
 import re
 
 # Load environment variables
@@ -178,7 +178,7 @@ async def analyze_emails(df, user_email,  batch_size=5):
 
     if all_summaries:
         merged = merge_summaries(all_summaries)
-        raw_path = f"../../data/summary_data/email_style_projects_summary_batch_{idx+1}_raw.txt"
+        raw_path = f"../../data/summary_data/tone_summary_total.json"
         os.makedirs(os.path.dirname(raw_path), exist_ok=True)
         with open(raw_path, "w", encoding="utf-8") as f:
             json.dump(merged, f, ensure_ascii=False, indent=2)

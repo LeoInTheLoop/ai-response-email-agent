@@ -1,0 +1,280 @@
+[
+  {
+    "context": "Formal business communication with clients and external stakeholders",
+    "tone": "formal and analytical",
+    "greeting": [
+      "Dear",
+      "Hello",
+      "Mr. Buckner,"
+    ],
+    "closing": [
+      "Sincerely",
+      "Best regards",
+      "Looking forward to hearing from you,"
+    ],
+    "patterns": [
+      "As you can tell from the proforma this project should produce...",
+      "It is our belief that...",
+      "Detailed breakdown of costs and processes",
+      "Use of bullet points or numbered lists for clarity"
+    ],
+    "keywords": [
+      "investment",
+      "project",
+      "development",
+      "partnership",
+      "construction",
+      "ownership structure",
+      "payment",
+      "commission"
+    ],
+    "signature": "Phillip K Allen"
+  },
+  {
+    "context": "Direct professional communication with colleagues regarding work tasks",
+    "tone": "direct and concise",
+    "greeting": [
+      "Hi",
+      "Hello",
+      "Mark,"
+    ],
+    "closing": [
+      "Thanks",
+      "Best",
+      "Let me know if there are any issues."
+    ],
+    "patterns": [
+      "Can you [action]?",
+      "Please [action].",
+      "I would like to [action].",
+      "Short, straightforward sentences"
+    ],
+    "keywords": [
+      "please",
+      "add",
+      "modify",
+      "access",
+      "information",
+      "spreadsheet",
+      "thank you"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "Meeting scheduling and project updates with colleagues",
+    "tone": "efficient and professional",
+    "greeting": [
+      "Hi",
+      "Hello",
+      "Chris,"
+    ],
+    "closing": [
+      "Best,",
+      "Thanks,"
+    ],
+    "patterns": [
+      "How about [day]?",
+      "any morning between [time] and [time]",
+      "Let's shoot for",
+      "Directly addressing the recipient with a question or request"
+    ],
+    "keywords": [
+      "meeting",
+      "scheduled",
+      "update",
+      "call",
+      "discussions"
+    ],
+    "signature": "Phillip K Allen/HOU/ECT"
+  },
+  {
+    "context": "Financial analysis and investment communication",
+    "tone": "formal and analytical",
+    "greeting": [
+      "Mac,",
+      "George,"
+    ],
+    "closing": [
+      "Thank you,",
+      "Best regards,"
+    ],
+    "patterns": [
+      "Here are my observations:",
+      "I am concerned about...",
+      "Can you pull...?",
+      "Direct questions to solicit specific information"
+    ],
+    "keywords": [
+      "gas prices",
+      "trades",
+      "market",
+      "index",
+      "valuation",
+      "stock",
+      "EPS",
+      "cash flow statement"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "Technical and data requests with colleagues",
+    "tone": "direct and informative",
+    "greeting": [
+      "Hi",
+      "Cooper,"
+    ],
+    "closing": [
+      "Thank you.",
+      "Phillip"
+    ],
+    "patterns": [
+      "Can you give access to...",
+      "Here is a spreadsheet detailing...",
+      "Please cc the following distribution list with updates:",
+      "We need to receive..."
+    ],
+    "keywords": [
+      "access",
+      "login",
+      "static IP address",
+      "report",
+      "attached",
+      "support"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "Friendly casual communication with friends or acquaintances",
+    "greeting": [
+      "Hey",
+      "Hi",
+      "What is up with Burnet?"
+    ],
+    "tone": "friendly and informal",
+    "closing": [
+      "Cheers",
+      "Take care,",
+      "Talk soon",
+      "way to go!!!"
+    ],
+    "patterns": [
+      "Short, conversational sentences",
+      "Use of exclamation points for enthusiasm",
+      "test successful",
+      "Happy B-day",
+      "takes the fun out of"
+    ],
+    "keywords": [
+      "fun",
+      "golf",
+      "birthday",
+      "kids",
+      "jet ski's",
+      "honest opinions"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "Internal approvals and short work updates",
+    "tone": "concise and direct",
+    "greeting": [
+      "Lucy,",
+      "Paula,"
+    ],
+    "closing": [
+      "Phillip",
+      "Thanks,"
+    ],
+    "patterns": [
+      "The [subject] is starting to look better.",
+      "I will",
+      "Short, direct questions",
+      "Minimal context provided"
+    ],
+    "keywords": [
+      "starting to look better",
+      "approval",
+      "discuss",
+      "progress",
+      "let me know",
+      "fine"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "Technical announcements and system updates",
+    "tone": "formal and informative",
+    "greeting": [
+      "Dear Team",
+      "Hello All"
+    ],
+    "closing": [
+      "Thank you",
+      "Regards"
+    ],
+    "patterns": [
+      "Please note that...",
+      "If you have questions or concerns..."
+    ],
+    "keywords": [
+      "urgent",
+      "migration",
+      "access",
+      "please",
+      "contact"
+    ],
+    "signature": "Outlook Migration Team"
+  },
+  {
+    "context": "Personal updates and family matters with friends",
+    "tone": "friendly and conversational",
+    "greeting": [
+      "Hi there,",
+      "Greg,"
+    ],
+    "closing": [
+      "Good luck on the bike ride.",
+      "Otherwise just work is going on here."
+    ],
+    "patterns": [
+      "I regret that it took so long to get back to you, but...",
+      "Fortunately, it looks as if she will be ok in the long run.",
+      "Casual updates about personal life"
+    ],
+    "keywords": [
+      "wife",
+      "family",
+      "kids",
+      "personal",
+      "studio",
+      "work"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "Quick requests for information or assistance",
+    "tone": "concise and direct",
+    "greeting": [
+      "Hi",
+      "Just wanted to give you an update"
+    ],
+    "closing": [
+      "Thanks",
+      "Phillip"
+    ],
+    "patterns": [
+      "I wanted to touch base on...",
+      "I am still very interested.",
+      "Can you find out when [subject] last changed hands and for what price?"
+    ],
+    "keywords": [
+      "update",
+      "change",
+      "competitive",
+      "bid",
+      "asap",
+      "information"
+    ],
+    "signature": "Phillip"
+  }
+]

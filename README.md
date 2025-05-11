@@ -3,17 +3,13 @@
 ## 🧠 Overview  
 This project analyzes a sender's email writing style using the Enron Email Dataset and generates a JSON-based template for consistent, AI-powered reply generation. It leverages GPT (via [Semantic Kernel](https://github.com/microsoft/semantic-kernel)) to extract stylistic patterns and apply them to future replies.
 
+
 ## ✨ Features  
 - **Email Style Analysis**  
   Extracts writing characteristics from a sender’s emails.
 
 - **Style Template Generation**  
   Automatically creates a JSON template with key stylistic elements:
-  - `tone`: formal / informal  
-  - `common_phrases`: frequently used phrases  
-  - `sign_offs`: typical email closings  
-  - `language_level`: e.g., native, intermediate  
-  - `style_notes`: other stylistic observations
 
 - **AI-Powered Reply Generation**  
   Uses the style template to craft new replies that match the sender’s style.
@@ -76,3 +72,5 @@ generation
   - 当单个邮件进来 调用json 返回
 
 simmlar app ai email writer（gmail add on）
+
+extractor part ，俩个agnet ，分batch 总结信，  最后和到一个json list ，  然后json 总结为最多10种  ，

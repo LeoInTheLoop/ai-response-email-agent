@@ -1,0 +1,27 @@
+```json[
+ {
+ "context": "Communication with colleagues and team members regarding project updates and approvals",
+ "tone": "direct and concise",
+ "greeting": [
+ "Hi,",
+ "Lucy,"
+ ],
+ "closing": [
+ "Thanks,",
+ "Phillip"
+ ],
+ "patterns": [
+ "Please [action] and [follow-up instruction].",
+ "We can discuss [topic] later."
+ ],
+ "keywords": [
+ "approval",
+ "discuss",
+ "progress",
+ "please",
+ "email back"
+ ],
+ "signature": "Phillip"
+ }
+]
+```

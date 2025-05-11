@@ -1,0 +1,126 @@
+[
+  {
+    "context": "Emails to colleagues regarding business meetings, forecasts, and schedules",
+    "tone": "direct and professional",
+    "greeting": [
+      "Hi",
+      "Randy,"
+    ],
+    "closing": [
+      "Best,",
+      "Phillip"
+    ],
+    "patterns": [
+      "I would suggest",
+      "Can you send me",
+      "Let's shoot for"
+    ],
+    "keywords": [
+      "forecast",
+      "business meeting",
+      "suggest",
+      "productive",
+      "schedule"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "Emails exchanged with colleagues regarding scheduling and project updates",
+    "tone": "concise and professional",
+    "greeting": [
+      "Hi",
+      "Hello",
+      "Greg,"
+    ],
+    "closing": [
+      "Thank you for your help",
+      "Let me assure you, this is real deal!!",
+      "Phillip"
+    ],
+    "patterns": [
+      "How about either [day]?",
+      "Please cc the following distribution list with updates:",
+      "any morning between [time range]"
+    ],
+    "keywords": [
+      "Thank you",
+      "updates",
+      "login",
+      "IP",
+      "gas price"
+    ],
+    "signature": "Phillip Allen"
+  },
+  {
+    "context": "Emails to colleagues and clients regarding business matters and project updates",
+    "tone": "formal and informative",
+    "greeting": [
+      "Mr. Buckner,",
+      "Lucy,",
+      "Phillip,"
+    ],
+    "closing": [
+      "Phillip Allen",
+      "Phillip"
+    ],
+    "patterns": [
+      "Directly addressing the recipient with a formal title or name",
+      "Providing clear instructions or information in a structured format",
+      "Using bullet points or numbered lists for clarity"
+    ],
+    "keywords": [
+      "appropriate",
+      "forwarded",
+      "issues",
+      "requirements",
+      "project",
+      "positions"
+    ],
+    "signature": "Phillip Allen"
+  },
+  {
+    "context": "Casual emails to friends or informal contacts",
+    "tone": "casual and straightforward",
+    "greeting": [
+      "Lucy,"
+    ],
+    "closing": [
+      "Phillip"
+    ],
+    "patterns": [
+      "Short and direct sentences",
+      "Less formal structure compared to business emails"
+    ],
+    "keywords": [
+      "here are",
+      "follow these steps"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "Communication with colleagues regarding work-related matters",
+    "tone": "concise and professional",
+    "greeting": [
+      "Hi",
+      "Hello",
+      "Paula,"
+    ],
+    "closing": [
+      "Thank you,",
+      "Best,",
+      "Phillip"
+    ],
+    "patterns": [
+      "Directly addressing the recipient followed by a brief statement or request",
+      "Use of bullet points or lists for clarity in forwarded messages"
+    ],
+    "keywords": [
+      "please",
+      "thank you",
+      "can you",
+      "let me know",
+      "meeting"
+    ],
+    "signature": "Phillip"
+  }
+]

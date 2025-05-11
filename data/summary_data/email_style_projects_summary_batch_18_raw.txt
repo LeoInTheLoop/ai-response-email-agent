@@ -1,0 +1,53 @@
+```json[
+ {
+ "context": "Emails to colleagues regarding work-related matters and project updates",
+ "tone": "professional and direct",
+ "greeting": [
+ "Hi",
+ "Hello",
+ "Colleen,"
+ ],
+ "closing": [
+ "Let me know if there are any issues.",
+ "Thanks,",
+ "Phillip"
+ ],
+ "patterns": [
+ "Can you [action]?",
+ "I would like to [action].",
+ "Please [action]."
+ ],
+ "keywords": [
+ "please",
+ "let's",
+ "can you",
+ "add",
+ "modify",
+ "work together"
+ ],
+ "signature": "Phillip"
+ },
+ {
+ "context": "Emails to friends or informal contacts",
+ "tone": "friendly and casual",
+ "greeting": [
+ "Hi",
+ "Lucy,"
+ ],
+ "closing": [
+ "Thanks,",
+ "Phillip"
+ ],
+ "patterns": [
+ "Let's [action].",
+ "The [subject] is starting to look better."
+ ],
+ "keywords": [
+ "let's",
+ "starting to look better",
+ "see if you can"
+ ],
+ "signature": "Phillip"
+ }
+]
+```
