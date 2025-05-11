@@ -37,9 +37,11 @@ We use the [Enron Email Dataset](https://www.kaggle.com/datasets/wcukierski/enro
 
 ## 🛠 To-Do  
 - [ ] **Email Extraction**: Write a function to filter emails from one sender (~100 emails)  
-- [ ] **Style Analysis**: Use GPT to analyze and output a JSON style template  
-- [ ] **Agent Prompt Design**: Create a basic agent (e.g., `PoetAgent`) and define its prompt behavior  
-- [ ] **Semantic Kernel Integration**: Register plugin that uses pre-generated style JSON to guide AI email reply generation
+- [ ✅] **Style Analysis**: Use GPT to analyze and output a JSON style template  
+- [ ✅] **Agent Prompt Design**: Create a basic agent (e.g., `PoetAgent`) and define its prompt behavior  
+- [ ]  main function ,  get relate email and json syle to leply
+- [ ]  mcp link outlook 
+generation
 
 ### Backed
 - [ ] Set up Flask application.

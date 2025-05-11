@@ -12,7 +12,7 @@ from semantic_kernel.functions import KernelArguments
 from semantic_kernel.connectors.ai.prompt_execution_settings import PromptExecutionSettings
 from openai import AsyncOpenAI
 
-from utils_email import get_email_summary_text
+from .utils_email import get_email_summary_text
 import re
 
 # Load environment variables
@@ -114,9 +114,9 @@ async def process_one_batch(agent, user_input):
         return None, str(e)
     return full_response, None
 
-async def analyze_emails(df, user_email):
+async def analyze_emails(df, user_email,  batch_size=5):
     print("Starting analyze_emails()")
-    BATCH_SIZE = 5
+    BATCH_SIZE = batch_size
     all_summaries = []
 
     for idx, batch_df in enumerate(batch_email_generator(df, BATCH_SIZE)):
@@ -143,6 +143,7 @@ async def analyze_emails(df, user_email):
 
         # Save raw AI output for debugging
         raw_path = f"../../data/summary_data/email_style_projects_summary_batch_{idx+1}_raw.txt"
+        os.makedirs(os.path.dirname(raw_path), exist_ok=True)
         with open(raw_path, "w", encoding="utf-8") as f:
             f.write(full_response)
         print(f"Saved raw output to {raw_path}")
@@ -177,12 +178,16 @@ async def analyze_emails(df, user_email):
 
     if all_summaries:
         merged = merge_summaries(all_summaries)
-        output_path = "../../data/summary_data/email_style_projects_summary_total.json"
-        with open(output_path, "w", encoding="utf-8") as f:
+        raw_path = f"../../data/summary_data/email_style_projects_summary_batch_{idx+1}_raw.txt"
+        os.makedirs(os.path.dirname(raw_path), exist_ok=True)
+        with open(raw_path, "w", encoding="utf-8") as f:
             json.dump(merged, f, ensure_ascii=False, indent=2)
-        print(f"Final merged summary saved as {output_path}")
+        print(f"Final merged summary saved as {raw_path}")
+           
+        return merged  # ✅ 加上这个返回值
     else:
         print("No summary generated.")
+        return None
 # Entry point for testing
 if __name__ == "__main__":
     user_email = "phillip.allen@enron.com"
