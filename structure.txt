@@ -1,0 +1,66 @@
+.
+├── LICENSE
+├── README.md
+├── __init__.py
+├── __pycache__
+│   └── __init__.cpython-313.pyc
+├── data
+│   ├── raw
+│   │   └── emails.csv
+│   ├── summary_data
+│   │   ├── email_style_projects_summary_batch_17_raw.txt
+│   │   ├── email_style_projects_summary_batch_18_raw.txt
+│   │   ├── email_style_projects_summary_batch_19_raw.txt
+│   │   ├── tone_summary_total.json
+│   │   └── tone_summary_total1.json
+│   └── train_dataset
+│       └── phillip_allen_emails.csv
+├── environment.yml
+├── outlook-add-in
+│   ├── assets
+│   │   ├── icon-128.png
+│   │   ├── icon-16.png
+│   │   ├── icon-32.png
+│   │   ├── icon-64.png
+│   │   ├── icon-80.png
+│   │   └── logo-filled.png
+│   ├── babel.config.json
+│   ├── manifest.xml
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── src
+│   │   ├── commands
+│   │   └── taskpane
+│   ├── tsconfig.json
+│   └── webpack.config.js
+├── requirements.txt
+├── scripts
+│   └── generate_data_to_train.ipynb
+├── src
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-313.pyc
+│   │   └── app.cpython-313.pyc
+│   ├── agents
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   ├── emailStyleExtractor.py
+│   │   ├── mainAgent.py
+│   │   ├── projectExtractor.py
+│   │   ├── summary_helper.py
+│   │   └── utils_email.py
+│   ├── app.py
+│   └── manifest.json
+├── structure.txt
+└── tests
+    ├── __init__.py
+    ├── __pycache__
+    │   ├── __init__.cpython-312.pyc
+    │   ├── __init__.cpython-313.pyc
+    │   ├── conftest.cpython-313-pytest-8.3.5.pyc
+    │   ├── test_emailStyleExtractor.cpython-312-pytest-7.4.4.pyc
+    │   └── test_emailStyleExtractor.cpython-313-pytest-8.3.5.pyc
+    ├── conftest.py
+    └── test_emailStyleExtractor.py
+
+18 directories, 46 files

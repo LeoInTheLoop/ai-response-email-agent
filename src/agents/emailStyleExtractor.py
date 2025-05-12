@@ -12,7 +12,7 @@ from semantic_kernel.functions import KernelArguments
 from semantic_kernel.connectors.ai.prompt_execution_settings import PromptExecutionSettings
 from openai import AsyncOpenAI
 
-from utils_email import get_email_summary_text
+from .utils_email import get_email_summary_text
 import re
 
 # Load environment variables
@@ -21,6 +21,10 @@ load_dotenv()
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 assert GITHUB_TOKEN, "Please set your GITHUB_TOKEN environment variable"
 AI_MODEL = "gpt-4o-mini"
+
+# filepath
+base_dir = os.path.dirname(os.path.abspath(__file__))
+data_dir = os.path.normpath(os.path.join(base_dir, "../../data/summary_data"))
 
 # Initialize JSON format template
 # Initialize JSON format template with a serializable placeholder
@@ -149,7 +153,7 @@ async def analyze_emails(df, user_email,  batch_size=5):
             continue
 
         # Save raw AI output for debugging
-        raw_path = f"../../data/summary_data/email_style_projects_summary_batch_{idx+1}_raw.txt"
+        raw_path = os.path.join(data_dir, f"email_style_projects_summary_batch_{idx+1}_raw.txt")
         os.makedirs(os.path.dirname(raw_path), exist_ok=True)
         with open(raw_path, "w", encoding="utf-8") as f:
             f.write(full_response)
@@ -185,7 +189,7 @@ async def analyze_emails(df, user_email,  batch_size=5):
 
     if all_summaries:
         merged = merge_summaries(all_summaries)
-        raw_path = f"../../data/summary_data/tone_summary_total.json"
+        raw_path = os.path.join(data_dir, f"/tone_summary_total.json") 
         os.makedirs(os.path.dirname(raw_path), exist_ok=True)
         with open(raw_path, "w", encoding="utf-8") as f:
             json.dump(merged, f, ensure_ascii=False, indent=2)
