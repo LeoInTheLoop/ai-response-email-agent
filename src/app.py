@@ -95,10 +95,10 @@ async def menu(session_id: str = Cookie(default=None)):
     html_content = """
     <html>
         <body>
-            <h2>导航页</h2>
+            <h2>menu</h2>
             <ul>
-                <li><a href="/cleanemail/10">📥 查看收件箱</a></li>
-                <li><a href="/send/10">📤 查看已发送邮件</a></li>
+                <li><a href="/cleanemail/10">📥 check recevie mail</a></li>
+                <li><a href="/send/10">📤 check send mail</a></li>
             </ul>
         </body>
     </html>
@@ -148,10 +148,17 @@ async def get_sent_emails(
         error_detail = e.response.json().get("error", {}).get("message", str(e))
         raise HTTPException(status_code=e.response.status_code, detail=error_detail)
 
-@app.get("/styleExtractor")
+@app.get("/styleExtractor/{emailsNum}")
 async def style_extractor(access_token: str, emailsNum: int = 10):
     """TODO: Style extractor for analyzing email writing style"""
+    # Placeholder for style extraction logic
+    # This would typically involve calling a model or service to analyze the emails
     return JSONResponse(content={"message": "Style extractor not implemented yet."})
+@app.get("/reply/{email_id}")
+# todo
+async def reply_email():
+    return  JSONResponse(content={"message": "Reply email not implemented yet."})
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

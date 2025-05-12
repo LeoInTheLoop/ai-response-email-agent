@@ -3,7 +3,8 @@
 ## 🧠 Overview  
 This project analyzes a sender's email writing style using the Enron Email Dataset and generates a JSON-based template for consistent, AI-powered reply generation. It leverages GPT (via [Semantic Kernel](https://github.com/microsoft/semantic-kernel)) to extract stylistic patterns and apply them to future replies.
 
-
+app use fast api and 
+link outlook use Microsoft Graph API
 ## ✨ Features  
 - **Email Style Analysis**  
   Extracts writing characteristics from a sender’s emails.

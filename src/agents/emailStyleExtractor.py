@@ -24,6 +24,13 @@ AI_MODEL = "gpt-4o-mini"
 
 # Initialize JSON format template
 # Initialize JSON format template with a serializable placeholder
+
+# maybe add
+#   "category": "Colleagues",
+#   "subcategory": "Technical requests",
+#   "familiarity": "familiar",
+
+
 extract_format = [
   {
     "context": "describe the typical situation where this style is used",
