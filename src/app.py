@@ -89,9 +89,10 @@ async def callback(code: str):
             raise HTTPException(status_code=400, detail="获取token失败")
 
         session_id = str(uuid4())
-        my_email = result.get("id_token_claims", {}).get("upn", "")
+        
         session_store[session_id] = result["access_token"]
-        session_store[session_id + "_email"] = my_email
+        # my_email = result.get("id_token_claims", {}).get("upn", "")
+        # session_store[session_id + "_email"] = my_email
 
         response = RedirectResponse(url="/menu")
         response.set_cookie(key="session_id", value=session_id, httponly=True)
@@ -168,10 +169,16 @@ async def style_extractor(
     try:
         emails = get_cleaned_emails("sentItems", emailsNum, access_token)
 
-        print(f"Fetched {len(emails)} emails for style extraction.")
-        emailsDf = pd.DataFrame(emails)
-        my_email =session_store.get(session_id + "_email", "")
-        style = analyze_emails(emailsDf, my_email,  batch_size=5)
+        emailsdf = pd.json_normalize(emails)
+        print(emailsdf.head()) 
+             
+        my_email =emailsdf.iloc[0]["from.emailAddress.address"]
+        print("my_email:", my_email)
+        emailsdf.drop(columns=['@odata.etag','id','from.emailAddress.name',"from.emailAddress.address"], inplace=True)
+        # save emailsdf for debug
+        emailsdf.to_csv("emailsdf.csv", index=False, encoding="utf-8")  
+
+        style = await analyze_emails(emailsdf, my_email, batch_size=5)
 
         return {"style": style}
 

@@ -13,7 +13,7 @@ from semantic_kernel.contents import ChatHistory
 from semantic_kernel.functions import kernel_function, KernelArguments
 from semantic_kernel.connectors.ai.prompt_execution_settings import PromptExecutionSettings
 
-from agent.summary_helper import SummaryDataHelper
+from .summary_helper import SummaryDataHelper
  
 # Load environment variables
 load_dotenv()
