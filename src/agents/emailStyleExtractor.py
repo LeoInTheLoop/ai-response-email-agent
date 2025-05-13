@@ -1,7 +1,8 @@
-import os
-import json
+###############################################################################
+# ------------------------------  IMPORTS  ---------------------------------- #
+###############################################################################
+import os, json, re, asyncio
 import pandas as pd
-import asyncio
 from dotenv import load_dotenv
 
 from semantic_kernel.kernel import Kernel
@@ -12,52 +13,63 @@ from semantic_kernel.functions import KernelArguments
 from semantic_kernel.connectors.ai.prompt_execution_settings import PromptExecutionSettings
 from openai import AsyncOpenAI
 
-from .utils_email import get_email_summary_text
-import re
+
+###############################################################################
+# ------------------------------  CONSTANTS  -------------------------------- #
+###############################################################################
 
 # Load environment variables
 print("Loading environment...")
 load_dotenv()
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 assert GITHUB_TOKEN, "Please set your GITHUB_TOKEN environment variable"
+
 AI_MODEL = "gpt-4o-mini"
+
+# Define model token limits
+MODEL_TOKEN_LIMITS = {
+    "gpt-4o-mini": 8000,  # Example limit
+    "gpt-4o": 8000,
+}
 
 # filepath
 base_dir = os.path.dirname(os.path.abspath(__file__))
 data_dir = os.path.normpath(os.path.join(base_dir, "../../data/summary_data"))
 
-# Initialize JSON format template
+###############################################################################
+# -----------------------  JSON OUTPUT TEMPLATE  ---------------------------- #
+###############################################################################
 # Initialize JSON format template with a serializable placeholder
-
 # maybe add
 #   "category": "Colleagues",
 #   "subcategory": "Technical requests",
 #   "familiarity": "familiar",
 
-
 extract_format = [
-  {
-    "context": "describe the typical situation where this style is used",
-    "tone": "summarize the tone, e.g., formal / friendly / direct / humorous",
-    "greeting": [
-      "example greeting phrase 1",
-      "example greeting phrase 2"
-    ],
-    "closing": [
-      "example closing phrase 1",
-      "example closing phrase 2"
-    ],
-    "patterns": [
-      "example sentence structure or phrase often used"
-    ],
-    "keywords": [
-      "frequently used words or expressions"
-    ],
-    "signature": "typical way the user signs off"
-  }
+    {
+        "context": "describe the typical situation where this style is used",
+        "tone": "summarize the tone, e.g., formal / friendly / direct / humorous",
+        "greeting": [
+            "example greeting phrase 1",
+            "example greeting phrase 2"
+        ],
+        "closing": [
+            "example closing phrase 1",
+            "example closing phrase 2"
+        ],
+        "patterns": [
+            "example sentence structure or phrase often used"
+        ],
+        "keywords": [
+            "frequently used words or expressions"
+        ],
+        "signature": "typical way the user signs off"
+    }
 ]
 
-# Define instruction template
+###############################################################################
+# --------------------------  PROMPT TEMPLATE  ------------------------------ #
+###############################################################################
 INSTRUCTIONS_BASE = """
 You are an email style analysis assistant.
 
@@ -65,13 +77,13 @@ Given several emails written by the same user, your task is to identify differen
 
 For each style you find, output the following as a JSON object:
 
-- context: what kind of situation this style is used in (you can summarize from the email thread or recipient)
-- tone: a brief description of tone (e.g. friendly, concise, formal)
-- greeting: typical greeting phrases used, not names
-- closing: common closing lines
-- patterns: sentence patterns or structures the user repeats
-- keywords: specific words or phrases the user tends to use
-- signature: how the user usually ends the email
+- context
+- tone
+- greeting
+- closing
+- patterns
+- keywords
+- signature
 
 Output a JSON array of such objects. If the user has only one general style, return just one object in the array.
 
@@ -79,136 +91,221 @@ Do not invent content. Only summarize what you observe from the user's actual em
 
 Here are the user's emails:
 ===
-{user_email}
+{emails_block}
 ===
-Format is :
-{extract_format}
+Format is:
+{format_json}
 """
 
 PROMPT_SETTING = PromptExecutionSettings(
     temperature=0.2,
     top_p=0.9,
-    max_tokens=4096
+    max_tokens=4096        # generation length (completion), not the context limit
 )
 
-print("Creating AsyncOpenAI client")
-client = AsyncOpenAI(
-    api_key=GITHUB_TOKEN,
-    base_url="https://models.inference.ai.azure.com/"
-)
-print("AsyncOpenAI client created")
+###############################################################################
+# -----------------------------  UTILITIES  --------------------------------- #
+###############################################################################
+def df_to_text(df: pd.DataFrame) -> str:
+    """
+    Convert a DataFrame batch to plain text:
+        --- Email 1 ---
+        Subject: ...
+        Body:
+        ...
+    The model sees the raw subject + body exactly as written.
+    """
+    lines: list[str] = []
+    for idx, row in df.iterrows():
+        subj = str(row.get("subject", "")).strip()
+        body = str(row.get("body", "")).strip()
+        lines.append(f"--- Email {len(lines) + 1} ---")
+        lines.append(f"Subject: {subj}")
+        lines.append("Body:")
+        lines.append(body)
+        lines.append("")  # blank line for spacing
+    return "\n".join(lines)
 
-print("Initializing Kernel and chat service")
-kernel = Kernel()
-service_id = "github-agent"
-chat_service = OpenAIChatCompletion(
-    ai_model_id=AI_MODEL,
-    async_client=client,
-    service_id=service_id
-)
-kernel.add_service(chat_service)
 
-def batch_email_generator(df, batch_size):
-    for start in range(0, len(df), batch_size):
-        yield df.iloc[start:start + batch_size]
+def estimate_token_count(text: str) -> int:
+    """Roughly estimate token count (≈ 4 chars per token for English)."""
+    return len(text) // 4
 
-async def process_one_batch(agent, user_input):
-    chat_history = ChatHistory()
-    chat_history.add_user_message(user_input)
+
+def optimal_batch_size(df: pd.DataFrame, model="gpt-4o-mini", ratio=0.8) -> int:
+    """
+    Decide how many emails to feed per request so that prompt + completion
+    stays within model context (80 % by default).
+    """
+    limit = MODEL_TOKEN_LIMITS.get(model, 8192)
+    target_tokens = int(limit * ratio)               # leave 20 % margin
+    sample = df.sample(min(10, len(df)))
+    avg_tok = estimate_token_count(df_to_text(sample)) / len(sample)
+    return max(1, min(20, int(target_tokens / avg_tok)))
+
+
+def batch_generator(df: pd.DataFrame, size: int):
+    """Yield DataFrame slices of length `size`."""
+    for start in range(0, len(df), size):
+        yield df.iloc[start:start + size]
+
+
+###############################################################################
+# -----------------------  SEMANTIC KERNEL HELPERS  ------------------------- #
+###############################################################################
+def create_kernel() -> Kernel:
+    """Create a Semantic-Kernel instance with an AsyncOpenAI chat backend."""
+    client = AsyncOpenAI(
+        api_key=GITHUB_TOKEN,
+        base_url="https://models.inference.ai.azure.com/"
+    )
+    kernel = Kernel()
+    kernel.add_service(OpenAIChatCompletion(
+        ai_model_id=AI_MODEL,
+        async_client=client,
+        service_id="github-agent"
+    ))
+    return kernel
+
+
+def build_prompt(batch_text: str) -> str:
+    """Inject email block + format JSON into the system prompt."""
+    return INSTRUCTIONS_BASE.format(
+        emails_block=batch_text,
+        format_json=json.dumps(extract_format, ensure_ascii=False, indent=2)
+    )
+
+
+async def call_model(kernel: Kernel, prompt: str, user_input: str) -> str | None:
+    """
+    Stream the response from the model and return the full concatenated string.
+    """
+    agent = ChatCompletionAgent(
+        kernel=kernel,
+        name="ExtractAgent",
+        instructions=prompt,
+        arguments=KernelArguments(settings=PROMPT_SETTING)
+    )
+    history = ChatHistory()
+    history.add_user_message(user_input)
+
     full_response = ""
     try:
-        async for content in agent.invoke_stream(chat_history):
-            if hasattr(content, 'content') and content.content.strip():
-                full_response += content.content
+        async for part in agent.invoke_stream(history):
+            if getattr(part, "content", "").strip():
+                full_response += part.content
     except Exception as e:
-        print("Error during agent.invoke_stream:", e)
-        return None, str(e)
-    return full_response, None
+        print("invoke_stream error:", e)
+        return None
+    return full_response
 
-async def analyze_emails(df, user_email,  batch_size=5):
+
+def save_raw_output(response: str, idx: int):
+    """Write raw model output to disk for debugging."""
+    path = os.path.join(data_dir, f"email_style_batch_{idx}.txt")
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(response)
+    print(f"Raw output saved: {path}")
+
+
+def extract_json_from_response(resp: str) -> list[dict]:
+    """
+    Pull the first JSON array found in the model output and return it as Python
+    data. If nothing parsable found, return an empty list.
+    """
+    match = re.search(r"\[\s*{[\s\S]*?}\s*\]", resp)
+    if not match:
+        print("No JSON array found.")
+        return []
+    try:
+        data = json.loads(match.group(0).strip())
+        return data if isinstance(data, list) else [data]
+    except Exception as e:
+        print("JSON parse error:", e)
+        return []
+
+
+def merge_batches(batches: list[list[dict]]) -> list[dict]:
+    """
+    Remove duplicate style objects across batches (dedup by JSON string).
+    """
+    seen, merged = set(), []
+    for batch in batches:
+        for style in batch:
+            sig = json.dumps(style, sort_keys=True)
+            if sig not in seen:
+                seen.add(sig)
+                merged.append(style)
+    return merged
+
+
+###############################################################################
+# ---------------------------  MAIN ENTRYPOINT  ----------------------------- #
+###############################################################################
+async def analyze_emails(
+    df: pd.DataFrame,
+    user_email: str,
+    batch_size: int | None = None
+):
+    """
+    1) Figure out batch size,
+    2) For each batch: build prompt → call model → parse JSON,
+    3) Merge all style objects and write to disk.
+    """
     print("Starting analyze_emails()")
-    BATCH_SIZE = batch_size
-    all_summaries = []
 
-    for idx, batch_df in enumerate(batch_email_generator(df, BATCH_SIZE)):
-        print(f"\n---- Processing batch {idx+1} ----")
-        email_history_text = get_email_summary_text(batch_df)
-        print(f"Batch {idx+1}, history length: {len(email_history_text)}")
+    if batch_size is None:
+        batch_size = optimal_batch_size(df)
+    print(f"Using batch size: {batch_size}")
 
-        batch_instructions = INSTRUCTIONS_BASE.format(
-            user_email=user_email,
-            extract_format=json.dumps(extract_format, ensure_ascii=False, indent=2)
-        )
+    kernel = create_kernel()
+    all_style_batches: list[list[dict]] = []
 
-        agent = ChatCompletionAgent(
-            kernel=kernel,
-            name="ExtractAgent",
-            instructions=batch_instructions,
-            arguments=KernelArguments(settings=PROMPT_SETTING)
-        )
+    for idx, batch_df in enumerate(batch_generator(df, batch_size), start=1):
+        print(f"\n---- Processing batch {idx} ----")
+        batch_text = df_to_text(batch_df)
+        prompt = build_prompt(batch_text)
 
-        full_response, err = await process_one_batch(agent, email_history_text)
-        if not full_response:
-            print(f"Batch {idx+1}: Error or empty response:", err)
+        raw_response = await call_model(kernel, prompt, batch_text)
+        if not raw_response:
             continue
 
-        # Save raw AI output for debugging
-        raw_path = os.path.join(data_dir, f"email_style_projects_summary_batch_{idx+1}_raw.txt")
-        os.makedirs(os.path.dirname(raw_path), exist_ok=True)
-        with open(raw_path, "w", encoding="utf-8") as f:
-            f.write(full_response)
-        print(f"Saved raw output to {raw_path}")
+        save_raw_output(raw_response, idx)
+        styles = extract_json_from_response(raw_response)
+        print(f"Batch {idx}: extracted {len(styles)} style(s)")
+        if styles:
+            all_style_batches.append(styles)
 
-        try:
-            # Clean up and extract JSON block from response
-            json_match = re.search(r"\[.*\]", full_response, re.DOTALL)
-            if json_match:
-                json_text = json_match.group(0).strip()
-                batch_json = json.loads(json_text)
-                if not isinstance(batch_json, list):
-                    batch_json = [batch_json]
-                print(f"Batch {idx+1}: Parsed {len(batch_json)} style(s)")
-                all_summaries.append(batch_json)
-            else:
-                print(f"Batch {idx+1}: No JSON array found in output.")
-        except json.JSONDecodeError as e:
-            print(f"Batch {idx+1}: JSON decode error:", e)
-        except Exception as e:
-            print(f"Batch {idx+1}: Unexpected error during JSON parsing:", e)
-
-    def merge_summaries(summaries_list):
-        all_styles = []
-        seen = set()
-        for batch in summaries_list:
-            for style in batch:
-                style_str = json.dumps(style, sort_keys=True)
-                if style_str not in seen:
-                    seen.add(style_str)
-                    all_styles.append(style)
-        return all_styles
-
-    if all_summaries:
-        merged = merge_summaries(all_summaries)
-        raw_path = os.path.join(data_dir, f"/tone_summary_total.json") 
-        os.makedirs(os.path.dirname(raw_path), exist_ok=True)
-        with open(raw_path, "w", encoding="utf-8") as f:
-            json.dump(merged, f, ensure_ascii=False, indent=2)
-        print(f"Final merged summary saved as {raw_path}")
-           
-        return merged  # ✅ 加上这个返回值
-    else:
-        print("No summary generated.")
+    if not all_style_batches:
+        print("No styles extracted.")
         return None
-# Entry point for testing
+
+    merged_styles = merge_batches(all_style_batches)
+
+    merged_path = os.path.join(data_dir, "tone_summary_total.json")
+    os.makedirs(os.path.dirname(merged_path), exist_ok=True)
+    with open(merged_path, "w", encoding="utf-8") as f:
+        json.dump(merged_styles, f, ensure_ascii=False, indent=2)
+    print(f"Final merged summary saved to {merged_path}")
+
+    return merged_styles
+
+
+###############################################################################
+# -------------------------------  CLI TEST  -------------------------------- #
+###############################################################################
 if __name__ == "__main__":
     user_email = "phillip.allen@enron.com"
     MAX_EMAIL_PROCESS = 20
-    csv_path = "../../data/train_dataset/phillip_allen_emails.csv"
+    csv_path = os.path.normpath(
+        os.path.join(base_dir, "../../data/train_dataset/emails.csv")
+    )
 
-    # Read and preprocess CSV
+    # Read and preprocess CSV (for testing)
     print("Loading CSV:", csv_path)
-    df = pd.read_csv(csv_path)
-    df = df.head(MAX_EMAIL_PROCESS) if MAX_EMAIL_PROCESS > 0 else df
+    df = pd.read_csv(csv_path).head(MAX_EMAIL_PROCESS)
     print("CSV loaded, shape:", df.shape)
 
+    # Run analysis (df includes 'subject' and 'body' columns)
     asyncio.run(analyze_emails(df, user_email))
