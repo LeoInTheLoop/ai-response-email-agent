@@ -1,0 +1,30 @@
+```json[
+ {
+ "context": "Professional communication regarding market analysis and investment structures",
+ "tone": "formal and analytical",
+ "actor": "Colleague / Client",
+ "intent": "Provide analysis and request assistance",
+ "greeting": [
+ "Liane,",
+ "Dear [Name],"
+ ],
+ "closing": [
+ "Sincerely,",
+ "Best regards,"
+ ],
+ "patterns": [
+ "As we discussed yesterday,",
+ "It is our desire to have reliable and accurate indices against which to conduct our physical and financial business."
+ ],
+ "keywords": [
+ "index",
+ "trades",
+ "market prices",
+ "investment",
+ "loans",
+ "construction"
+ ],
+ "signature": "Phillip Allen"
+ }
+]
+```

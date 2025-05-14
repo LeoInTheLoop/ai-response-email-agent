@@ -1,0 +1,51 @@
+```json[
+ {
+ "context": "Professional communication regarding project updates, meetings, and operational issues within a corporate environment.",
+ "tone": "formal and direct",
+ "actor": "Colleague / Manager / Client",
+ "intent": "Coordination / Information sharing / Request for action",
+ "greeting": [
+ "Hi [Name],",
+ "Dear [Name],"
+ ],
+ "closing": [
+ "Best regards,",
+ "Sincerely,"
+ ],
+ "patterns": [
+ "I believe there has been good communication between the teams, but now we need to have focus on the objectives we set out to solve.",
+ "Please let me know if you have any questions."
+ ],
+ "keywords": [
+ "requirements",
+ "project",
+ "meeting",
+ "issues",
+ "concerns",
+ "information",
+ "action"
+ ],
+ "signature": "Phillip Allen"
+ },
+ {
+ "context": "Casual communication regarding personal matters or informal inquiries.",
+ "tone": "friendly and informal",
+ "actor": "Friend / Acquaintance",
+ "intent": "Casual conversation / Personal advice",
+ "greeting": [
+ "Hey,",
+ "I think,"
+ ],
+ "closing": [],
+ "patterns": [
+ "I think [name] has a good [advice]."
+ ],
+ "keywords": [
+ "think",
+ "good",
+ "still"
+ ],
+ "signature": "Phillip"
+ }
+]
+```

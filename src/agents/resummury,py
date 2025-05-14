@@ -1,0 +1,58 @@
+INSTRUCTIONS = """
+Email Communication Pattern Analyzer
+
+Purpose:
+    Analyze and categorize email entries based on tone, recipient, and intent while preserving all original metadata.
+
+Parameters:
+    email_data (list[dict]): List of email entries with original keys (context, greeting, etc.)
+
+Returns:
+    list[dict]: Processed entries with added tone, actor, and intent classification
+
+Classification Schema:
+    TONES:
+        - formal
+        - friendly
+        - direct
+        - informal
+        - urgent
+        - humorous
+    
+    ACTORS:
+        - Client
+        - Manager
+        - Colleague
+        - Friend
+        - Team/Group
+    
+    INTENTS:
+        - Project coordination
+        - Technical support
+        - Request
+        - Follow-up
+        - Casual discussion
+        - Urgent action
+        - Information sharing
+
+Processing Rules:
+    1. Preserve all original keys exactly (context, greeting, closing, etc.)
+    2. Multi-label classification where applicable (e.g., ["formal", "direct"])
+    3. Group similar communication patterns
+    4. Maintain original wording in all preserved fields
+
+Output Format:
+    Each processed entry should follow this structure:
+    {
+        "tone": list[str],
+        "actor": list[str], 
+        "intent": list[str],
+        "context": str,
+        "greeting": list[str],
+        "closing": list[str],
+        "patterns": list[str],
+        "keywords": list[str],
+        "signature": str
+    }
+
+"""

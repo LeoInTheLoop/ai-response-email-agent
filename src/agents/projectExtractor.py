@@ -1,4 +1,59 @@
 # do it later
+# milestones.due
+[
+  {
+    "project": "AI Email Agent",
+    "description": "A smart email assistant that analyzes tone and generates replies.",
+    "status": "active",
+    "start_date": "2025-04-18",
+    "end_date": "2025-06-01",
+    "milestones": [
+      {
+        "name": "Tone analysis module",
+        "due": "2025-04-25",
+        "completed": true,
+        "contributors": ["Leo", "Chen"],
+        "notes": "Tested on 50 samples."
+      },
+      {
+        "name": "Reply generation agent",
+        "due": "2025-05-05",
+        "completed": true,
+        "contributors": ["Leo"],
+        "notes": "Integrated GPT-4o-mini with plugin calling."
+      },
+      {
+        "name": "Project extractor",
+        "due": "2025-05-15",
+        "completed": false,
+        "contributors": ["Leo", "Anna"],
+        "notes": "Currently extracting project + person info from emails."
+      }
+    ],
+    "members": [
+      {
+        "name": "Leo",
+        "role": "Lead developer",
+        "focus": ["backend", "agent logic"],
+        "achievements": ["Built reply generator", "Designed plugin system"]
+      },
+      {
+        "name": "Anna",
+        "role": "NLP engineer",
+        "focus": ["entity extraction", "summarization"],
+        "achievements": ["Email entity extraction pipeline"]
+      },
+      {
+        "name": "Chen",
+        "role": "UX/UI",
+        "focus": ["prompt interface", "frontend support"]
+      }
+    ],
+    "tools": ["GPT-4o", "Semantic Kernel", "FastAPI"],
+    "keywords": ["email", "tone", "project management", "agent"]
+  }
+]
+
 
 # 🔁 索引设计建议
 # 你可以为项目和人物设置双向索引：

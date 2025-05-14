@@ -1,0 +1,68 @@
+[
+    {
+      "tone": ["direct", "professional"],
+      "actor": ["Colleague", "Client"],
+      "intent": ["Project coordination", "Scheduling", "Operational updates"],
+      "context": "Professional communication regarding scheduling, project updates, and operational details.",
+      "greeting": ["Hi Randy,", "Mr. Buckner,"],
+      "closing": ["Thank you for your help", "Phillip"],
+      "patterns": ["Bullet points for clarity", "Direct requests for action"],
+      "keywords": ["schedule", "forecast", "business meetings", "updates", "gas price"],
+      "signature": "Phillip Allen"
+    },
+    {
+      "tone": ["friendly", "informal"],
+      "actor": ["Colleague", "Friend"],
+      "intent": ["Casual discussion", "Suggestions", "Personal opinions"],
+      "context": "Casual communication with colleagues, often discussing personal opinions or suggestions.",
+      "greeting": ["Let's shoot for Tuesday at 11:45.", "How about either next Tuesday or Thursday?"],
+      "closing": ["way to go!!!", "Phillip"],
+      "patterns": ["Exclamation points for enthusiasm", "Casual phrasing"],
+      "keywords": ["fun", "suggest", "golf", "trip"],
+      "signature": "Phillip"
+    },
+    {
+      "tone": ["formal", "direct"],
+      "actor": ["Manager", "Colleague"],
+      "intent": ["Project management", "Requirements documentation", "Task delegation"],
+      "context": "Professional communication regarding project management and requirements documentation.",
+      "greeting": ["Phillip,", "Allan,"],
+      "closing": ["Richard", "-- Allan."],
+      "patterns": ["Lists of tasks", "Clear focus statements"],
+      "keywords": ["requirements", "project plan", "issues", "communication"],
+      "signature": "Richard Burchfield"
+    },
+    {
+      "tone": ["brief", "straightforward"],
+      "actor": ["Colleague", "Associate"],
+      "intent": ["Quick updates", "Informal requests"],
+      "context": "Quick responses or informal communication, often on mobile or in less formal settings.",
+      "greeting": ["Dave,", "Tim,"],
+      "closing": ["Phillip"],
+      "patterns": ["Short confirmations", "Direct statements"],
+      "keywords": ["fine", "sparse", "active password"],
+      "signature": "Phillip"
+    },
+    {
+      "tone": ["formal", "informative"],
+      "actor": ["Client", "Investor"],
+      "intent": ["Financial discussions", "Investment structures", "Real estate development"],
+      "context": "Business communication regarding investment structures and real estate development.",
+      "greeting": ["Dear [Recipient's Name]", "Hello [Recipient's Name]"],
+      "closing": ["Sincerely,", "Best regards,"],
+      "patterns": ["Detailed financial explanations", "Bullet points for clarity"],
+      "keywords": ["investment", "construction loans", "equity", "fiscals"],
+      "signature": "George Richards\nPresident, Creekside Builders, LLC"
+    },
+    {
+      "tone": ["formal", "urgent"],
+      "actor": ["Team", "Employee"],
+      "intent": ["Action required", "Feedback collection"],
+      "context": "Formal communication regarding professional programs and assessments.",
+      "greeting": ["Dear [Name]", "Hello [Name]"],
+      "closing": ["Thank you for your participation.", "Best regards,"],
+      "patterns": ["Urgent directives", "Critical feedback requests"],
+      "keywords": ["IMMEDIATE ACTION REQUIRED", "assessment", "important"],
+      "signature": "Phillip"
+    }
+  ]

@@ -1,0 +1,33 @@
+```json[
+ {
+ "context": "Professional communication regarding meetings, updates, and project coordination",
+ "tone": "formal and direct",
+ "actor": "Colleagues / Clients",
+ "intent": "Coordination / Updates / Requests",
+ "greeting": [
+ "Hi [Name],",
+ "Hello [Name],"
+ ],
+ "closing": [
+ "Thank you,",
+ "Best regards,"
+ ],
+ "patterns": [
+ "I have [action] regarding [topic].",
+ "Please [action] at your earliest convenience.",
+ "Just wanted to give you an update."
+ ],
+ "keywords": [
+ "meeting",
+ "update",
+ "schedule",
+ "confirmation",
+ "reschedule",
+ "status",
+ "construction",
+ "financing"
+ ],
+ "signature": "Phillip"
+ }
+]
+```

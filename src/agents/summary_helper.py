@@ -1,51 +1,44 @@
-# summary_helper.py
 import os
 import json
 from typing import List, Dict, Optional
-from .summary_helper import SummaryDataHelper
-
-
-base_dir = os.path.dirname(os.path.abspath(__file__))
-data_dir = os.path.normpath(os.path.join(base_dir, "../../data/summary_data"))
 
 class SummaryDataHelper:
-    def __init__(self, data_dir: str):
+    def __init__(self, filename: str):
+        """
+        Load summary data from a specific file, such as 'matador_tone.json'.
+        """
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        data_dir = os.path.normpath(os.path.join(base_dir, "../../data/summary_data"))
+        filepath = os.path.join(data_dir, filename)
+
         self.data: List[Dict] = []
-        self._load_all_files(data_dir)
+        self._load_file(filepath)
 
-    def _load_all_files(self, data_dir: str):
-        """Loads all JSON files in the directory"""
-        for filename in os.listdir(data_dir):
-            if filename.endswith(".json"):
-                filepath = os.path.join(data_dir, filename)
-                with open(filepath, 'r', encoding='utf-8') as f:
-                    try:
-                        json_data = json.load(f)
-                        # normalize: wrap dict as list for uniform access
-                        if isinstance(json_data, dict):
-                            json_data = [json_data]
-                        self.data.extend(json_data)
-                    except Exception as e:
-                        print(f"[WARN] Failed to load {filename}: {e}")
+    def _load_file(self, filepath: str):
+        """Load a single JSON file."""
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                json_data = json.load(f)
+                if isinstance(json_data, dict):
+                    json_data = [json_data]
+                self.data.extend(json_data)
+        except Exception as e:
+            print(f"[WARN] Failed to load {filepath}: {e}")
 
-    def get_summary_by_signature(self, signature: str) -> Optional[Dict]:
-        """Find summary by exact signature (e.g., name in signature line)"""
+    def get_by_key(self, key: str, value: str) -> Optional[Dict]:
+        """Get first match by exact value for a specific key (e.g., 'tone', 'email', 'project')."""
         for entry in self.data:
-            if entry.get("signature") == signature:
+            if entry.get(key, "").lower() == value.lower():
                 return entry
         return None
 
-    def get_summary_by_email(self, email: str) -> Optional[Dict]:
-        """Stub: match email to a summary (can extend with a map or model)"""
-        # If your summary file doesn’t contain emails, use a mapping table or embedding search
-        return None
-
-    def get_all_summaries(self) -> List[Dict]:
-        return self.data
-
-    def find_best_match(self, query: str) -> Optional[Dict]:
-        """Find the best-matching summary entry using simple keyword match"""
+    def find_best_match(self, key: str, query: str) -> Optional[Dict]:
+        """Match loosely based on keyword lists (if available)."""
         for entry in self.data:
             if any(keyword.lower() in query.lower() for keyword in entry.get("keywords", [])):
-                return entry
+                if key in entry:
+                    return entry
         return None
+
+    def get_all(self) -> List[Dict]:
+        return self.data

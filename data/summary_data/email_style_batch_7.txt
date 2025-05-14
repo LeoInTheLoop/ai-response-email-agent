@@ -1,0 +1,30 @@
+```json[
+ {
+ "context": "Business communication regarding real estate projects and financial analysis",
+ "tone": "formal and informative",
+ "actor": "Client / Colleague",
+ "intent": "Provide detailed project analysis and updates, request information, and coordinate actions",
+ "greeting": [
+ "Dear [Name]",
+ "Hi [Name]"
+ ],
+ "closing": [
+ "Sincerely,",
+ "Best regards,"
+ ],
+ "patterns": [
+ "I will send you a package on the property...",
+ "Please get back to me as soon as your schedule permits..."
+ ],
+ "keywords": [
+ "proforma",
+ "investment",
+ "project",
+ "return",
+ "site plan",
+ "commission"
+ ],
+ "signature": "George W. Richards\nCreekside Builders, LLC"
+ }
+]
+```

@@ -49,6 +49,8 @@ extract_format = [
     {
         "context": "describe the typical situation where this style is used",
         "tone": "summarize the tone, e.g., formal / friendly / direct / humorous",
+        "actor": "who the email is addressed to, e.g., Client / Manager / Colleague / Friend",
+        "intent": "what the email is trying to achieve, e.g., Technical support / Coordination / Request / Follow-up",
         "greeting": [
             "example greeting phrase 1",
             "example greeting phrase 2"
@@ -79,6 +81,8 @@ For each style you find, output the following as a JSON object:
 
 - context
 - tone
+- actor
+- intent
 - greeting
 - closing
 - patterns
@@ -156,7 +160,7 @@ enc = tiktoken.encoding_for_model("gpt-4o-mini")
 def count_tokens(text: str) -> int:
     return len(enc.encode(text))
 
-def dynamic_batch_generator(df: pd.DataFrame, max_tokens: int = 8000, buffer_tokens: int = 1000):
+def dynamic_batch_generator(df: pd.DataFrame, max_tokens: int = 8000, buffer_tokens: int = 3500):
     batch, batch_tokens = [], 0
 
     for _, row in df.iterrows():
@@ -166,7 +170,7 @@ def dynamic_batch_generator(df: pd.DataFrame, max_tokens: int = 8000, buffer_tok
         email_tokens = count_tokens(email_text)
 
         # ✅ 提前判断当前这封邮件是否会超限
-        if batch_tokens + email_tokens > max_tokens - buffer_tokens-1000:
+        if batch_tokens + email_tokens > max_tokens - buffer_tokens:
             yield pd.DataFrame(batch)
             batch, batch_tokens = [], 0
 

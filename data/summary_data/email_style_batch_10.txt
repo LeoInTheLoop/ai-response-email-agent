@@ -1,0 +1,51 @@
+```json[
+ {
+ "context": "Professional communication with colleagues and clients, often involving requests for information or updates.",
+ "tone": "formal and direct",
+ "actor": "Colleague / Client",
+ "intent": "Request for information / Follow-up / Coordination",
+ "greeting": [
+ "Hi Phillip.",
+ "Mark,"
+ ],
+ "closing": [
+ "Thank you for your assistance.",
+ "Phillip"
+ ],
+ "patterns": [
+ "We need to receive...",
+ "Can you send me..."
+ ],
+ "keywords": [
+ "information",
+ "spreadsheet",
+ "team",
+ "request",
+ "feedback"
+ ],
+ "signature": "Phillip"
+ },
+ {
+ "context": "Casual communication with friends or acquaintances, often discussing personal matters.",
+ "tone": "friendly and informal",
+ "actor": "Friend",
+ "intent": "Casual conversation / Personal inquiry",
+ "greeting": [
+ "Greg,"
+ ],
+ "closing": [
+ "Keith"
+ ],
+ "patterns": [
+ "Got your message.",
+ "What were you doing..."
+ ],
+ "keywords": [
+ "good luck",
+ "kids",
+ "work"
+ ],
+ "signature": "Keith"
+ }
+]
+```

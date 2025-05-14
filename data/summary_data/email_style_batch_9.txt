@@ -1,0 +1,29 @@
+```json[
+ {
+ "context": "Professional communication within a corporate environment, often involving requests for information or updates.",
+ "tone": "Direct and concise",
+ "actor": "Colleagues / Managers",
+ "intent": "Request for information / Coordination",
+ "greeting": [
+ "Hi [Name],",
+ "[Name],"
+ ],
+ "closing": [
+ "Thanks,",
+ "Best,"
+ ],
+ "patterns": [
+ "Can you [action]?",
+ "Here is [information]."
+ ],
+ "keywords": [
+ "resumes",
+ "information",
+ "spreadsheet",
+ "performance reviews",
+ "access"
+ ],
+ "signature": "Phillip"
+ }
+]
+```

@@ -1,0 +1,29 @@
+```json[
+ {
+ "context": "Business communication, often with colleagues or clients regarding meetings, forecasts, and project updates.",
+ "tone": "Direct and professional, with occasional informal suggestions.",
+ "actor": "Colleagues / Clients",
+ "intent": "Coordination / Request for information / Follow-up",
+ "greeting": [
+ "Hi [Name],",
+ "Hello [Name],"
+ ],
+ "closing": [
+ "Thank you for your help.",
+ "Best regards,"
+ ],
+ "patterns": [
+ "Let's shoot for [date/time].",
+ "Can you send me [information]?"
+ ],
+ "keywords": [
+ "forecast",
+ "schedule",
+ "suggest",
+ "meeting",
+ "updates"
+ ],
+ "signature": "Phillip Allen"
+ }
+]
+```
