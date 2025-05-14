@@ -12,6 +12,7 @@ from html import unescape
 from uuid import uuid4
 
 from agents.emailStyleExtractor import analyze_emails
+from agents.mainAgent import generate_email_reply
 # important !   at main folder  >PYTHONPATH=src uvicorn app:app --reload 
 
 load_dotenv()
@@ -186,10 +187,32 @@ async def style_extractor(
         error_detail = e.response.json().get("error", {}).get("message", str(e))
         raise HTTPException(status_code=e.response.status_code, detail=error_detail)
 
-@app.get("/reply/{email_id}")
+@app.get("/reply/")  #/reply/{email_id}
 # todo
-async def reply_email():
-    return  JSONResponse(content={"message": "Reply email not implemented yet."})
+async def reply_email(
+    email_id: str,
+    session_id: str = Cookie(default=None)
+):
+    """Receive email list from inbox folder"""
+    access_token = get_token(session_id)
+    if not access_token:
+        return RedirectResponse("/")
+
+    try:
+        emails = get_cleaned_emails("inbox", 1, access_token)
+        # specific email ？
+        
+
+    except requests.HTTPError as e:
+        error_detail = e.response.json().get("error", {}).get("message", str(e))
+        raise HTTPException(status_code=e.response.status_code, detail=error_detail)
+    
+    reply_email = await generate_email_reply(
+        sender_email=emails[0]["from"]["emailAddress"]["address"],
+        message=emails[0]["body"],
+        include_debug=True
+    )
+    return JSONResponse(content=reply_email)
 
 
 if __name__ == "__main__":

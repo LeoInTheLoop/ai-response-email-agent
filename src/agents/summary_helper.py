@@ -2,7 +2,11 @@
 import os
 import json
 from typing import List, Dict, Optional
+from .summary_helper import SummaryDataHelper
 
+
+base_dir = os.path.dirname(os.path.abspath(__file__))
+data_dir = os.path.normpath(os.path.join(base_dir, "../../data/summary_data"))
 
 class SummaryDataHelper:
     def __init__(self, data_dir: str):

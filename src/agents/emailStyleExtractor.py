@@ -127,29 +127,55 @@ def df_to_text(df: pd.DataFrame) -> str:
     return "\n".join(lines)
 
 
-def estimate_token_count(text: str) -> int:
-    """Roughly estimate token count (≈ 4 chars per token for English)."""
-    return len(text) // 4
+# def estimate_token_count(text: str) -> int:
+#     """Roughly estimate token count (≈ 4 chars per token for English)."""
+#     return len(text) // 4
 
 
-def optimal_batch_size(df: pd.DataFrame, model="gpt-4o-mini", ratio=0.8) -> int:
-    """
-    Decide how many emails to feed per request so that prompt + completion
-    stays within model context (80 % by default).
-    """
-    limit = MODEL_TOKEN_LIMITS.get(model, 8192)
-    target_tokens = int(limit * ratio)               # leave 20 % margin
-    sample = df.sample(min(10, len(df)))
-    avg_tok = estimate_token_count(df_to_text(sample)) / len(sample)
-    return max(1, min(20, int(target_tokens / avg_tok)))
+# def optimal_batch_size(df: pd.DataFrame, model="gpt-4o-mini", ratio=0.5) -> int:
+#     """
+#     Decide how many emails to feed per request so that prompt + completion
+#     stays within model context (80 % by default).
+#     """
+#     limit = MODEL_TOKEN_LIMITS.get(model, 8192)
+#     target_tokens = int(limit * ratio)               # leave 20 % margin
+#     sample = df.sample(min(10, len(df)))
+#     avg_tok = estimate_token_count(df_to_text(sample)) / len(sample)
+#     return max(1, min(20, int(target_tokens / avg_tok)))
 
 
-def batch_generator(df: pd.DataFrame, size: int):
-    """Yield DataFrame slices of length `size`."""
-    for start in range(0, len(df), size):
-        yield df.iloc[start:start + size]
+# def batch_generator(df: pd.DataFrame, size: int):
+#     """Yield DataFrame slices of length `size`."""
+#     for start in range(0, len(df), size):
+#         yield df.iloc[start:start + size]
 
+import tiktoken
 
+enc = tiktoken.encoding_for_model("gpt-4o-mini")
+
+def count_tokens(text: str) -> int:
+    return len(enc.encode(text))
+
+def dynamic_batch_generator(df: pd.DataFrame, max_tokens: int = 8000, buffer_tokens: int = 1000):
+    batch, batch_tokens = [], 0
+
+    for _, row in df.iterrows():
+        subj = str(row.get("subject", "")).strip()
+        body = str(row.get("body", "")).strip()
+        email_text = f"Subject: {subj}\nBody:\n{body}\n"
+        email_tokens = count_tokens(email_text)
+
+        # ✅ 提前判断当前这封邮件是否会超限
+        if batch_tokens + email_tokens > max_tokens - buffer_tokens-1000:
+            yield pd.DataFrame(batch)
+            batch, batch_tokens = [], 0
+
+        # ✅ 不论是否换 batch，当前邮件都必须被处理
+        batch.append(row.to_dict())
+        batch_tokens += email_tokens
+
+    if batch:
+        yield pd.DataFrame(batch)
 ###############################################################################
 # -----------------------  SEMANTIC KERNEL HELPERS  ------------------------- #
 ###############################################################################
@@ -255,18 +281,18 @@ async def analyze_emails(
     """
     print("Starting analyze_emails()")
 
-    if batch_size is None:
-        batch_size = optimal_batch_size(df)
-    print(f"Using batch size: {batch_size}")
+    # if batch_size is None:
+    #     batch_size = optimal_batch_size(df)
+    # print(f"Using batch size: {batch_size}")
 
     kernel = create_kernel()
     all_style_batches: list[list[dict]] = []
 
-    for idx, batch_df in enumerate(batch_generator(df, batch_size), start=1):
+    for idx, batch_df in enumerate(dynamic_batch_generator(df,7000), start=1):
         print(f"\n---- Processing batch {idx} ----")
         batch_text = df_to_text(batch_df)
         prompt = build_prompt(batch_text)
-
+        print(f"Batch {idx} size: {len(batch_df)} emails, estimated tokens: {count_tokens(prompt) + count_tokens(batch_text)}")
         raw_response = await call_model(kernel, prompt, batch_text)
         if not raw_response:
             continue
@@ -297,9 +323,9 @@ async def analyze_emails(
 ###############################################################################
 if __name__ == "__main__":
     user_email = "phillip.allen@enron.com"
-    MAX_EMAIL_PROCESS = 20
+    MAX_EMAIL_PROCESS = 80
     csv_path = os.path.normpath(
-        os.path.join(base_dir, "../../data/train_dataset/emails.csv")
+        os.path.join(base_dir, "../../data/train_dataset/phillip_allen_emails.csv")
     )
 
     # Read and preprocess CSV (for testing)

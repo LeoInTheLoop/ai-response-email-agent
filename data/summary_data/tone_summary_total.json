@@ -1,280 +1,572 @@
 [
   {
-    "context": "Formal business communication with clients and external stakeholders",
-    "tone": "formal and analytical",
+    "context": "Professional communication with colleagues and clients, often regarding scheduling, project updates, and operational details.",
+    "tone": "direct and professional",
     "greeting": [
-      "Dear",
-      "Hello",
+      "Hi Randy,",
       "Mr. Buckner,"
     ],
     "closing": [
-      "Sincerely",
-      "Best regards",
-      "Looking forward to hearing from you,"
+      "Thank you for your help",
+      "Phillip"
     ],
     "patterns": [
-      "As you can tell from the proforma this project should produce...",
-      "It is our belief that...",
-      "Detailed breakdown of costs and processes",
-      "Use of bullet points or numbered lists for clarity"
+      "Use of bullet points or numbered lists for clarity",
+      "Direct requests for information or action"
     ],
     "keywords": [
-      "investment",
-      "project",
-      "development",
-      "partnership",
-      "construction",
-      "ownership structure",
-      "payment",
-      "commission"
+      "schedule",
+      "forecast",
+      "business meetings",
+      "updates",
+      "gas price"
     ],
-    "signature": "Phillip K Allen"
+    "signature": "Phillip Allen"
   },
   {
-    "context": "Direct professional communication with colleagues regarding work tasks",
-    "tone": "direct and concise",
+    "context": "Casual communication with colleagues, often discussing personal opinions or suggestions.",
+    "tone": "friendly and informal",
     "greeting": [
-      "Hi",
-      "Hello",
-      "Mark,"
+      "Let's shoot for Tuesday at11:45.",
+      "How about either next Tuesday or Thursday?"
     ],
     "closing": [
-      "Thanks",
-      "Best",
-      "Let me know if there are any issues."
+      "way to go!!!",
+      "Phillip"
     ],
     "patterns": [
-      "Can you [action]?",
-      "Please [action].",
-      "I would like to [action].",
-      "Short, straightforward sentences"
+      "Use of exclamation points to convey enthusiasm",
+      "Casual phrasing and suggestions"
     ],
     "keywords": [
-      "please",
-      "add",
-      "modify",
-      "access",
-      "information",
-      "spreadsheet",
-      "thank you"
+      "fun",
+      "suggest",
+      "golf",
+      "trip"
     ],
     "signature": "Phillip"
   },
   {
-    "context": "Meeting scheduling and project updates with colleagues",
-    "tone": "efficient and professional",
+    "context": "Professional communication regarding project management and requirements documentation in a corporate setting.",
+    "tone": "formal and direct",
     "greeting": [
-      "Hi",
-      "Hello",
-      "Chris,"
+      "Phillip,",
+      "Allan,"
     ],
     "closing": [
-      "Best,",
-      "Thanks,"
+      "Richard",
+      "-- Allan."
     ],
     "patterns": [
-      "How about [day]?",
-      "any morning between [time] and [time]",
-      "Let's shoot for",
-      "Directly addressing the recipient with a question or request"
+      "What we need to focus on is...",
+      "I believe there has been good communication...",
+      "Things left to do:"
+    ],
+    "keywords": [
+      "requirements",
+      "consolidated positions",
+      "project plan",
+      "issues",
+      "communication"
+    ],
+    "signature": "Richard Burchfield"
+  },
+  {
+    "context": "Professional communication with colleagues regarding project updates, requirements, and meeting arrangements.",
+    "tone": "formal and direct",
+    "greeting": [
+      "Phillip,",
+      "Paula,"
+    ],
+    "closing": [
+      "Richard",
+      "Thank you,",
+      "Phillip"
+    ],
+    "patterns": [
+      "Below is the issues & to do list as we go forward with documenting the requirements...",
+      "Please plan to attend the below Meeting:"
+    ],
+    "keywords": [
+      "requirements",
+      "project",
+      "meeting",
+      "issues",
+      "to do list",
+      "focus",
+      "critical"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "Quick responses or informal communication, often on mobile or in less formal settings.",
+    "tone": "brief and straightforward",
+    "greeting": [
+      "Dave,",
+      "Tim,"
+    ],
+    "closing": [
+      "Phillip"
+    ],
+    "patterns": [
+      "35 million is fine",
+      "Here are the names of the west desk members by category."
+    ],
+    "keywords": [
+      "fine",
+      "sparse",
+      "active password"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "Professional communication regarding business projects and financial matters.",
+    "tone": "formal and direct",
+    "greeting": [
+      "Dear [Name]",
+      "[Name],"
+    ],
+    "closing": [
+      "Sincerely,",
+      "Regards,"
+    ],
+    "patterns": [
+      "If there are any other questions or information requirements, let me know.",
+      "Please contact me anytime I can assist you towards this goal."
+    ],
+    "keywords": [
+      "demographics",
+      "project",
+      "interest level",
+      "payment",
+      "manipulate",
+      "index",
+      "trades"
+    ],
+    "signature": "Phillip Allen"
+  },
+  {
+    "context": "Business communication regarding investment structures and real estate development",
+    "tone": "formal and informative",
+    "greeting": [
+      "Dear [Recipient's Name]",
+      "Hello [Recipient's Name]"
+    ],
+    "closing": [
+      "Sincerely,",
+      "Best regards,"
+    ],
+    "patterns": [
+      "Detailed explanations of financial structures and processes",
+      "Use of bullet points or numbered lists for clarity"
+    ],
+    "keywords": [
+      "investment",
+      "construction loans",
+      "limited partnership",
+      "disbursements",
+      "equity",
+      "fiscals"
+    ],
+    "signature": "George Richards\nPresident, Creekside Builders, LLC"
+  },
+  {
+    "context": "Professional communication regarding investment structures and real estate development with clients and partners.",
+    "tone": "formal and informative",
+    "greeting": [
+      "Dear [Recipient's Name]",
+      "Hello [Recipient's Name]"
+    ],
+    "closing": [
+      "Sincerely,",
+      "Best regards,"
+    ],
+    "patterns": [
+      "Detailed explanations with bullet points or sections",
+      "Use of technical terminology related to real estate and finance"
+    ],
+    "keywords": [
+      "limited partnership",
+      "construction loans",
+      "investment",
+      "disbursements",
+      "equity",
+      "fiscals"
+    ],
+    "signature": "George Richards\nPresident, Creekside Builders, LLC"
+  },
+  {
+    "context": "Professional communication regarding meetings and project updates, primarily in a corporate setting.",
+    "tone": "formal and direct",
+    "greeting": [
+      "Reagan,",
+      "Hello,"
+    ],
+    "closing": [
+      "Phillip",
+      "Best regards,"
+    ],
+    "patterns": [
+      "Status update:",
+      "This meeting has been moved to...",
+      "I have changed the unit mix to include..."
     ],
     "keywords": [
       "meeting",
-      "scheduled",
+      "reschedule",
+      "confirmation",
       "update",
-      "call",
-      "discussions"
+      "description"
     ],
-    "signature": "Phillip K Allen/HOU/ECT"
+    "signature": "Phillip"
   },
   {
-    "context": "Financial analysis and investment communication",
-    "tone": "formal and analytical",
+    "context": "Professional communication with colleagues and clients regarding meetings, project updates, and legal matters.",
+    "tone": "formal and direct",
     "greeting": [
-      "Mac,",
-      "George,"
+      "Hi [Name],",
+      "Hello [Name],"
     ],
     "closing": [
       "Thank you,",
       "Best regards,"
     ],
     "patterns": [
-      "Here are my observations:",
-      "I am concerned about...",
-      "Can you pull...?",
-      "Direct questions to solicit specific information"
+      "I have scheduled...",
+      "Can you please relay...",
+      "Is there going to be..."
     ],
     "keywords": [
-      "gas prices",
-      "trades",
-      "market",
-      "index",
-      "valuation",
-      "stock",
-      "EPS",
-      "cash flow statement"
-    ],
-    "signature": "Phillip"
-  },
-  {
-    "context": "Technical and data requests with colleagues",
-    "tone": "direct and informative",
-    "greeting": [
-      "Hi",
-      "Cooper,"
-    ],
-    "closing": [
-      "Thank you.",
-      "Phillip"
-    ],
-    "patterns": [
-      "Can you give access to...",
-      "Here is a spreadsheet detailing...",
-      "Please cc the following distribution list with updates:",
-      "We need to receive..."
-    ],
-    "keywords": [
-      "access",
-      "login",
-      "static IP address",
-      "report",
-      "attached",
-      "support"
-    ],
-    "signature": "Phillip"
-  },
-  {
-    "context": "Friendly casual communication with friends or acquaintances",
-    "greeting": [
-      "Hey",
-      "Hi",
-      "What is up with Burnet?"
-    ],
-    "tone": "friendly and informal",
-    "closing": [
-      "Cheers",
-      "Take care,",
-      "Talk soon",
-      "way to go!!!"
-    ],
-    "patterns": [
-      "Short, conversational sentences",
-      "Use of exclamation points for enthusiasm",
-      "test successful",
-      "Happy B-day",
-      "takes the fun out of"
-    ],
-    "keywords": [
-      "fun",
-      "golf",
-      "birthday",
-      "kids",
-      "jet ski's",
-      "honest opinions"
-    ],
-    "signature": "Phillip"
-  },
-  {
-    "context": "Internal approvals and short work updates",
-    "tone": "concise and direct",
-    "greeting": [
-      "Lucy,",
-      "Paula,"
-    ],
-    "closing": [
-      "Phillip",
-      "Thanks,"
-    ],
-    "patterns": [
-      "The [subject] is starting to look better.",
-      "I will",
-      "Short, direct questions",
-      "Minimal context provided"
-    ],
-    "keywords": [
-      "starting to look better",
-      "approval",
-      "discuss",
-      "progress",
-      "let me know",
-      "fine"
-    ],
-    "signature": "Phillip"
-  },
-  {
-    "context": "Technical announcements and system updates",
-    "tone": "formal and informative",
-    "greeting": [
-      "Dear Team",
-      "Hello All"
-    ],
-    "closing": [
-      "Thank you",
-      "Regards"
-    ],
-    "patterns": [
-      "Please note that...",
-      "If you have questions or concerns..."
-    ],
-    "keywords": [
-      "urgent",
-      "migration",
-      "access",
-      "please",
-      "contact"
-    ],
-    "signature": "Outlook Migration Team"
-  },
-  {
-    "context": "Personal updates and family matters with friends",
-    "tone": "friendly and conversational",
-    "greeting": [
-      "Hi there,",
-      "Greg,"
-    ],
-    "closing": [
-      "Good luck on the bike ride.",
-      "Otherwise just work is going on here."
-    ],
-    "patterns": [
-      "I regret that it took so long to get back to you, but...",
-      "Fortunately, it looks as if she will be ok in the long run.",
-      "Casual updates about personal life"
-    ],
-    "keywords": [
-      "wife",
-      "family",
-      "kids",
-      "personal",
-      "studio",
-      "work"
-    ],
-    "signature": "Phillip"
-  },
-  {
-    "context": "Quick requests for information or assistance",
-    "tone": "concise and direct",
-    "greeting": [
-      "Hi",
-      "Just wanted to give you an update"
-    ],
-    "closing": [
-      "Thanks",
-      "Phillip"
-    ],
-    "patterns": [
-      "I wanted to touch base on...",
-      "I am still very interested.",
-      "Can you find out when [subject] last changed hands and for what price?"
-    ],
-    "keywords": [
-      "update",
-      "change",
-      "competitive",
-      "bid",
-      "asap",
+      "meeting",
+      "closing",
+      "project",
+      "questions",
       "information"
     ],
     "signature": "Phillip"
+  },
+  {
+    "context": "Casual communication with friends or acquaintances.",
+    "tone": "friendly",
+    "greeting": [
+      "Happy B-day.",
+      "Hey [Name],"
+    ],
+    "closing": [
+      "Talk soon,",
+      "Cheers,"
+    ],
+    "patterns": [
+      "Email me your phone #...",
+      "Call me when you can."
+    ],
+    "keywords": [
+      "birthday",
+      "call",
+      "email"
+    ],
+    "signature": "Keith"
+  },
+  {
+    "context": "Professional communication regarding real estate projects and business dealings.",
+    "tone": "Formal and informative, with a focus on details and clarity.",
+    "greeting": [
+      "George,",
+      "Jeff,",
+      "Lucy,",
+      "Brenda,"
+    ],
+    "closing": [
+      "Phillip Allen",
+      "Best regards,"
+    ],
+    "patterns": [
+      "Detailed explanations of project specifics and financials.",
+      "Direct requests for information or actions.",
+      "Use of bullet points or numbered lists for clarity."
+    ],
+    "keywords": [
+      "proforma",
+      "investment",
+      "site plan",
+      "approval",
+      "check",
+      "materials",
+      "labor"
+    ],
+    "signature": "Phillip Allen"
+  },
+  {
+    "context": "Professional communication with colleagues and clients regarding projects and real estate matters.",
+    "tone": "Formal and direct, with occasional personal touches.",
+    "greeting": [
+      "Hi Jeff,",
+      "Dear George,"
+    ],
+    "closing": [
+      "Best,",
+      "Phillip"
+    ],
+    "patterns": [
+      "Uses bullet points or lists for clarity.",
+      "Includes detailed explanations and data.",
+      "Directly addresses questions or requests."
+    ],
+    "keywords": [
+      "project",
+      "investment",
+      "property",
+      "schedule",
+      "commission"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "Business communication regarding real estate projects and financial analysis",
+    "tone": "formal and informative",
+    "greeting": [
+      "Dear Phillip,",
+      "Hello Phillip,"
+    ],
+    "closing": [
+      "Sincerely,",
+      "Best regards,"
+    ],
+    "patterns": [
+      "Detailed analysis of project metrics and financial projections",
+      "Use of bullet points or numbered lists for clarity",
+      "Inclusion of personal anecdotes to build rapport"
+    ],
+    "keywords": [
+      "proforma",
+      "investment",
+      "project",
+      "return",
+      "zoning",
+      "site plan",
+      "rental rate",
+      "cost data"
+    ],
+    "signature": "George W. Richards\nCreekside Builders, LLC"
+  },
+  {
+    "context": "Formal communication regarding professional programs and assessments, typically used in a corporate environment.",
+    "tone": "formal and urgent",
+    "greeting": [
+      "Dear [Name]",
+      "Hello [Name]"
+    ],
+    "closing": [
+      "Thank you for your participation.",
+      "Best regards,"
+    ],
+    "patterns": [
+      "It is important that you...",
+      "Your input is critical."
+    ],
+    "keywords": [
+      "IMMEDIATE ACTION REQUIRED",
+      "feedback",
+      "assessment",
+      "important",
+      "program"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "Casual communication with a colleague about real estate opportunities.",
+    "tone": "friendly and conversational",
+    "greeting": [
+      "Hi Larry,",
+      "Hello Larry,"
+    ],
+    "closing": [
+      "Call or email with your thoughts.",
+      "Looking forward to your response."
+    ],
+    "patterns": [
+      "Just a note to touch base on...",
+      "I stumbled across..."
+    ],
+    "keywords": [
+      "development opportunities",
+      "units",
+      "bid",
+      "interested"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "Internal corporate communication regarding IT migration processes",
+    "tone": "formal and informative",
+    "greeting": [
+      "Dear Team",
+      "Hello Everyone"
+    ],
+    "closing": [
+      "Thank you,",
+      "Best regards,"
+    ],
+    "patterns": [
+      "PLEASE NOTE: [information]",
+      "If you have questions or concerns, please contact [contact information]"
+    ],
+    "keywords": [
+      "urgent",
+      "please print",
+      "Outlook Web Access",
+      "migration",
+      "questions or concerns"
+    ],
+    "signature": "Outlook2000 Migration Team"
+  },
+  {
+    "context": "Professional communication, likely between colleagues or team members regarding scheduling",
+    "tone": "direct",
+    "greeting": [
+      "Ina,"
+    ],
+    "closing": [],
+    "patterns": [
+      "I scheduled a meeting with [Name] tomorrow at [Time]"
+    ],
+    "keywords": [
+      "scheduled",
+      "meeting",
+      "tomorrow"
+    ],
+    "signature": ""
+  },
+  {
+    "context": "Professional communication among colleagues in a corporate environment, often involving technical discussions or updates.",
+    "tone": "formal and informative",
+    "greeting": [
+      "Hello",
+      "Hi"
+    ],
+    "closing": [
+      "Best regards",
+      "Sincerely"
+    ],
+    "patterns": [
+      "Use of detailed explanations and technical jargon",
+      "Forwarding messages with minimal personal commentary"
+    ],
+    "keywords": [
+      "load growth",
+      "data centers",
+      "utility infrastructure",
+      "power",
+      "megawatts"
+    ],
+    "signature": "Jeff Richter"
+  },
+  {
+    "context": "Professional communication with colleagues and clients, often regarding administrative tasks or project updates.",
+    "tone": "Direct and concise, with a focus on clarity and efficiency.",
+    "greeting": [
+      "Hi [Name],",
+      "[Name],"
+    ],
+    "closing": [
+      "Thank you,",
+      "Phillip"
+    ],
+    "patterns": [
+      "Can you [action]?",
+      "We need [information] as soon as possible.",
+      "Here is [document or information]."
+    ],
+    "keywords": [
+      "resumes",
+      "information",
+      "team",
+      "access",
+      "spreadsheet"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "Internal communication regarding a migration process within a corporate environment",
+    "tone": "formal and informative",
+    "greeting": [
+      "Hello Team",
+      "Dear Colleagues"
+    ],
+    "closing": [
+      "Thank you.",
+      "Best regards,"
+    ],
+    "patterns": [
+      "Please take a few minutes to completely fill out the following survey.",
+      "It is necessary to gather individual user information prior to your date of migration."
+    ],
+    "keywords": [
+      "migration",
+      "survey",
+      "information",
+      "please",
+      "thank you"
+    ],
+    "signature": "Outlook2000 Migration Team"
+  },
+  {
+    "context": "Quick internal notes or reminders, possibly sent from a mobile device",
+    "tone": "brief and direct",
+    "greeting": [],
+    "closing": [],
+    "patterns": [
+      "Name-D",
+      "Name-P"
+    ],
+    "keywords": [
+      "D",
+      "P"
+    ],
+    "signature": ""
+  },
+  {
+    "context": "Professional communication, often related to work tasks or inquiries, typically with colleagues or business contacts.",
+    "tone": "formal and direct",
+    "greeting": [
+      "Mark,",
+      "Brenda"
+    ],
+    "closing": [
+      "Phillip"
+    ],
+    "patterns": [
+      "Here is a spreadsheet detailing...",
+      "Were you able to log in to..."
+    ],
+    "keywords": [
+      "spreadsheet",
+      "Socal",
+      "trades",
+      "address"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "Casual communication with friends or acquaintances, often inquiring about personal matters.",
+    "tone": "friendly and conversational",
+    "greeting": [
+      "Greg,",
+      "Keith"
+    ],
+    "closing": [
+      "Keith"
+    ],
+    "patterns": [
+      "Got your message.",
+      "What were you doing to your apartment?"
+    ],
+    "keywords": [
+      "good luck",
+      "bike ride",
+      "kids",
+      "work"
+    ],
+    "signature": "Keith"
   }
 ]
