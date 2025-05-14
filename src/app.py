@@ -14,6 +14,7 @@ from uuid import uuid4
 from agents.emailStyleExtractor import analyze_emails
 from agents.mainAgent import generate_email_reply
 # important !   at main folder  >PYTHONPATH=src uvicorn app:app --reload 
+from config import DATA_DIR, RAW_EMAILS_PATH, TRAIN_DATA_PATH, TEMPLATE_DIR, LOG_DIR
 
 load_dotenv()
 
@@ -106,20 +107,10 @@ async def callback(code: str):
 async def menu(session_id: str = Cookie(default=None)):
     if not session_id or not get_token(session_id):
         return RedirectResponse("/")
-
-    html_content = """
-    <html>
-        <body>
-            <h2>menu</h2>
-            <ul>
-                <li><a href="/email/10">📥 check original mail</a></li>
-                
-                <li><a href="/send/10">📤 check send mail</a></li>
-                <li><a href="/styleExtractor/10">📊 analyze email style</a></li>
-            </ul>
-        </body>
-    </html>
-    """
+    
+    html_path = os.path.join(TEMPLATE_DIR,  "menu.html")
+    with open(html_path, "r", encoding="utf-8") as f:  
+        html_content = f.read()
     return Response(content=html_content, media_type="text/html")
 
 @app.get("/email/{num}")
@@ -206,6 +197,7 @@ async def reply_email(
     except requests.HTTPError as e:
         error_detail = e.response.json().get("error", {}).get("message", str(e))
         raise HTTPException(status_code=e.response.status_code, detail=error_detail)
+    print("emails:", emails)
     
     reply_email = await generate_email_reply(
         sender_email=emails[0]["from"]["emailAddress"]["address"],
