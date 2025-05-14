@@ -91,7 +91,7 @@ from semantic_kernel.functions import KernelArguments
 from semantic_kernel.connectors.ai.prompt_execution_settings import PromptExecutionSettings
 from openai import AsyncOpenAI
 
-from utils_email import get_email_summary_text
+from agents.utils.utils_email import get_email_summary_text
 
 # Load environment variables
 print("Loading environment...")

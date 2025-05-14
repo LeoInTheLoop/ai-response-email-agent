@@ -1,7 +1,7 @@
 import json
 from semantic_kernel.contents import ChatHistory
 from agents.plugins.email_style_plugin import EmailStylePlugin
-from agents.create_kernel_and_agent import create_kernel, add_chat_service, create_agent
+from agents.utils.create_kernel_and_agent import create_kernel, add_chat_service, create_agent
 
 # chain
 # emailanaly agent  ，get email category and return tone from style plugin

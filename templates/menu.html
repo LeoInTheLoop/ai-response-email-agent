@@ -1,13 +1,29 @@
 <!-- templates/
   -->
 <html>
-    <body>
-        <h2>menu</h2>
-        <ul>
-            <li><a href="/email/10">📥 check original mail</a></li>
-            <li><a href="/send/10">📤 check send mail</a></li>
-            <li><a href="/styleExtractor/10">📊 analyze email style</a></li>
-            <li><a href="/reply">📥 reply</a></li>
-        </ul>
-    </body>
+  <body>
+    <h2>menu</h2>
+    <ul>
+        <li><a href="/projectinfo">project Extractor</a></li>
+      <li><a href="/email/10">📥 check original mail</a></li>
+      <li><a href="/send/10">📤 check send mail</a></li>
+      <li><a href="/styleExtractor/10">📊 analyze email style</a></li>
+      <li><a href="/reply">📥 reply</a></li>
+      <input
+        type="text"
+        id="styleInput"
+        placeholder="Enter style name..."
+        onkeypress="handleStyleInput(event)"
+      />
+    </ul>
+  </body>
+
+  <script>
+    function handleStyleInput(e) {
+      if (e.key === "Enter") {
+        const styleName = document.getElementById("styleInput").value;
+        window.location.href = `/chooseStyle/${encodeURIComponent(styleName)}`;
+      }
+    }
+  </script>
 </html>

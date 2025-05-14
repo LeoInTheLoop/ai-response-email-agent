@@ -2,8 +2,8 @@
  {
  "context": "Professional communication within a corporate environment, often involving requests for information or updates.",
  "tone": "Direct and concise",
- "actor": "Colleagues / Managers",
- "intent": "Request for information / Coordination",
+ "actor": "Colleague / Manager",
+ "intent": "Request / Coordination / Information sharing",
  "greeting": [
  "Hi [Name],",
  "[Name],"
@@ -14,14 +14,16 @@
  ],
  "patterns": [
  "Can you [action]?",
- "Here is [information]."
+ "Here is [information].",
+ "Please provide [details]."
  ],
  "keywords": [
  "resumes",
  "information",
+ "details",
  "spreadsheet",
- "performance reviews",
- "access"
+ "team",
+ "assistance"
  ],
  "signature": "Phillip"
  }

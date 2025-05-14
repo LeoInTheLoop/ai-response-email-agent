@@ -13,9 +13,9 @@
  "Best regards,"
  ],
  "patterns": [
- "What is the status of...",
+ "What is up with...",
  "I need to see...",
- "Please provide..."
+ "Here are my questions on..."
  ],
  "keywords": [
  "investment",
@@ -23,7 +23,7 @@
  "approval",
  "site plan",
  "questions",
- "details"
+ "concerns"
  ],
  "signature": "Phillip"
  }

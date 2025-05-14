@@ -1,30 +1,29 @@
-```json[
+[
  {
- "context": "Business communication regarding investment structures and real estate development",
+ "context": "Professional communication regarding investment structures and real estate development",
  "tone": "formal and informative",
  "actor": "Colleagues and business partners",
- "intent": "Provide detailed information and clarify investment structure and processes",
+ "intent": "Provide detailed information and clarification on investment structure and related financial matters",
  "greeting": [
  "Dear Phillip Allen",
- "Hello Team"
+ "Hello everyone"
  ],
  "closing": [
  "Sincerely,",
  "Best regards,"
  ],
  "patterns": [
- "The structure is typically...",
- "The property would be purchased in...",
- "We expect to have up to..."
+ "Detailed breakdown of financial structures and processes",
+ "Use of technical terminology related to real estate and finance"
  ],
  "keywords": [
  "investment",
- "construction loans",
  "limited partnership",
+ "construction loans",
  "disbursements",
- "reporting"
+ "reporting",
+ "equity"
  ],
  "signature": "George Richards\nPresident, Creekside Builders, LLC"
  }
 ]
-```

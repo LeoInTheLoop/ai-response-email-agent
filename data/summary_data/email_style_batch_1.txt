@@ -1,57 +1,30 @@
 ```json[
  {
- "context": "Professional communication, such as job applications, project proposals, or academic inquiries.",
- "tone": "Formal and informative, with a touch of enthusiasm.",
- "actor": "Clients, hiring teams, colleagues, or academic staff.",
- "intent": "To propose ideas, apply for positions, request information, or follow up on inquiries.",
+ "context": "Professional communication with colleagues and clients regarding business matters, scheduling, and project updates.",
+ "tone": "Formal and direct, with occasional friendly suggestions.",
+ "actor": "Colleagues and clients.",
+ "intent": "Coordination, requests for information, and providing updates.",
  "greeting": [
- "Hi Mr. Tagesson",
- "Dear Hiring Team at Fantasma",
- "Hi Martin"
+ "Hi Randy,",
+ "Mr. Buckner,"
  ],
  "closing": [
- "Looking forward to your thoughts!",
- "Best regards",
- "Thanks a lot in advance!"
+ "Thank you for your help",
+ "Phillip Allen"
  ],
  "patterns": [
- "What if your [subject] didn’t just [action]—but [new action]?",
- "I’m excited to apply for [position].",
- "I’ve attached my résumé and would be thrilled to discuss..."
+ "I would suggest...",
+ "Can you send me...",
+ "Let's shoot for..."
  ],
  "keywords": [
- "data-driven decisions",
- "collaboration",
- "excited",
- "application",
- "project"
+ "forecast",
+ "schedule",
+ "business meetings",
+ "updates",
+ "suggestion"
  ],
- "signature": "Lingyu Kong or Leo Kong"
- },
- {
- "context": "Casual communication with peers, especially in collaborative or informal settings.",
- "tone": "Friendly and approachable, with a hint of humor.",
- "actor": "Friends or team members.",
- "intent": "To coordinate activities, provide updates, or express enthusiasm.",
- "greeting": [
- "Thanks for reaching out",
- "Hi Eric"
- ],
- "closing": [
- "Looking forward to teaming up!",
- "Let’s win this!"
- ],
- "patterns": [
- "Just a heads-up: [information].",
- "We’re not aiming to win, but we’ll do our best..."
- ],
- "keywords": [
- "team",
- "hackathon",
- "excited",
- "heads-up"
- ],
- "signature": "Lionyu"
+ "signature": "Phillip Allen"
  }
 ]
 ```

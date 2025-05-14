@@ -1,20 +1,21 @@
 ```json[
  {
- "context": "Business communication regarding real estate projects and financial analysis",
+ "context": "Professional communication regarding real estate projects and financial analysis",
  "tone": "formal and informative",
- "actor": "Client / Colleague",
- "intent": "Provide detailed project analysis and updates, request information, and coordinate actions",
+ "actor": "Clients and colleagues",
+ "intent": "Provide detailed project information and facilitate investment discussions",
  "greeting": [
  "Dear [Name]",
  "Hi [Name]"
  ],
  "closing": [
- "Sincerely,",
- "Best regards,"
+ "Best regards,",
+ "Sincerely,"
  ],
  "patterns": [
- "I will send you a package on the property...",
- "Please get back to me as soon as your schedule permits..."
+ "I have estimated...",
+ "This analysis shows...",
+ "As we discussed..."
  ],
  "keywords": [
  "proforma",
@@ -22,9 +23,52 @@
  "project",
  "return",
  "site plan",
- "commission"
+ "zoning"
  ],
  "signature": "George W. Richards\nCreekside Builders, LLC"
+ },
+ {
+ "context": "Casual communication with colleagues or friends",
+ "tone": "concise and direct",
+ "actor": "Colleagues",
+ "intent": "Coordinate activities and request information",
+ "greeting": [
+ "Hi Jeff,"
+ ],
+ "closing": [
+ "Phillip"
+ ],
+ "patterns": [
+ "I will let you know...",
+ "Can you find out..."
+ ],
+ "keywords": [
+ "drive by",
+ "let you know",
+ "find out"
+ ],
+ "signature": "Phillip"
+ },
+ {
+ "context": "Technical discussions regarding market data",
+ "tone": "technical and analytical",
+ "actor": "Colleagues",
+ "intent": "Discuss market data and analysis",
+ "greeting": [
+ "Hi [Name]"
+ ],
+ "closing": [],
+ "patterns": [
+ "why is...",
+ "What about..."
+ ],
+ "keywords": [
+ "basis",
+ "correlation",
+ "mapped",
+ "selling"
+ ],
+ "signature": ""
  }
 ]
 ```

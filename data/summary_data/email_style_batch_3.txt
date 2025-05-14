@@ -3,7 +3,7 @@
  "context": "Professional communication regarding market analysis and investment structures",
  "tone": "formal and analytical",
  "actor": "Colleague / Client",
- "intent": "Provide analysis and request assistance",
+ "intent": "Provide analysis and seek clarification",
  "greeting": [
  "Liane,",
  "Dear [Name],"
@@ -19,12 +19,38 @@
  "keywords": [
  "index",
  "trades",
- "market prices",
  "investment",
  "loans",
- "construction"
+ "construction",
+ "partnership"
  ],
  "signature": "Phillip Allen"
+ },
+ {
+ "context": "Forwarding detailed information about investment structures",
+ "tone": "informative and detailed",
+ "actor": "Colleague / Client",
+ "intent": "Explain investment structure and financial details",
+ "greeting": [
+ "Dear [Name],",
+ "Hello,"
+ ],
+ "closing": [
+ "Sincerely,",
+ "Best regards,"
+ ],
+ "patterns": [
+ "Typically the structure is a limited partnership with a corporate (or LLC) general partner.",
+ "We are more than willing to provide reports to track expenses vs. plan."
+ ],
+ "keywords": [
+ "limited partnership",
+ "loans",
+ "investment",
+ "construction loans",
+ "disbursements"
+ ],
+ "signature": "George Richards\nPresident, Creekside Builders, LLC"
  }
 ]
 ```

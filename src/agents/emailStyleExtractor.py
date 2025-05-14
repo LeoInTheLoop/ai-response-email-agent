@@ -6,13 +6,19 @@ import pandas as pd
 from dotenv import load_dotenv
 
 from semantic_kernel.kernel import Kernel
-from semantic_kernel.connectors.ai.open_ai import OpenAIChatCompletion
 from semantic_kernel.agents import ChatCompletionAgent
 from semantic_kernel.contents import ChatHistory
 from semantic_kernel.functions import KernelArguments
 from semantic_kernel.connectors.ai.prompt_execution_settings import PromptExecutionSettings
-from openai import AsyncOpenAI
 
+# Import reusable functions
+from agents.utils.create_kernel_and_agent import (
+    create_kernel,
+    add_chat_service,
+    create_agent,
+    DEFAULT_AI_MODEL,
+    DEFAULT_PROMPT_SETTINGS
+)
 
 ###############################################################################
 # ------------------------------  CONSTANTS  -------------------------------- #
@@ -23,8 +29,6 @@ print("Loading environment...")
 load_dotenv()
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 assert GITHUB_TOKEN, "Please set your GITHUB_TOKEN environment variable"
-
-AI_MODEL = "gpt-4o-mini"
 
 # Define model token limits
 MODEL_TOKEN_LIMITS = {
@@ -39,12 +43,6 @@ data_dir = os.path.normpath(os.path.join(base_dir, "../../data/summary_data"))
 ###############################################################################
 # -----------------------  JSON OUTPUT TEMPLATE  ---------------------------- #
 ###############################################################################
-# Initialize JSON format template with a serializable placeholder
-# maybe add
-#   "category": "Colleagues",
-#   "subcategory": "Technical requests",
-#   "familiarity": "familiar",
-
 extract_format = [
     {
         "context": "describe the typical situation where this style is used",
@@ -130,29 +128,6 @@ def df_to_text(df: pd.DataFrame) -> str:
         lines.append("")  # blank line for spacing
     return "\n".join(lines)
 
-
-# def estimate_token_count(text: str) -> int:
-#     """Roughly estimate token count (≈ 4 chars per token for English)."""
-#     return len(text) // 4
-
-
-# def optimal_batch_size(df: pd.DataFrame, model="gpt-4o-mini", ratio=0.5) -> int:
-#     """
-#     Decide how many emails to feed per request so that prompt + completion
-#     stays within model context (80 % by default).
-#     """
-#     limit = MODEL_TOKEN_LIMITS.get(model, 8192)
-#     target_tokens = int(limit * ratio)               # leave 20 % margin
-#     sample = df.sample(min(10, len(df)))
-#     avg_tok = estimate_token_count(df_to_text(sample)) / len(sample)
-#     return max(1, min(20, int(target_tokens / avg_tok)))
-
-
-# def batch_generator(df: pd.DataFrame, size: int):
-#     """Yield DataFrame slices of length `size`."""
-#     for start in range(0, len(df), size):
-#         yield df.iloc[start:start + size]
-
 import tiktoken
 
 enc = tiktoken.encoding_for_model("gpt-4o-mini")
@@ -169,35 +144,19 @@ def dynamic_batch_generator(df: pd.DataFrame, max_tokens: int = 8000, buffer_tok
         email_text = f"Subject: {subj}\nBody:\n{body}\n"
         email_tokens = count_tokens(email_text)
 
-        # ✅ 提前判断当前这封邮件是否会超限
         if batch_tokens + email_tokens > max_tokens - buffer_tokens:
             yield pd.DataFrame(batch)
             batch, batch_tokens = [], 0
 
-        # ✅ 不论是否换 batch，当前邮件都必须被处理
         batch.append(row.to_dict())
         batch_tokens += email_tokens
 
     if batch:
         yield pd.DataFrame(batch)
+
 ###############################################################################
 # -----------------------  SEMANTIC KERNEL HELPERS  ------------------------- #
 ###############################################################################
-def create_kernel() -> Kernel:
-    """Create a Semantic-Kernel instance with an AsyncOpenAI chat backend."""
-    client = AsyncOpenAI(
-        api_key=GITHUB_TOKEN,
-        base_url="https://models.inference.ai.azure.com/"
-    )
-    kernel = Kernel()
-    kernel.add_service(OpenAIChatCompletion(
-        ai_model_id=AI_MODEL,
-        async_client=client,
-        service_id="github-agent"
-    ))
-    return kernel
-
-
 def build_prompt(batch_text: str) -> str:
     """Inject email block + format JSON into the system prompt."""
     return INSTRUCTIONS_BASE.format(
@@ -210,12 +169,14 @@ async def call_model(kernel: Kernel, prompt: str, user_input: str) -> str | None
     """
     Stream the response from the model and return the full concatenated string.
     """
-    agent = ChatCompletionAgent(
+    agent = create_agent(
         kernel=kernel,
-        name="ExtractAgent",
         instructions=prompt,
-        arguments=KernelArguments(settings=PROMPT_SETTING)
+        service_id="github-agent",
+        agent_name="ExtractAgent",
+        settings=PROMPT_SETTING
     )
+    
     history = ChatHistory()
     history.add_user_message(user_input)
 
@@ -279,17 +240,14 @@ async def analyze_emails(
     batch_size: int | None = None
 ):
     """
-    1) Figure out batch size,
-    2) For each batch: build prompt → call model → parse JSON,
-    3) Merge all style objects and write to disk.
+    1) For each batch: build prompt → call model → parse JSON,
+    2) Merge all style objects and write to disk.
     """
     print("Starting analyze_emails()")
 
-    # if batch_size is None:
-    #     batch_size = optimal_batch_size(df)
-    # print(f"Using batch size: {batch_size}")
-
     kernel = create_kernel()
+    add_chat_service(kernel, service_id="github-agent")
+    
     all_style_batches: list[list[dict]] = []
 
     for idx, batch_df in enumerate(dynamic_batch_generator(df,7000), start=1):
