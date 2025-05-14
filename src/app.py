@@ -181,7 +181,7 @@ async def style_extractor(
 @app.get("/reply/")  #/reply/{email_id}
 # todo
 async def reply_email(
-    email_id: str,
+    # email_id: str,
     session_id: str = Cookie(default=None)
 ):
     """Receive email list from inbox folder"""

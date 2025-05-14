@@ -3,6 +3,17 @@ from semantic_kernel.contents import ChatHistory
 from agents.plugins.email_style_plugin import EmailStylePlugin
 from agents.create_kernel_and_agent import create_kernel, add_chat_service, create_agent
 
+# chain
+# emailanaly agent  ，get email category and return tone from style plugin
+#         "context": "describe the typical situation where this style is used",
+#         "tone": "summarize the tone, e.g., formal / friendly / direct / humorous",
+#         "actor": "who the email is addressed to, e.g., Client / Manager / Colleague / Friend",
+#         "intent": "what the email is trying to achieve, e.g., Technical support / Coordination / Request / Follow-up",
+
+# replyanget  use emailanaly already get tone from style plugin 
+#  reply
+
+
 AI_INSTRUCTIONS = (
     "Generate an email reply for the user. Adapt tone and style based on the input context. "
     "Use available tools like emailstyle.get_email_style_summary if needed."

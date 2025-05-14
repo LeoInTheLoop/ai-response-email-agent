@@ -1,6 +1,6 @@
 import json
 from semantic_kernel.functions import kernel_function
-from agents.summary_helper import SummaryDataHelper
+from agents.plugins.summary_helper import SummaryDataHelper
 
 summary_helper = SummaryDataHelper("data/summary_data")
 
