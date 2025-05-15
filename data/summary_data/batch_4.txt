@@ -1,0 +1,42 @@
+```json[
+ {
+ "context": "Professional communication regarding investment structures and project updates",
+ "tone": [
+ "formal",
+ "informative",
+ "direct"
+ ],
+ "actor": [
+ "Client",
+ "Colleague",
+ "Investor"
+ ],
+ "intent": [
+ "Provide detailed information",
+ "Request for updates",
+ "Coordinate meetings"
+ ],
+ "greeting": [
+ "Dear [Name]",
+ "Hello [Name]"
+ ],
+ "closing": [
+ "Sincerely,",
+ "Best regards,"
+ ],
+ "patterns": [
+ "The structure is...",
+ "We expect to have...",
+ "I would like to use..."
+ ],
+ "keywords": [
+ "investment",
+ "construction",
+ "loans",
+ "partnership",
+ "updates"
+ ],
+ "signature": "Phillip K Allen"
+ }
+]
+```

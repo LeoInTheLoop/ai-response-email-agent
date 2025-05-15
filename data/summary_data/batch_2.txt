@@ -1,0 +1,40 @@
+```json[
+ {
+ "context": "Professional communication within a corporate environment, often involving meetings, project updates, or requests for assistance.",
+ "tone": [
+ "formal",
+ "direct"
+ ],
+ "actor": [
+ "Colleague",
+ "Manager",
+ "Client"
+ ],
+ "intent": [
+ "Coordination",
+ "Request",
+ "Follow-up"
+ ],
+ "greeting": [
+ "Hi,",
+ "Dear [Name],"
+ ],
+ "closing": [
+ "Thank you,",
+ "Sincerely,"
+ ],
+ "patterns": [
+ "Please let me know if you have any questions.",
+ "If you have any conflicts, please feel free to call me."
+ ],
+ "keywords": [
+ "meeting",
+ "please",
+ "let me know",
+ "thank you",
+ "concerned"
+ ],
+ "signature": "Phillip Allen"
+ }
+]
+```

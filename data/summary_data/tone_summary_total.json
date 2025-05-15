@@ -1,366 +1,117 @@
 [
   {
-    "context": "Professional communication with colleagues and clients regarding business matters, scheduling, and project updates.",
-    "tone": "Formal and direct, with occasional friendly suggestions.",
-    "actor": "Colleagues and clients.",
-    "intent": "Coordination, requests for information, and providing updates.",
+    "context": "Professional communication within a corporate environment, often involving meetings, project updates, or requests for assistance.",
+    "tone": [
+      "formal",
+      "direct"
+    ],
+    "actor": [
+      "Colleague",
+      "Manager",
+      "Client"
+    ],
+    "intent": [
+      "Coordination",
+      "Request",
+      "Follow-up"
+    ],
     "greeting": [
-      "Hi Randy,",
-      "Mr. Buckner,"
-    ],
-    "closing": [
-      "Thank you for your help",
-      "Phillip Allen"
-    ],
-    "patterns": [
-      "I would suggest...",
-      "Can you send me...",
-      "Let's shoot for..."
-    ],
-    "keywords": [
-      "forecast",
-      "schedule",
-      "business meetings",
-      "updates",
-      "suggestion"
-    ],
-    "signature": "Phillip Allen"
-  },
-  {
-    "context": "Professional communication with colleagues and clients regarding project updates, meeting invitations, and operational issues.",
-    "tone": "Formal and direct",
-    "actor": "Colleagues and clients",
-    "intent": "Coordination, information sharing, and requests for action",
-    "greeting": [
-      "Phillip,",
-      "Tim,"
-    ],
-    "closing": [
-      "Thank you,",
-      "Sincerely,"
-    ],
-    "patterns": [
-      "I believe there has been good communication between the teams, but now we need to have focus on the objectives we set out to solve.",
-      "Please let me know your interest level in the Westgate project."
-    ],
-    "keywords": [
-      "requirements",
-      "project plan",
-      "meeting",
-      "issues",
-      "concerns"
-    ],
-    "signature": "Phillip"
-  },
-  {
-    "context": "Professional communication regarding market analysis and investment structures",
-    "tone": "formal and analytical",
-    "actor": "Colleague / Client",
-    "intent": "Provide analysis and seek clarification",
-    "greeting": [
-      "Liane,",
+      "Hi,",
       "Dear [Name],"
     ],
     "closing": [
-      "Sincerely,",
-      "Best regards,"
+      "Thank you,",
+      "Sincerely,"
     ],
     "patterns": [
-      "As we discussed yesterday,",
-      "It is our desire to have reliable and accurate indices against which to conduct our physical and financial business."
+      "Please let me know if you have any questions.",
+      "If you have any conflicts, please feel free to call me."
     ],
     "keywords": [
-      "index",
-      "trades",
-      "investment",
-      "loans",
-      "construction",
-      "partnership"
+      "meeting",
+      "please",
+      "let me know",
+      "thank you",
+      "concerned"
     ],
     "signature": "Phillip Allen"
   },
   {
-    "context": "Forwarding detailed information about investment structures",
-    "tone": "informative and detailed",
-    "actor": "Colleague / Client",
-    "intent": "Explain investment structure and financial details",
-    "greeting": [
-      "Dear [Name],",
-      "Hello,"
-    ],
-    "closing": [
-      "Sincerely,",
-      "Best regards,"
-    ],
-    "patterns": [
-      "Typically the structure is a limited partnership with a corporate (or LLC) general partner.",
-      "We are more than willing to provide reports to track expenses vs. plan."
-    ],
-    "keywords": [
-      "limited partnership",
-      "loans",
-      "investment",
-      "construction loans",
-      "disbursements"
-    ],
-    "signature": "George Richards\nPresident, Creekside Builders, LLC"
-  },
-  {
     "context": "Professional communication regarding investment structures and real estate development",
-    "tone": "formal and informative",
-    "actor": "Colleagues and business partners",
-    "intent": "Provide detailed information and clarification on investment structure and related financial matters",
+    "tone": [
+      "formal",
+      "informative",
+      "direct"
+    ],
+    "actor": [
+      "Client",
+      "Colleague"
+    ],
+    "intent": [
+      "Provide detailed information",
+      "Clarify investment structure",
+      "Facilitate discussion"
+    ],
     "greeting": [
-      "Dear Phillip Allen",
-      "Hello everyone"
+      "Dear [Recipient's Name]",
+      "Hello [Recipient's Name]"
     ],
     "closing": [
       "Sincerely,",
       "Best regards,"
     ],
     "patterns": [
-      "Detailed breakdown of financial structures and processes",
-      "Use of technical terminology related to real estate and finance"
+      "Structured and detailed explanations",
+      "Use of bullet points or numbered lists for clarity",
+      "Technical jargon related to real estate and finance"
     ],
     "keywords": [
       "investment",
-      "limited partnership",
       "construction loans",
+      "limited partnership",
       "disbursements",
-      "reporting",
-      "equity"
+      "equity",
+      "fiscals"
     ],
     "signature": "George Richards\nPresident, Creekside Builders, LLC"
   },
   {
-    "context": "Professional communication regarding meetings, updates, and project coordination within a corporate environment.",
-    "tone": "formal and direct",
-    "actor": "Colleagues / Clients",
-    "intent": "Coordination / Updates / Requests",
-    "greeting": [
-      "Hi [Name],",
-      "Hello [Name],"
+    "context": "Professional communication regarding investment structures and project updates",
+    "tone": [
+      "formal",
+      "informative",
+      "direct"
     ],
-    "closing": [
-      "Thank you,",
-      "Best regards,"
+    "actor": [
+      "Client",
+      "Colleague",
+      "Investor"
     ],
-    "patterns": [
-      "I have [action] regarding [topic].",
-      "Please [action] at your earliest convenience.",
-      "This meeting has been scheduled for [date/time]."
+    "intent": [
+      "Provide detailed information",
+      "Request for updates",
+      "Coordinate meetings"
     ],
-    "keywords": [
-      "meeting",
-      "update",
-      "schedule",
-      "confirmation",
-      "reschedule",
-      "status",
-      "construction drawings",
-      "financing"
-    ],
-    "signature": "Phillip"
-  },
-  {
-    "context": "Professional communication regarding real estate projects and investments",
-    "tone": "formal and direct",
-    "actor": "Colleague / Client",
-    "intent": "Request for information / Coordination / Follow-up",
-    "greeting": [
-      "George,",
-      "Jeff,"
-    ],
-    "closing": [
-      "Phillip",
-      "Best regards,"
-    ],
-    "patterns": [
-      "What is up with...",
-      "I need to see...",
-      "Here are my questions on..."
-    ],
-    "keywords": [
-      "investment",
-      "project",
-      "approval",
-      "site plan",
-      "questions",
-      "concerns"
-    ],
-    "signature": "Phillip"
-  },
-  {
-    "context": "Professional communication regarding real estate projects and financial analysis",
-    "tone": "formal and informative",
-    "actor": "Clients and colleagues",
-    "intent": "Provide detailed project information and facilitate investment discussions",
     "greeting": [
       "Dear [Name]",
-      "Hi [Name]"
+      "Hello [Name]"
     ],
     "closing": [
-      "Best regards,",
-      "Sincerely,"
+      "Sincerely,",
+      "Best regards,"
     ],
     "patterns": [
-      "I have estimated...",
-      "This analysis shows...",
-      "As we discussed..."
+      "The structure is...",
+      "We expect to have...",
+      "I would like to use..."
     ],
     "keywords": [
-      "proforma",
       "investment",
-      "project",
-      "return",
-      "site plan",
-      "zoning"
+      "construction",
+      "loans",
+      "partnership",
+      "updates"
     ],
-    "signature": "George W. Richards\nCreekside Builders, LLC"
-  },
-  {
-    "context": "Casual communication with colleagues or friends",
-    "tone": "concise and direct",
-    "actor": "Colleagues",
-    "intent": "Coordinate activities and request information",
-    "greeting": [
-      "Hi Jeff,"
-    ],
-    "closing": [
-      "Phillip"
-    ],
-    "patterns": [
-      "I will let you know...",
-      "Can you find out..."
-    ],
-    "keywords": [
-      "drive by",
-      "let you know",
-      "find out"
-    ],
-    "signature": "Phillip"
-  },
-  {
-    "context": "Technical discussions regarding market data",
-    "tone": "technical and analytical",
-    "actor": "Colleagues",
-    "intent": "Discuss market data and analysis",
-    "greeting": [
-      "Hi [Name]"
-    ],
-    "closing": [],
-    "patterns": [
-      "why is...",
-      "What about..."
-    ],
-    "keywords": [
-      "basis",
-      "correlation",
-      "mapped",
-      "selling"
-    ],
-    "signature": ""
-  },
-  {
-    "context": "Professional communication, often related to project updates or requests for feedback.",
-    "tone": "formal and direct",
-    "actor": "Colleague / Client",
-    "intent": "Request for feedback / Coordination / Information sharing",
-    "greeting": [
-      "Dear [Name],",
-      "[Name],"
-    ],
-    "closing": [
-      "Thank you for your participation.",
-      "Call or email with your thoughts."
-    ],
-    "patterns": [
-      "It is important that you...",
-      "Please contact [Name] at [Phone Number] if you have any questions."
-    ],
-    "keywords": [
-      "important",
-      "feedback",
-      "please",
-      "schedule",
-      "action required"
-    ],
-    "signature": "Phillip"
-  },
-  {
-    "context": "Professional communication within a corporate environment, often involving requests for information or updates.",
-    "tone": "Direct and concise",
-    "actor": "Colleague / Manager",
-    "intent": "Request / Coordination / Information sharing",
-    "greeting": [
-      "Hi [Name],",
-      "[Name],"
-    ],
-    "closing": [
-      "Thanks,",
-      "Best,"
-    ],
-    "patterns": [
-      "Can you [action]?",
-      "Here is [information].",
-      "Please provide [details]."
-    ],
-    "keywords": [
-      "resumes",
-      "information",
-      "details",
-      "spreadsheet",
-      "team",
-      "assistance"
-    ],
-    "signature": "Phillip"
-  },
-  {
-    "context": "Professional communication with colleagues and clients regarding project updates, requests for information, and follow-ups.",
-    "tone": "formal and direct",
-    "actor": "Colleague / Client",
-    "intent": "Request for information / Coordination / Follow-up",
-    "greeting": [
-      "Hi Phillip.",
-      "Mark,"
-    ],
-    "closing": [
-      "Thank you for your assistance.",
-      "Phillip"
-    ],
-    "patterns": [
-      "We need each person's email address.",
-      "Here is a spreadsheet detailing our September Socal trades."
-    ],
-    "keywords": [
-      "information",
-      "spreadsheet",
-      "team",
-      "request",
-      "feedback"
-    ],
-    "signature": "Phillip"
-  },
-  {
-    "context": "Casual communication with friends or acquaintances, discussing personal matters.",
-    "tone": "friendly and informal",
-    "actor": "Friend",
-    "intent": "Casual conversation / Personal inquiry",
-    "greeting": [
-      "Greg,"
-    ],
-    "closing": [
-      "Keith"
-    ],
-    "patterns": [
-      "Got your message.",
-      "What were you doing to your apartment?"
-    ],
-    "keywords": [
-      "good luck",
-      "kids",
-      "work"
-    ],
-    "signature": "Keith"
+    "signature": "Phillip K Allen"
   }
 ]
