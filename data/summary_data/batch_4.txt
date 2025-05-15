@@ -1,21 +1,14 @@
 ```json[
  {
- "context": "Professional communication regarding investment structures and project updates",
- "tone": [
- "formal",
- "informative",
- "direct"
- ],
- "actor": [
- "Client",
- "Colleague",
- "Investor"
- ],
- "intent": [
- "Provide detailed information",
- "Request for updates",
- "Coordinate meetings"
- ],
+ "context": "When discussing complex investment structures and financial details with clients or partners.",
+ "tone": {
+ "Client": [
+ "Formal",
+ "Technical"
+ ]
+ },
+ "intent": "Clarify / Request Info",
+ "example": "Explaining investment structures",
  "greeting": [
  "Dear [Name]",
  "Hello [Name]"
@@ -25,18 +18,76 @@
  "Best regards,"
  ],
  "patterns": [
- "The structure is...",
- "We expect to have...",
- "I would like to use..."
+ "The structure is a limited partnership with a corporate (or LLC) general partner.",
+ "The initial investment is used for [specific purposes]."
  ],
  "keywords": [
+ "limited partnership",
+ "general partner",
+ "construction loans",
  "investment",
- "construction",
- "loans",
- "partnership",
- "updates"
+ "fiscal improvements"
  ],
- "signature": "Phillip K Allen"
+ "signature": "George Richards\nPresident, Creekside Builders, LLC"
+ },
+ {
+ "context": "When providing updates or coordinating meetings with colleagues.",
+ "tone": {
+ "Colleague": [
+ "Friendly",
+ "Direct"
+ ]
+ },
+ "intent": "Coordination",
+ "example": "Scheduling a team meeting",
+ "greeting": [
+ "Hi Team,",
+ "Hello Everyone,"
+ ],
+ "closing": [
+ "Thanks,",
+ "Best,"
+ ],
+ "patterns": [
+ "Please reschedule.",
+ "I have changed the unit mix to include some1 bedrooms."
+ ],
+ "keywords": [
+ "update",
+ "reschedule",
+ "meeting",
+ "confirmation"
+ ],
+ "signature": "Phillip"
+ },
+ {
+ "context": "When sending brief responses or updates, often in a more casual or urgent manner.",
+ "tone": {
+ "General": [
+ "Neutral",
+ "Polite"
+ ]
+ },
+ "intent": "General Purpose",
+ "example": "Sharing general updates or announcements",
+ "greeting": [
+ "Hi,",
+ "Hello,"
+ ],
+ "closing": [
+ "Regards,",
+ "Thank you,"
+ ],
+ "patterns": [
+ "Just wanted to give you an update.",
+ "Please reschedule."
+ ],
+ "keywords": [
+ "update",
+ "please",
+ "reschedule"
+ ],
+ "signature": "Phillip"
  }
 ]
 ```

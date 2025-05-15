@@ -1,57 +1,190 @@
 [
   {
-    "context": "Professional communication within a corporate environment, often involving meetings, project updates, or requests for assistance.",
-    "tone": [
-      "formal",
-      "direct"
-    ],
-    "actor": [
-      "Colleague",
-      "Manager",
-      "Client"
-    ],
-    "intent": [
-      "Coordination",
-      "Request",
-      "Follow-up"
-    ],
+    "context": "Used for internal communication with colleagues regarding project updates and meeting coordination.",
+    "tone": {
+      "Colleague": [
+        "Friendly",
+        "Direct"
+      ]
+    },
+    "intent": "Coordination",
+    "example": "Scheduling a team meeting",
     "greeting": [
-      "Hi,",
-      "Dear [Name],"
+      "Hi [Name],",
+      "Hello [Name],"
+    ],
+    "closing": [
+      "Thanks,",
+      "Best,"
+    ],
+    "patterns": [
+      "Let's shoot for [date/time].",
+      "How about [date/time]?"
+    ],
+    "keywords": [
+      "schedule",
+      "meeting",
+      "update"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "Used for formal requests or clarifications regarding business matters.",
+    "tone": {
+      "Client": [
+        "Formal",
+        "Technical"
+      ]
+    },
+    "intent": "Clarify / Request Info",
+    "example": "Explaining investment structures",
+    "greeting": [
+      "Dear [Name],",
+      "Hello [Name],"
+    ],
+    "closing": [
+      "Thank you for your assistance.",
+      "Looking forward to your response."
+    ],
+    "patterns": [
+      "Can you send me [specific information]?",
+      "Please provide details on [topic]."
+    ],
+    "keywords": [
+      "forecast",
+      "details",
+      "information"
+    ],
+    "signature": "Phillip Allen"
+  },
+  {
+    "context": "Used for informal communication with friends or casual acquaintances.",
+    "tone": {
+      "Friend": [
+        "Humorous",
+        "Casual"
+      ]
+    },
+    "intent": "Personal Request",
+    "example": "Asking for a favor informally",
+    "greeting": [
+      "Hey!",
+      "Hi there,"
+    ],
+    "closing": [
+      "Cheers!",
+      "Take care,"
+    ],
+    "patterns": [
+      "Just a quick note to say...",
+      "Thought I'd drop you a line about..."
+    ],
+    "keywords": [
+      "fun",
+      "trip",
+      "suggestion"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "In professional settings, particularly when coordinating meetings or sharing important information with colleagues.",
+    "tone": {
+      "Colleague": [
+        "Friendly",
+        "Direct"
+      ]
+    },
+    "intent": "Coordination",
+    "example": "Scheduling a team meeting",
+    "greeting": [
+      "Please plan to attend",
+      "If you have any questions/conflicts, please feel free to call me."
+    ],
+    "closing": [
+      "Thanks,",
+      "Best regards,"
+    ],
+    "patterns": [
+      "Please plan to attend the below Meeting:",
+      "If you have any questions/conflicts, please feel free to call me."
+    ],
+    "keywords": [
+      "meeting",
+      "please",
+      "questions",
+      "attend"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "When addressing issues or requests related to operational matters, often requiring quick responses.",
+    "tone": {
+      "Colleague": [
+        "Concise",
+        "Data-driven"
+      ]
+    },
+    "intent": "Provide Updates",
+    "example": "Requesting assistance with access issues.",
+    "greeting": [
+      "Tim,",
+      "Brenda,"
     ],
     "closing": [
       "Thank you,",
       "Sincerely,"
     ],
     "patterns": [
-      "Please let me know if you have any questions.",
-      "If you have any conflicts, please feel free to call me."
+      "Can you please make sure",
+      "Please use the second check as"
     ],
     "keywords": [
-      "meeting",
-      "please",
-      "let me know",
-      "thank you",
-      "concerned"
+      "problems",
+      "access",
+      "payment"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "In discussions involving financial data or market analysis, often requiring detailed explanations.",
+    "tone": {
+      "Client": [
+        "Formal",
+        "Technical"
+      ]
+    },
+    "intent": "Clarify / Request Info",
+    "example": "Explaining potential market manipulations.",
+    "greeting": [
+      "As we discussed yesterday,",
+      "I wanted to give you some additional points of reference."
+    ],
+    "closing": [
+      "Sincerely,",
+      "Please contact me anytime I can assist you towards this goal."
+    ],
+    "patterns": [
+      "I am concerned there may have been an attempt to manipulate",
+      "We have compiled a list of financial and physical trades executed"
+    ],
+    "keywords": [
+      "manipulate",
+      "trades",
+      "index",
+      "market"
     ],
     "signature": "Phillip Allen"
   },
   {
-    "context": "Professional communication regarding investment structures and real estate development",
-    "tone": [
-      "formal",
-      "informative",
-      "direct"
-    ],
-    "actor": [
-      "Client",
-      "Colleague"
-    ],
-    "intent": [
-      "Provide detailed information",
-      "Clarify investment structure",
-      "Facilitate discussion"
-    ],
+    "context": "When discussing investment structures and financial details with clients or stakeholders.",
+    "tone": {
+      "Client": [
+        "Formal",
+        "Technical"
+      ]
+    },
+    "intent": "Clarify / Request Info",
+    "example": "Explaining investment structures",
     "greeting": [
       "Dear [Recipient's Name]",
       "Hello [Recipient's Name]"
@@ -61,37 +194,29 @@
       "Best regards,"
     ],
     "patterns": [
-      "Structured and detailed explanations",
-      "Use of bullet points or numbered lists for clarity",
-      "Technical jargon related to real estate and finance"
+      "The structure is a limited partnership with a corporate (or LLC) general partner.",
+      "The initial investment is used for [specific purposes].",
+      "We expect to have up to [number] spec loans to start the project."
     ],
     "keywords": [
-      "investment",
-      "construction loans",
       "limited partnership",
-      "disbursements",
-      "equity",
-      "fiscals"
+      "general partner",
+      "construction loans",
+      "investment",
+      "disbursements"
     ],
     "signature": "George Richards\nPresident, Creekside Builders, LLC"
   },
   {
-    "context": "Professional communication regarding investment structures and project updates",
-    "tone": [
-      "formal",
-      "informative",
-      "direct"
-    ],
-    "actor": [
-      "Client",
-      "Colleague",
-      "Investor"
-    ],
-    "intent": [
-      "Provide detailed information",
-      "Request for updates",
-      "Coordinate meetings"
-    ],
+    "context": "When discussing complex investment structures and financial details with clients or partners.",
+    "tone": {
+      "Client": [
+        "Formal",
+        "Technical"
+      ]
+    },
+    "intent": "Clarify / Request Info",
+    "example": "Explaining investment structures",
     "greeting": [
       "Dear [Name]",
       "Hello [Name]"
@@ -101,17 +226,75 @@
       "Best regards,"
     ],
     "patterns": [
-      "The structure is...",
-      "We expect to have...",
-      "I would like to use..."
+      "The structure is a limited partnership with a corporate (or LLC) general partner.",
+      "The initial investment is used for [specific purposes]."
     ],
     "keywords": [
+      "limited partnership",
+      "general partner",
+      "construction loans",
       "investment",
-      "construction",
-      "loans",
-      "partnership",
-      "updates"
+      "fiscal improvements"
     ],
-    "signature": "Phillip K Allen"
+    "signature": "George Richards\nPresident, Creekside Builders, LLC"
+  },
+  {
+    "context": "When providing updates or coordinating meetings with colleagues.",
+    "tone": {
+      "Colleague": [
+        "Friendly",
+        "Direct"
+      ]
+    },
+    "intent": "Coordination",
+    "example": "Scheduling a team meeting",
+    "greeting": [
+      "Hi Team,",
+      "Hello Everyone,"
+    ],
+    "closing": [
+      "Thanks,",
+      "Best,"
+    ],
+    "patterns": [
+      "Please reschedule.",
+      "I have changed the unit mix to include some1 bedrooms."
+    ],
+    "keywords": [
+      "update",
+      "reschedule",
+      "meeting",
+      "confirmation"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "When sending brief responses or updates, often in a more casual or urgent manner.",
+    "tone": {
+      "General": [
+        "Neutral",
+        "Polite"
+      ]
+    },
+    "intent": "General Purpose",
+    "example": "Sharing general updates or announcements",
+    "greeting": [
+      "Hi,",
+      "Hello,"
+    ],
+    "closing": [
+      "Regards,",
+      "Thank you,"
+    ],
+    "patterns": [
+      "Just wanted to give you an update.",
+      "Please reschedule."
+    ],
+    "keywords": [
+      "update",
+      "please",
+      "reschedule"
+    ],
+    "signature": "Phillip"
   }
 ]

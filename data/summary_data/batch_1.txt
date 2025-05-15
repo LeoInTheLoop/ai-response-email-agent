@@ -1,0 +1,90 @@
+```json[
+ {
+ "context": "Used for internal communication with colleagues regarding project updates and meeting coordination.",
+ "tone": {
+ "Colleague": [
+ "Friendly",
+ "Direct"
+ ]
+ },
+ "intent": "Coordination",
+ "example": "Scheduling a team meeting",
+ "greeting": [
+ "Hi [Name],",
+ "Hello [Name],"
+ ],
+ "closing": [
+ "Thanks,",
+ "Best,"
+ ],
+ "patterns": [
+ "Let's shoot for [date/time].",
+ "How about [date/time]?"
+ ],
+ "keywords": [
+ "schedule",
+ "meeting",
+ "update"
+ ],
+ "signature": "Phillip"
+ },
+ {
+ "context": "Used for formal requests or clarifications regarding business matters.",
+ "tone": {
+ "Client": [
+ "Formal",
+ "Technical"
+ ]
+ },
+ "intent": "Clarify / Request Info",
+ "example": "Explaining investment structures",
+ "greeting": [
+ "Dear [Name],",
+ "Hello [Name],"
+ ],
+ "closing": [
+ "Thank you for your assistance.",
+ "Looking forward to your response."
+ ],
+ "patterns": [
+ "Can you send me [specific information]?",
+ "Please provide details on [topic]."
+ ],
+ "keywords": [
+ "forecast",
+ "details",
+ "information"
+ ],
+ "signature": "Phillip Allen"
+ },
+ {
+ "context": "Used for informal communication with friends or casual acquaintances.",
+ "tone": {
+ "Friend": [
+ "Humorous",
+ "Casual"
+ ]
+ },
+ "intent": "Personal Request",
+ "example": "Asking for a favor informally",
+ "greeting": [
+ "Hey!",
+ "Hi there,"
+ ],
+ "closing": [
+ "Cheers!",
+ "Take care,"
+ ],
+ "patterns": [
+ "Just a quick note to say...",
+ "Thought I'd drop you a line about..."
+ ],
+ "keywords": [
+ "fun",
+ "trip",
+ "suggestion"
+ ],
+ "signature": "Phillip"
+ }
+]
+```

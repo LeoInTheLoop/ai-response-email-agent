@@ -1,38 +1,90 @@
 ```json[
  {
- "context": "Professional communication within a corporate environment, often involving meetings, project updates, or requests for assistance.",
- "tone": [
- "formal",
- "direct"
- ],
- "actor": [
- "Colleague",
- "Manager",
- "Client"
- ],
- "intent": [
- "Coordination",
- "Request",
- "Follow-up"
- ],
+ "context": "In professional settings, particularly when coordinating meetings or sharing important information with colleagues.",
+ "tone": {
+ "Colleague": [
+ "Friendly",
+ "Direct"
+ ]
+ },
+ "intent": "Coordination",
+ "example": "Scheduling a team meeting",
  "greeting": [
- "Hi,",
- "Dear [Name],"
+ "Please plan to attend",
+ "If you have any questions/conflicts, please feel free to call me."
+ ],
+ "closing": [
+ "Thanks,",
+ "Best regards,"
+ ],
+ "patterns": [
+ "Please plan to attend the below Meeting:",
+ "If you have any questions/conflicts, please feel free to call me."
+ ],
+ "keywords": [
+ "meeting",
+ "please",
+ "questions",
+ "attend"
+ ],
+ "signature": "Phillip"
+ },
+ {
+ "context": "When addressing issues or requests related to operational matters, often requiring quick responses.",
+ "tone": {
+ "Colleague": [
+ "Concise",
+ "Data-driven"
+ ]
+ },
+ "intent": "Provide Updates",
+ "example": "Requesting assistance with access issues.",
+ "greeting": [
+ "Tim,",
+ "Brenda,"
  ],
  "closing": [
  "Thank you,",
  "Sincerely,"
  ],
  "patterns": [
- "Please let me know if you have any questions.",
- "If you have any conflicts, please feel free to call me."
+ "Can you please make sure",
+ "Please use the second check as"
  ],
  "keywords": [
- "meeting",
- "please",
- "let me know",
- "thank you",
- "concerned"
+ "problems",
+ "access",
+ "payment"
+ ],
+ "signature": "Phillip"
+ },
+ {
+ "context": "In discussions involving financial data or market analysis, often requiring detailed explanations.",
+ "tone": {
+ "Client": [
+ "Formal",
+ "Technical"
+ ]
+ },
+ "intent": "Clarify / Request Info",
+ "example": "Explaining potential market manipulations.",
+ "greeting": [
+ "As we discussed yesterday,",
+ "I wanted to give you some additional points of reference."
+ ],
+ "closing": [
+ "Sincerely,",
+ "Please contact me anytime I can assist you towards this goal."
+ ],
+ "patterns": [
+ "I am concerned there may have been an attempt to manipulate",
+ "We have compiled a list of financial and physical trades executed"
+ ],
+ "keywords": [
+ "manipulate",
+ "trades",
+ "index",
+ "market"
  ],
  "signature": "Phillip Allen"
  }

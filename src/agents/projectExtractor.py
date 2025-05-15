@@ -1,58 +1,58 @@
 # do it later
 # milestones.due
-[
-  {
-    "project": "AI Email Agent",
-    "description": "A smart email assistant that analyzes tone and generates replies.",
-    "status": "active",
-    "start_date": "2025-04-18",
-    "end_date": "2025-06-01",
-    "milestones": [
-      {
-        "name": "Tone analysis module",
-        "due": "2025-04-25",
-        "completed": true,
-        "contributors": ["Leo", "Chen"],
-        "notes": "Tested on 50 samples."
-      },
-      {
-        "name": "Reply generation agent",
-        "due": "2025-05-05",
-        "completed": true,
-        "contributors": ["Leo"],
-        "notes": "Integrated GPT-4o-mini with plugin calling."
-      },
-      {
-        "name": "Project extractor",
-        "due": "2025-05-15",
-        "completed": false,
-        "contributors": ["Leo", "Anna"],
-        "notes": "Currently extracting project + person info from emails."
-      }
-    ],
-    "members": [
-      {
-        "name": "Leo",
-        "role": "Lead developer",
-        "focus": ["backend", "agent logic"],
-        "achievements": ["Built reply generator", "Designed plugin system"]
-      },
-      {
-        "name": "Anna",
-        "role": "NLP engineer",
-        "focus": ["entity extraction", "summarization"],
-        "achievements": ["Email entity extraction pipeline"]
-      },
-      {
-        "name": "Chen",
-        "role": "UX/UI",
-        "focus": ["prompt interface", "frontend support"]
-      }
-    ],
-    "tools": ["GPT-4o", "Semantic Kernel", "FastAPI"],
-    "keywords": ["email", "tone", "project management", "agent"]
-  }
-]
+# [
+#   {
+#     "project": "AI Email Agent",
+#     "description": "A smart email assistant that analyzes tone and generates replies.",
+#     "status": "active",
+#     "start_date": "2025-04-18",
+#     "end_date": "2025-06-01",
+#     "milestones": [
+#       {
+#         "name": "Tone analysis module",
+#         "due": "2025-04-25",
+#         "completed": true,
+#         "contributors": ["Leo", "Chen"],
+#         "notes": "Tested on 50 samples."
+#       },
+#       {
+#         "name": "Reply generation agent",
+#         "due": "2025-05-05",
+#         "completed": true,
+#         "contributors": ["Leo"],
+#         "notes": "Integrated GPT-4o-mini with plugin calling."
+#       },
+#       {
+#         "name": "Project extractor",
+#         "due": "2025-05-15",
+#         "completed": false,
+#         "contributors": ["Leo", "Anna"],
+#         "notes": "Currently extracting project + person info from emails."
+#       }
+#     ],
+#     "members": [
+#       {
+#         "name": "Leo",
+#         "role": "Lead developer",
+#         "focus": ["backend", "agent logic"],
+#         "achievements": ["Built reply generator", "Designed plugin system"]
+#       },
+#       {
+#         "name": "Anna",
+#         "role": "NLP engineer",
+#         "focus": ["entity extraction", "summarization"],
+#         "achievements": ["Email entity extraction pipeline"]
+#       },
+#       {
+#         "name": "Chen",
+#         "role": "UX/UI",
+#         "focus": ["prompt interface", "frontend support"]
+#       }
+#     ],
+#     "tools": ["GPT-4o", "Semantic Kernel", "FastAPI"],
+#     "keywords": ["email", "tone", "project management", "agent"]
+#   }
+# ]
 
 
 # 🔁 索引设计建议
@@ -77,58 +77,87 @@
 
 
 import os
-
 import json
 import pandas as pd
 import asyncio
 from dotenv import load_dotenv
 
 from semantic_kernel.kernel import Kernel
-from semantic_kernel.connectors.ai.open_ai import OpenAIChatCompletion
-from semantic_kernel.agents import ChatCompletionAgent
-from semantic_kernel.contents import ChatHistory
-from semantic_kernel.functions import KernelArguments
 from semantic_kernel.connectors.ai.prompt_execution_settings import PromptExecutionSettings
-from openai import AsyncOpenAI
 
-from agents.utils.utils_email import get_email_summary_text
+from config import DATA_DIR, RAW_EMAILS_PATH, TRAIN_DATA_PATH, TEMPLATE_DIR, LOG_DIR
+
+# Import reusable functions and batch processor
+from agents.utils.create_kernel_and_agent import (
+    create_kernel,
+    add_chat_service,
+    DEFAULT_AI_MODEL
+)
+from agents.utils.JsonBatchProcessor import JsonBatchProcessor
 
 # Load environment variables
 print("Loading environment...")
 load_dotenv()
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 assert GITHUB_TOKEN, "Please set your GITHUB_TOKEN environment variable"
-AI_MODEL = "gpt-4o-mini"
 
-# JSON Template for project extraction
-project_extract_format = [
-  {
-    "project_name": "brief name for the project",
-    "description": "concise summary of the project",
-    "stakeholders": ["person1", "person2"],
-    "milestones": ["kickoff", "testing", "launch"],
-    "timeline": {
-      "start": "2025-05-01",
-      "end": "2025-06-15"
-    },
-    "related_emails": ["email_id1", "email_id2"]
-  }
+
+
+# Output template
+# Output template for project extractor
+extract_format = [
+    {
+        "project": "Project Name",
+        "description": "Short description of the project",
+        "status": "active / completed / paused / unknown",
+        "start_date": "YYYY-MM-DD or unknown",
+        "end_date": "YYYY-MM-DD or unknown",
+        "milestones": [
+            {
+                "name": "Milestone name",
+                "due": "YYYY-MM-DD or unknown",
+                "completed": True,
+                "contributors": ["Name1", "Name2"],
+                "notes": "Optional note or summary"
+            }
+        ],
+        "members": [
+            {
+                "name": "Member name",
+                "role": "e.g., Developer / Researcher / Manager",
+                "focus": ["Main focus areas"],
+                "achievements": ["Optional key contributions"]
+            }
+        ],
+        "keyword": ["words people use to refer to this project"],
+        "lastupdate": "YYYY-MM-DD"
+    }
 ]
 
-INSTRUCTIONS_PROJECT = """
-You are a project extraction assistant.
+INSTRUCTIONS_BASE = """
+You are a project information extractor.
 
-Given a group of emails, extract any projects discussed. For each project, output:
-- A short name for the project
-- A brief description (1–3 lines)
-- Stakeholders (email names mentioned or implied)
-- Milestones or deliverables mentioned
-- Approximate timeline (if dates mentioned)
-- Email identifiers or descriptions
+Given several emails, your task is to identify any ongoing or past projects mentioned in them. For each project, summarize the following:
 
-ONLY output a JSON array of project objects like this:
-{project_extract_format}
+- project name
+- description
+- current status (active / completed / paused / unknown)
+- start and end dates (if known)
+- milestones (name, due date, contributors, completion status, notes)
+- members (name, role, focus areas, notable achievements)
+- keywords people use to refer to this project
+- last update time you can infer from the emails
+
+Output the result as a JSON array. Only extract information that can be inferred directly from the email content — do not make up facts.
+
+Here are the emails:
+===
+{emails_block}
+===
+Format:
+{format_json}
 """
+
 
 PROMPT_SETTING = PromptExecutionSettings(
     temperature=0.2,
@@ -136,102 +165,113 @@ PROMPT_SETTING = PromptExecutionSettings(
     max_tokens=4096
 )
 
-print("Creating AsyncOpenAI client")
-client = AsyncOpenAI(
-    api_key=GITHUB_TOKEN,
-    base_url="https://models.inference.ai.azure.com/"
-)
-print("AsyncOpenAI client created")
+# Utilities
+def df_to_text(df: pd.DataFrame) -> str:
+    lines = []
+    for idx, row in df.iterrows():
+        subj = str(row.get("subject", "")).strip()
+        body = str(row.get("body", "")).strip()
+        lines.append(f"--- Email {len(lines) + 1} ---")
+        lines.append(f"Subject: {subj}")
+        lines.append("Body:")
+        lines.append(body)
+        lines.append("")
+    return "\n".join(lines)
 
-print("Initializing Kernel and chat service")
-kernel = Kernel()
-service_id = "github-project-agent"
-chat_service = OpenAIChatCompletion(
-    ai_model_id=AI_MODEL,
-    async_client=client,
-    service_id=service_id
-)
-kernel.add_service(chat_service)
+def format_row(row: dict) -> str:
+    subj = str(row.get("subject", "")).strip()
+    body = str(row.get("body", "")).strip()
+    return f"Subject: {subj}\nBody:\n{body}\n"
 
-def batch_email_generator(df, batch_size):
-    for start in range(0, len(df), batch_size):
-        yield df.iloc[start:start + batch_size]
+def format_batch(batch_df: pd.DataFrame) -> str:
+    batch_text = df_to_text(batch_df)
+    return INSTRUCTIONS_BASE.format(
+        emails_block=batch_text,
+        format_json=json.dumps(extract_format, ensure_ascii=False, indent=2)
+    )
 
-async def process_one_batch(agent, user_input):
-    chat_history = ChatHistory()
-    chat_history.add_user_message(user_input)
-    full_response = ""
-    try:
-        async for content in agent.invoke_stream(chat_history):
-            if hasattr(content, 'content') and content.content.strip():
-                full_response += content.content
-    except Exception as e:
-        print("Error during agent.invoke_stream:", e)
-        return None, str(e)
-    return full_response, None
+# Main logic
+async def analyze_emails(
+    df: pd.DataFrame,
+    user_email: str,
+    batch_size: int | None = None
+):
+    print("Starting analyze_emails()")
 
-async def extract_projects(df):
-    print("Starting extract_projects()")
-    BATCH_SIZE = 5
-    all_projects = []
+    kernel = create_kernel()
+    add_chat_service(kernel, service_id="github-agent")
 
-    for idx, batch_df in enumerate(batch_email_generator(df, BATCH_SIZE)):
-        print(f"\n---- Processing batch {idx+1} ----")
-        email_text = get_email_summary_text(batch_df)
-        print(f"Batch {idx+1}, text length: {len(email_text)}")
+    processor = JsonBatchProcessor(output_dir=DATA_DIR)
 
-        instruction = INSTRUCTIONS_PROJECT.format(
-            project_extract_format=json.dumps(project_extract_format, ensure_ascii=False, indent=2)
+    all_style_batches: list[list[dict]] = []
+
+    for idx, batch_df in enumerate(
+        processor.dynamic_batch_generator(df, ["subject", "body"], format_row), start=1
+    ):
+        print(f"\n---- Processing batch {idx} ----")
+
+        batch_text = df_to_text(batch_df)
+        prompt = format_batch(batch_df)
+
+        token_estimate = processor.count_tokens(prompt) + processor.count_tokens(batch_text)
+        print(f"Batch {idx} size: {len(batch_df)} emails, estimated tokens: {token_estimate}")
+        raw_response = ""
+        if token_estimate > 8000:
+            print(f"Batch {idx} exceeds max tokens ({8000}). half")
+            half_size = len(batch_df) // 2
+            batch_df1, batch_df = batch_df.iloc[:half_size], batch_df.iloc[half_size:]
+            batch_text1,batch_text = df_to_text(batch_df1), df_to_text(batch_df)
+            prompt1, prompt  = format_batch(batch_df1), format_batch(batch_df)
+            raw_response1 = await processor.call_model(
+                kernel,
+                prompt=prompt1,
+                user_input=batch_text1,
+                execution_settings=PROMPT_SETTING
+            )
+            raw_response += raw_response1 if raw_response1 else ""
+              
+
+        raw_response2 =  await processor.call_model(
+            kernel,
+            prompt=prompt,
+            user_input=batch_text,
+            execution_settings=PROMPT_SETTING
         )
-        agent = ChatCompletionAgent(
-            kernel=kernel,
-            name="ProjectExtractAgent",
-            instructions=instruction,
-            arguments=KernelArguments(settings=PROMPT_SETTING)
-        )
-
-        full_response, err = await process_one_batch(agent, email_text)
-        if not full_response:
-            print(f"Batch {idx+1}: Error or empty response:", err)
+        raw_response += raw_response2 if raw_response2 else ""
+        if not raw_response:
+            print(f"Batch {idx} returned no response.")
             continue
 
-        # Save raw output for inspection
-        with open(f"../../data/project_info/projects_batch_{idx+1}_raw.txt", "w", encoding="utf-8") as f:
-            f.write(full_response)
+        processor.save_raw_output(raw_response, idx)
 
-        try:
-            batch_json = json.loads(full_response.strip())
-            if not isinstance(batch_json, list):
-                batch_json = [batch_json]
-            print(f"Batch {idx+1}: JSON loaded with {len(batch_json)} projects")
-            all_projects.extend(batch_json)
-        except Exception as e:
-            print(f"Batch {idx+1}: Failed to parse JSON. Skipping. Exception: {e}")
+        styles = processor.extract_json_from_response(raw_response)
+        print(f"Batch {idx}: extracted {len(styles)} style(s)")
 
-    # Deduplicate by string hash
-    seen = set()
-    unique_projects = []
-    for proj in all_projects:
-        proj_str = json.dumps(proj, sort_keys=True)
-        if proj_str not in seen:
-            seen.add(proj_str)
-            unique_projects.append(proj)
+        if styles:
+            all_style_batches.append(styles)
 
-    if unique_projects:
-        with open("../../data/project_info/projects_summary_total.json", "w", encoding="utf-8") as f:
-            json.dump(unique_projects, f, ensure_ascii=False, indent=2)
-        print("Final project summary saved as projects_summary_total.json")
-    else:
-        print("No projects extracted.")
+    if not all_style_batches:
+        print("No styles extracted.")
+        return None
 
-# Entry point
+    merged_styles = processor.merge_batch_results(all_style_batches)
+
+    merged_path = os.path.join(DATA_DIR, "project_summary_total.json")
+    os.makedirs(os.path.dirname(merged_path), exist_ok=True)
+    with open(merged_path, "w", encoding="utf-8") as f:
+        json.dump(merged_styles, f, ensure_ascii=False, indent=2)
+    print(f"Final merged summary saved to {merged_path}")
+
+    return merged_styles
+
+# CLI test
 if __name__ == "__main__":
+    user_email = "phillip.allen@enron.com"
     MAX_EMAIL_PROCESS = 30
-    csv_path = "../../data/train_dataset/phillip_allen_emails.csv"
+    csv_path = TRAIN_DATA_PATH
 
     print("Loading CSV:", csv_path)
-    df = pd.read_csv(csv_path)
-    df = df.head(MAX_EMAIL_PROCESS)
+    df = pd.read_csv(csv_path).head(MAX_EMAIL_PROCESS)
     print("CSV loaded, shape:", df.shape)
 
-    asyncio.run(extract_projects(df))
+    asyncio.run(analyze_emails(df, user_email))
