@@ -18,9 +18,9 @@
  "Best regards,"
  ],
  "patterns": [
- "The structure is a limited partnership with a corporate (or LLC) general partner.",
- "The initial investment is used for [specific purposes].",
- "We expect to have up to [number] spec loans to start the project."
+ "The structure is a limited partnership with a corporate general partner.",
+ "Typically, the initial investment is used for [specific purposes].",
+ "We expect to have [number] spec loans to start the project."
  ],
  "keywords": [
  "limited partnership",

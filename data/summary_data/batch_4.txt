@@ -1,6 +1,6 @@
 ```json[
  {
- "context": "When discussing complex investment structures and financial details with clients or partners.",
+ "context": "When discussing investment structures and financial details with clients or stakeholders.",
  "tone": {
  "Client": [
  "Formal",
@@ -18,7 +18,7 @@
  "Best regards,"
  ],
  "patterns": [
- "The structure is a limited partnership with a corporate (or LLC) general partner.",
+ "The structure is a limited partnership with a corporate general partner.",
  "The initial investment is used for [specific purposes]."
  ],
  "keywords": [
@@ -31,7 +31,7 @@
  "signature": "George Richards\nPresident, Creekside Builders, LLC"
  },
  {
- "context": "When providing updates or coordinating meetings with colleagues.",
+ "context": "When providing updates or coordinating with colleagues.",
  "tone": {
  "Colleague": [
  "Friendly",
@@ -41,16 +41,16 @@
  "intent": "Coordination",
  "example": "Scheduling a team meeting",
  "greeting": [
- "Hi Team,",
- "Hello Everyone,"
+ "Hi team,",
+ "Hello everyone,"
  ],
  "closing": [
  "Thanks,",
  "Best,"
  ],
  "patterns": [
- "Please reschedule.",
- "I have changed the unit mix to include some1 bedrooms."
+ "Just wanted to give you an update.",
+ "Please reschedule."
  ],
  "keywords": [
  "update",
@@ -61,7 +61,7 @@
  "signature": "Phillip"
  },
  {
- "context": "When sending brief responses or updates, often in a more casual or urgent manner.",
+ "context": "When sending quick responses or updates, often in a more casual manner.",
  "tone": {
  "General": [
  "Neutral",
@@ -76,16 +76,17 @@
  ],
  "closing": [
  "Regards,",
- "Thank you,"
+ "Cheers,"
  ],
  "patterns": [
- "Just wanted to give you an update.",
- "Please reschedule."
+ "Please let me know if you have any questions.",
+ "I have changed the unit mix to include some1 bedrooms."
  ],
  "keywords": [
  "update",
- "please",
- "reschedule"
+ "changed",
+ "bid",
+ "competitive"
  ],
  "signature": "Phillip"
  }

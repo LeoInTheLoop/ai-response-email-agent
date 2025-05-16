@@ -1,35 +1,95 @@
 [
   {
-    "context": "Used for internal communication with colleagues regarding project updates and meeting coordination.",
+    "context": "Used in formal business communication, often for updates or requests.",
     "tone": {
-      "Colleague": [
-        "Friendly",
+      "Manager": [
+        "Formal",
         "Direct"
       ]
     },
-    "intent": "Coordination",
-    "example": "Scheduling a team meeting",
+    "intent": "Request Approval",
+    "example": "Asking for budget sign-off",
     "greeting": [
-      "Hi [Name],",
-      "Hello [Name],"
+      "Hi Randy,",
+      "Hello Greg,"
     ],
     "closing": [
-      "Thanks,",
-      "Best,"
+      "Thank you for your help",
+      "Best regards"
     ],
     "patterns": [
-      "Let's shoot for [date/time].",
-      "How about [date/time]?"
+      "Can you send me...",
+      "How about either..."
     ],
     "keywords": [
       "schedule",
-      "meeting",
-      "update"
+      "updates",
+      "salary",
+      "business meetings"
+    ],
+    "signature": "Phillip Allen"
+  },
+  {
+    "context": "Used in casual conversations with colleagues, often for brainstorming or informal discussions.",
+    "tone": {
+      "Colleague": [
+        "Casual",
+        "Collaborative"
+      ]
+    },
+    "intent": "Brainstorming",
+    "example": "Discussing project ideas",
+    "greeting": [
+      "Hey team,",
+      "Hi everyone,"
+    ],
+    "closing": [
+      "Let me know your thoughts!",
+      "Looking forward to hearing from you."
+    ],
+    "patterns": [
+      "I would suggest...",
+      "What do you think about..."
+    ],
+    "keywords": [
+      "fun",
+      "productive",
+      "discussions",
+      "suggestion"
     ],
     "signature": "Phillip"
   },
   {
-    "context": "Used for formal requests or clarifications regarding business matters.",
+    "context": "Used for quick updates or confirmations, often in a more relaxed tone.",
+    "tone": {
+      "General": [
+        "Neutral",
+        "Polite"
+      ]
+    },
+    "intent": "General Purpose",
+    "example": "Sharing general updates or announcements",
+    "greeting": [
+      "Hi,",
+      "Hello,"
+    ],
+    "closing": [
+      "Thanks!",
+      "Cheers"
+    ],
+    "patterns": [
+      "test successful.",
+      "any morning between..."
+    ],
+    "keywords": [
+      "test",
+      "successful",
+      "updates"
+    ],
+    "signature": "Phillip"
+  },
+  {
+    "context": "Used in technical discussions, often involving detailed information or requests.",
     "tone": {
       "Client": [
         "Formal",
@@ -39,55 +99,54 @@
     "intent": "Clarify / Request Info",
     "example": "Explaining investment structures",
     "greeting": [
-      "Dear [Name],",
-      "Hello [Name],"
+      "Mr. Buckner,"
     ],
     "closing": [
-      "Thank you for your assistance.",
-      "Looking forward to your response."
+      "Let me assure you, this is a real deal!!",
+      "Should you have additional questions, give me a call."
     ],
     "patterns": [
-      "Can you send me [specific information]?",
-      "Please provide details on [topic]."
+      "I need your best...",
+      "For delivered gas behind..."
     ],
     "keywords": [
-      "forecast",
-      "details",
-      "information"
+      "gas price",
+      "microturbine",
+      "proposal"
     ],
     "signature": "Phillip Allen"
   },
   {
-    "context": "Used for informal communication with friends or casual acquaintances.",
+    "context": "Formal communication regarding meetings and project updates.",
     "tone": {
-      "Friend": [
-        "Humorous",
-        "Casual"
+      "Manager": [
+        "Formal",
+        "Direct"
       ]
     },
-    "intent": "Personal Request",
-    "example": "Asking for a favor informally",
+    "intent": "Request Approval",
+    "example": "Asking for budget sign-off",
     "greeting": [
-      "Hey!",
-      "Hi there,"
+      "Please plan to attend",
+      "If you have any questions/conflicts, please feel free to call me."
     ],
     "closing": [
-      "Cheers!",
-      "Take care,"
+      "Thanks,",
+      "Sincerely,"
     ],
     "patterns": [
-      "Just a quick note to say...",
-      "Thought I'd drop you a line about..."
+      "Please plan to attend the below Meeting:",
+      "If you have any questions/conflicts, please feel free to call me."
     ],
     "keywords": [
-      "fun",
-      "trip",
-      "suggestion"
+      "Meeting",
+      "Please",
+      "Thank you"
     ],
     "signature": "Phillip"
   },
   {
-    "context": "In professional settings, particularly when coordinating meetings or sharing important information with colleagues.",
+    "context": "Quick communication to resolve issues or requests.",
     "tone": {
       "Colleague": [
         "Friendly",
@@ -97,42 +156,12 @@
     "intent": "Coordination",
     "example": "Scheduling a team meeting",
     "greeting": [
-      "Please plan to attend",
-      "If you have any questions/conflicts, please feel free to call me."
-    ],
-    "closing": [
-      "Thanks,",
-      "Best regards,"
-    ],
-    "patterns": [
-      "Please plan to attend the below Meeting:",
-      "If you have any questions/conflicts, please feel free to call me."
-    ],
-    "keywords": [
-      "meeting",
-      "please",
-      "questions",
-      "attend"
-    ],
-    "signature": "Phillip"
-  },
-  {
-    "context": "When addressing issues or requests related to operational matters, often requiring quick responses.",
-    "tone": {
-      "Colleague": [
-        "Concise",
-        "Data-driven"
-      ]
-    },
-    "intent": "Provide Updates",
-    "example": "Requesting assistance with access issues.",
-    "greeting": [
       "Tim,",
       "Brenda,"
     ],
     "closing": [
       "Thank you,",
-      "Sincerely,"
+      "Phillip"
     ],
     "patterns": [
       "Can you please make sure",
@@ -140,38 +169,36 @@
     ],
     "keywords": [
       "problems",
-      "access",
+      "accessing",
       "payment"
     ],
     "signature": "Phillip"
   },
   {
-    "context": "In discussions involving financial data or market analysis, often requiring detailed explanations.",
+    "context": "Detailed analysis and reporting on financial matters.",
     "tone": {
-      "Client": [
-        "Formal",
-        "Technical"
+      "Investor": [
+        "Transparent",
+        "Detailed"
       ]
     },
-    "intent": "Clarify / Request Info",
-    "example": "Explaining potential market manipulations.",
+    "intent": "Financial Reporting",
+    "example": "Sharing fiscal performance",
     "greeting": [
-      "As we discussed yesterday,",
-      "I wanted to give you some additional points of reference."
+      "Liane,"
     ],
     "closing": [
-      "Sincerely,",
-      "Please contact me anytime I can assist you towards this goal."
+      "Sincerely,"
     ],
     "patterns": [
-      "I am concerned there may have been an attempt to manipulate",
-      "We have compiled a list of financial and physical trades executed"
+      "As we discussed yesterday, I am concerned",
+      "We have compiled a list of financial and physical trades"
     ],
     "keywords": [
       "manipulate",
-      "trades",
       "index",
-      "market"
+      "trades",
+      "market prices"
     ],
     "signature": "Phillip Allen"
   },
@@ -194,9 +221,9 @@
       "Best regards,"
     ],
     "patterns": [
-      "The structure is a limited partnership with a corporate (or LLC) general partner.",
-      "The initial investment is used for [specific purposes].",
-      "We expect to have up to [number] spec loans to start the project."
+      "The structure is a limited partnership with a corporate general partner.",
+      "Typically, the initial investment is used for [specific purposes].",
+      "We expect to have [number] spec loans to start the project."
     ],
     "keywords": [
       "limited partnership",
@@ -208,7 +235,7 @@
     "signature": "George Richards\nPresident, Creekside Builders, LLC"
   },
   {
-    "context": "When discussing complex investment structures and financial details with clients or partners.",
+    "context": "When discussing investment structures and financial details with clients or stakeholders.",
     "tone": {
       "Client": [
         "Formal",
@@ -226,7 +253,7 @@
       "Best regards,"
     ],
     "patterns": [
-      "The structure is a limited partnership with a corporate (or LLC) general partner.",
+      "The structure is a limited partnership with a corporate general partner.",
       "The initial investment is used for [specific purposes]."
     ],
     "keywords": [
@@ -239,7 +266,7 @@
     "signature": "George Richards\nPresident, Creekside Builders, LLC"
   },
   {
-    "context": "When providing updates or coordinating meetings with colleagues.",
+    "context": "When providing updates or coordinating with colleagues.",
     "tone": {
       "Colleague": [
         "Friendly",
@@ -249,16 +276,16 @@
     "intent": "Coordination",
     "example": "Scheduling a team meeting",
     "greeting": [
-      "Hi Team,",
-      "Hello Everyone,"
+      "Hi team,",
+      "Hello everyone,"
     ],
     "closing": [
       "Thanks,",
       "Best,"
     ],
     "patterns": [
-      "Please reschedule.",
-      "I have changed the unit mix to include some1 bedrooms."
+      "Just wanted to give you an update.",
+      "Please reschedule."
     ],
     "keywords": [
       "update",
@@ -269,7 +296,7 @@
     "signature": "Phillip"
   },
   {
-    "context": "When sending brief responses or updates, often in a more casual or urgent manner.",
+    "context": "When sending quick responses or updates, often in a more casual manner.",
     "tone": {
       "General": [
         "Neutral",
@@ -284,16 +311,17 @@
     ],
     "closing": [
       "Regards,",
-      "Thank you,"
+      "Cheers,"
     ],
     "patterns": [
-      "Just wanted to give you an update.",
-      "Please reschedule."
+      "Please let me know if you have any questions.",
+      "I have changed the unit mix to include some1 bedrooms."
     ],
     "keywords": [
       "update",
-      "please",
-      "reschedule"
+      "changed",
+      "bid",
+      "competitive"
     ],
     "signature": "Phillip"
   }

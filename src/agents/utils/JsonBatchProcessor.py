@@ -97,30 +97,3 @@ class JsonBatchProcessor:
             json.dump(results, f, ensure_ascii=False, indent=2)
         return path
 
-    async def call_model(
-        self,
-        kernel: Kernel,
-        prompt: str,
-        user_input: str,
-        execution_settings: Optional[object] = None
-    ) -> str | None:
-        agent = create_agent(
-            kernel=kernel,
-            instructions=prompt,
-            service_id="github-agent",
-            agent_name="ExtractAgent",
-            settings=execution_settings
-        )
-
-        history = ChatHistory()
-        history.add_user_message(user_input)
-
-        full_response = ""
-        try:
-            async for part in agent.invoke_stream(history):
-                if getattr(part, "content", "").strip():
-                    full_response += part.content
-        except Exception as e:
-            print("invoke_stream error:", e)
-            return None
-        return full_response

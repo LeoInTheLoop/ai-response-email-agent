@@ -1,81 +1,3 @@
-# do it later
-# milestones.due
-# [
-#   {
-#     "project": "AI Email Agent",
-#     "description": "A smart email assistant that analyzes tone and generates replies.",
-#     "status": "active",
-#     "start_date": "2025-04-18",
-#     "end_date": "2025-06-01",
-#     "milestones": [
-#       {
-#         "name": "Tone analysis module",
-#         "due": "2025-04-25",
-#         "completed": true,
-#         "contributors": ["Leo", "Chen"],
-#         "notes": "Tested on 50 samples."
-#       },
-#       {
-#         "name": "Reply generation agent",
-#         "due": "2025-05-05",
-#         "completed": true,
-#         "contributors": ["Leo"],
-#         "notes": "Integrated GPT-4o-mini with plugin calling."
-#       },
-#       {
-#         "name": "Project extractor",
-#         "due": "2025-05-15",
-#         "completed": false,
-#         "contributors": ["Leo", "Anna"],
-#         "notes": "Currently extracting project + person info from emails."
-#       }
-#     ],
-#     "members": [
-#       {
-#         "name": "Leo",
-#         "role": "Lead developer",
-#         "focus": ["backend", "agent logic"],
-#         "achievements": ["Built reply generator", "Designed plugin system"]
-#       },
-#       {
-#         "name": "Anna",
-#         "role": "NLP engineer",
-#         "focus": ["entity extraction", "summarization"],
-#         "achievements": ["Email entity extraction pipeline"]
-#       },
-#       {
-#         "name": "Chen",
-#         "role": "UX/UI",
-#         "focus": ["prompt interface", "frontend support"]
-#       }
-#     ],
-#     "tools": ["GPT-4o", "Semantic Kernel", "FastAPI"],
-#     "keywords": ["email", "tone", "project management", "agent"]
-#   }
-# ]
-
-
-# 🔁 索引设计建议
-# 你可以为项目和人物设置双向索引：
-
-# 每个项目记录相关人物列表
-
-# 每个人记录参与项目列表
-
-# 建议统一用 email_id 或 conversation_id 做连接锚点
-
-# 🔧 接下来的步骤建议：
-# 拆出两个新的 prompt 模板 + agent class（复用当前结构）
-
-# 统一结构结果保存在：
-
-# /data/project_info/
-
-# /data/person_info/
-
-# 提供一个跨项目 / 人物的检索函数（例如：find_person_projects(email)）
-
-
 import os
 import json
 import pandas as pd
@@ -84,29 +6,39 @@ from dotenv import load_dotenv
 
 from semantic_kernel.kernel import Kernel
 from semantic_kernel.connectors.ai.prompt_execution_settings import PromptExecutionSettings
+from semantic_kernel.contents import ChatHistory
+from config import DATA_DIR, TRAIN_DATA_PATH
 
-from config import DATA_DIR, RAW_EMAILS_PATH, TRAIN_DATA_PATH, TEMPLATE_DIR, LOG_DIR
-
-# Import reusable functions and batch processor
 from agents.utils.create_kernel_and_agent import (
+    create_agent,
     create_kernel,
     add_chat_service,
     DEFAULT_AI_MODEL
 )
 from agents.utils.JsonBatchProcessor import JsonBatchProcessor
 
-# Load environment variables
 print("Loading environment...")
 load_dotenv()
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 assert GITHUB_TOKEN, "Please set your GITHUB_TOKEN environment variable"
 
+# 默认已知项目
+existing_projects = [
+    {
+        "project_id": "proj_001",
+        "project_name": "AI Email Agent",
+        "project_keywords": ["email", "agent", "GPT", "tone"]
+    },
+    {
+        "project_id": "proj_002",
+        "project_name": "Project Extractor",
+        "project_keywords": ["extract", "project", "emails"]
+    }
+]
 
-
-# Output template
-# Output template for project extractor
 extract_format = [
     {
+        "project_id": "proj_001",
         "project": "Project Name",
         "description": "Short description of the project",
         "status": "active / completed / paused / unknown",
@@ -139,6 +71,7 @@ You are a project information extractor.
 
 Given several emails, your task is to identify any ongoing or past projects mentioned in them. For each project, summarize the following:
 
+- project ID (ususally a unique identifier,and ususally number less than 4, 归类在已有项目，除非必要不新建)
 - project name
 - description
 - current status (active / completed / paused / unknown)
@@ -147,6 +80,11 @@ Given several emails, your task is to identify any ongoing or past projects ment
 - members (name, role, focus areas, notable achievements)
 - keywords people use to refer to this project
 - last update time you can infer from the emails
+
+Please note that the following projects are known to you:
+{known_projects}
+
+Please prioritize these known projects by matching project names or keywords from the emails. Avoid creating duplicate project entries that represent the same project.
 
 Output the result as a JSON array. Only extract information that can be inferred directly from the email content — do not make up facts.
 
@@ -158,14 +96,21 @@ Format:
 {format_json}
 """
 
-
 PROMPT_SETTING = PromptExecutionSettings(
     temperature=0.2,
     top_p=0.9,
     max_tokens=4096
 )
 
-# Utilities
+def format_known_projects(projects: list[dict]) -> str:
+    lines = []
+    for p in projects:
+        lines.append(f"- Project ID: {p['project_id']}")
+        lines.append(f"  Name: {p['project_name']}")
+        keywords = ", ".join(p.get("project_keywords", []))
+        lines.append(f"  Keywords: {keywords}")
+    return "\n".join(lines)
+
 def df_to_text(df: pd.DataFrame) -> str:
     lines = []
     for idx, row in df.iterrows():
@@ -183,90 +128,141 @@ def format_row(row: dict) -> str:
     body = str(row.get("body", "")).strip()
     return f"Subject: {subj}\nBody:\n{body}\n"
 
-def format_batch(batch_df: pd.DataFrame) -> str:
+def format_batch(batch_df: pd.DataFrame, known_projects: list[dict]) -> str:
     batch_text = df_to_text(batch_df)
+    known_proj_text = format_known_projects(known_projects)
     return INSTRUCTIONS_BASE.format(
         emails_block=batch_text,
-        format_json=json.dumps(extract_format, ensure_ascii=False, indent=2)
+        format_json=json.dumps(extract_format, ensure_ascii=False, indent=2),
+        known_projects=known_proj_text
     )
+def update_extracted_projects(projects_batch: list[dict], extracted_projects: dict):
+    """
+    更新 extracted_projects 字典，
+    project_id 作为key,
+    合并 keywords（去重汇总）,
+    项目名优先保持旧的，如无则更新为新的。
+    """
+    for proj in projects_batch:
+        pid = proj.get("project_id")
+        if not pid:
+            continue
 
-# Main logic
+        new_name = proj.get("project_name", "")
+        new_keywords = set(proj.get("project_keywords", []))
+
+        if pid in extracted_projects:
+            old_info = extracted_projects[pid]
+            existing_name = old_info.get("project_name", "") or new_name
+            existing_keywords = set(old_info.get("project_keywords", []))
+            merged_keywords = list(existing_keywords.union(new_keywords))
+            extracted_projects[pid] = {
+                "project_name": existing_name,
+                "project_keywords": merged_keywords,
+            }
+        else:
+            extracted_projects[pid] = {
+                "project_name": new_name,
+                "project_keywords": list(new_keywords),
+            }
+
+# ✅ 主函数：项目分析
 async def analyze_emails(
     df: pd.DataFrame,
-    user_email: str,
+    Recipient_email: str,
+    kernel: Kernel,
+    known_projects: list[dict] = None,
     batch_size: int | None = None
 ):
     print("Starting analyze_emails()")
+    output_dir = os.path.join(DATA_DIR, "project_info", Recipient_email)
+    processor = JsonBatchProcessor(output_dir=output_dir)
 
-    kernel = create_kernel()
-    add_chat_service(kernel, service_id="github-agent")
+    if known_projects is None:
+        known_projects = []
 
-    processor = JsonBatchProcessor(output_dir=DATA_DIR)
-
-    all_style_batches: list[list[dict]] = []
+    project_dict = {p["project_id"]: p for p in known_projects if "project_id" in p}
 
     for idx, batch_df in enumerate(
         processor.dynamic_batch_generator(df, ["subject", "body"], format_row), start=1
     ):
         print(f"\n---- Processing batch {idx} ----")
 
-        batch_text = df_to_text(batch_df)
-        prompt = format_batch(batch_df)
+        # ✅ 动态生成 prompt_template
+        prompt_template = format_batch(batch_df, known_projects)
 
-        token_estimate = processor.count_tokens(prompt) + processor.count_tokens(batch_text)
-        print(f"Batch {idx} size: {len(batch_df)} emails, estimated tokens: {token_estimate}")
-        raw_response = ""
-        if token_estimate > 8000:
-            print(f"Batch {idx} exceeds max tokens ({8000}). half")
-            half_size = len(batch_df) // 2
-            batch_df1, batch_df = batch_df.iloc[:half_size], batch_df.iloc[half_size:]
-            batch_text1,batch_text = df_to_text(batch_df1), df_to_text(batch_df)
-            prompt1, prompt  = format_batch(batch_df1), format_batch(batch_df)
-            raw_response1 = await processor.call_model(
-                kernel,
-                prompt=prompt1,
-                user_input=batch_text1,
-                execution_settings=PROMPT_SETTING
-            )
-            raw_response += raw_response1 if raw_response1 else ""
-              
-
-        raw_response2 =  await processor.call_model(
-            kernel,
-            prompt=prompt,
-            user_input=batch_text,
-            execution_settings=PROMPT_SETTING
+        # ✅ 创建 agent 使用 prompt_template
+        agent = create_agent(
+            kernel=kernel,
+            instructions=prompt_template,
+            service_id="github-agent",
+            agent_name="ExtractAgent",
+            settings=PROMPT_SETTING
         )
-        raw_response += raw_response2 if raw_response2 else ""
+
+        emails_text = df_to_text(batch_df)
+        history = ChatHistory()
+        history.add_user_message(emails_text)
+
+        raw_response = ""
+        try:
+            async for part in agent.invoke_stream(history):
+                if getattr(part, "content", "").strip():
+                    raw_response += part.content
+        except Exception as e:
+            print("invoke_stream error:", e)
+            continue
+
         if not raw_response:
             print(f"Batch {idx} returned no response.")
             continue
 
         processor.save_raw_output(raw_response, idx)
 
-        styles = processor.extract_json_from_response(raw_response)
-        print(f"Batch {idx}: extracted {len(styles)} style(s)")
+        projects = processor.extract_json_from_response(raw_response)
+        print(f"Batch {idx}: extracted {len(projects)} project(s)")
 
-        if styles:
-            all_style_batches.append(styles)
+        for proj in projects:
+            pid = proj.get("project_id")
+            if not pid:
+                continue
 
-    if not all_style_batches:
-        print("No styles extracted.")
+            if pid not in project_dict:
+                project_dict[pid] = proj
+            else:
+                existing = project_dict[pid]
+                existing_keywords = set(existing.get("project_keywords", []))
+                new_keywords = set(proj.get("project_keywords", []))
+                existing["project_keywords"] = list(existing_keywords.union(new_keywords))
+
+                if not existing.get("project_name") and proj.get("project_name"):
+                    existing["project_name"] = proj["project_name"]
+
+    if not project_dict:
+        print("No projects extracted.")
         return None
 
-    merged_styles = processor.merge_batch_results(all_style_batches)
+    merged_projects = list(project_dict.values())
 
-    merged_path = os.path.join(DATA_DIR, "project_summary_total.json")
-    os.makedirs(os.path.dirname(merged_path), exist_ok=True)
+    dir_path = os.path.join(DATA_DIR, "project_info")
+    os.makedirs(dir_path, exist_ok=True)
+
+    merged_path = os.path.join(dir_path, f"{Recipient_email}_projects.json")
     with open(merged_path, "w", encoding="utf-8") as f:
-        json.dump(merged_styles, f, ensure_ascii=False, indent=2)
-    print(f"Final merged summary saved to {merged_path}")
+        json.dump(merged_projects, f, ensure_ascii=False, indent=2)
+    print(f"✅ Final merged summary saved to {merged_path}")
 
-    return merged_styles
+    project_list_path = os.path.join(dir_path, "project_list.json")
+    with open(project_list_path, "w", encoding="utf-8") as f:
+        json.dump(merged_projects, f, ensure_ascii=False, indent=2)
+    print(f"✅ Updated global project list saved to {project_list_path}")
 
-# CLI test
+    return merged_projects
+
+# ✅ CLI 测试
 if __name__ == "__main__":
     user_email = "phillip.allen@enron.com"
+    recipient_email = "stagecoachmama@hotmail.com"
     MAX_EMAIL_PROCESS = 30
     csv_path = TRAIN_DATA_PATH
 
@@ -274,4 +270,23 @@ if __name__ == "__main__":
     df = pd.read_csv(csv_path).head(MAX_EMAIL_PROCESS)
     print("CSV loaded, shape:", df.shape)
 
-    asyncio.run(analyze_emails(df, user_email))
+    kernel = create_kernel()
+    add_chat_service(kernel, service_id="github-agent")
+
+   
+
+    # 加载已知项目
+    existing_projects_path = os.path.join(DATA_DIR, "project_info", "project_list.json")
+    if os.path.exists(existing_projects_path):
+        with open(existing_projects_path, "r", encoding="utf-8") as f:
+            existing_projects = json.load(f)
+    else:
+        existing_projects = []
+
+    # 直接调用
+    asyncio.run(analyze_emails(
+        df,
+        recipient_email,
+        kernel=kernel,
+        known_projects=existing_projects
+    ))

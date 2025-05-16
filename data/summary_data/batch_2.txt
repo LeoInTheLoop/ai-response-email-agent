@@ -1,6 +1,35 @@
 ```json[
  {
- "context": "In professional settings, particularly when coordinating meetings or sharing important information with colleagues.",
+ "context": "Formal communication regarding meetings and project updates.",
+ "tone": {
+ "Manager": [
+ "Formal",
+ "Direct"
+ ]
+ },
+ "intent": "Request Approval",
+ "example": "Asking for budget sign-off",
+ "greeting": [
+ "Please plan to attend",
+ "If you have any questions/conflicts, please feel free to call me."
+ ],
+ "closing": [
+ "Thanks,",
+ "Sincerely,"
+ ],
+ "patterns": [
+ "Please plan to attend the below Meeting:",
+ "If you have any questions/conflicts, please feel free to call me."
+ ],
+ "keywords": [
+ "Meeting",
+ "Please",
+ "Thank you"
+ ],
+ "signature": "Phillip"
+ },
+ {
+ "context": "Quick communication to resolve issues or requests.",
  "tone": {
  "Colleague": [
  "Friendly",
@@ -10,42 +39,12 @@
  "intent": "Coordination",
  "example": "Scheduling a team meeting",
  "greeting": [
- "Please plan to attend",
- "If you have any questions/conflicts, please feel free to call me."
- ],
- "closing": [
- "Thanks,",
- "Best regards,"
- ],
- "patterns": [
- "Please plan to attend the below Meeting:",
- "If you have any questions/conflicts, please feel free to call me."
- ],
- "keywords": [
- "meeting",
- "please",
- "questions",
- "attend"
- ],
- "signature": "Phillip"
- },
- {
- "context": "When addressing issues or requests related to operational matters, often requiring quick responses.",
- "tone": {
- "Colleague": [
- "Concise",
- "Data-driven"
- ]
- },
- "intent": "Provide Updates",
- "example": "Requesting assistance with access issues.",
- "greeting": [
  "Tim,",
  "Brenda,"
  ],
  "closing": [
  "Thank you,",
- "Sincerely,"
+ "Phillip"
  ],
  "patterns": [
  "Can you please make sure",
@@ -53,38 +52,36 @@
  ],
  "keywords": [
  "problems",
- "access",
+ "accessing",
  "payment"
  ],
  "signature": "Phillip"
  },
  {
- "context": "In discussions involving financial data or market analysis, often requiring detailed explanations.",
+ "context": "Detailed analysis and reporting on financial matters.",
  "tone": {
- "Client": [
- "Formal",
- "Technical"
+ "Investor": [
+ "Transparent",
+ "Detailed"
  ]
  },
- "intent": "Clarify / Request Info",
- "example": "Explaining potential market manipulations.",
+ "intent": "Financial Reporting",
+ "example": "Sharing fiscal performance",
  "greeting": [
- "As we discussed yesterday,",
- "I wanted to give you some additional points of reference."
+ "Liane,"
  ],
  "closing": [
- "Sincerely,",
- "Please contact me anytime I can assist you towards this goal."
+ "Sincerely,"
  ],
  "patterns": [
- "I am concerned there may have been an attempt to manipulate",
- "We have compiled a list of financial and physical trades executed"
+ "As we discussed yesterday, I am concerned",
+ "We have compiled a list of financial and physical trades"
  ],
  "keywords": [
  "manipulate",
- "trades",
  "index",
- "market"
+ "trades",
+ "market prices"
  ],
  "signature": "Phillip Allen"
  }
