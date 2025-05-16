@@ -1,35 +1,6 @@
 ```json[
  {
- "context": "Formal communication regarding meetings and project updates.",
- "tone": {
- "Manager": [
- "Formal",
- "Direct"
- ]
- },
- "intent": "Request Approval",
- "example": "Asking for budget sign-off",
- "greeting": [
- "Please plan to attend",
- "If you have any questions/conflicts, please feel free to call me."
- ],
- "closing": [
- "Thanks,",
- "Sincerely,"
- ],
- "patterns": [
- "Please plan to attend the below Meeting:",
- "If you have any questions/conflicts, please feel free to call me."
- ],
- "keywords": [
- "Meeting",
- "Please",
- "Thank you"
- ],
- "signature": "Phillip"
- },
- {
- "context": "Quick communication to resolve issues or requests.",
+ "context": "When coordinating meetings or sharing important information with colleagues.",
  "tone": {
  "Colleague": [
  "Friendly",
@@ -39,12 +10,42 @@
  "intent": "Coordination",
  "example": "Scheduling a team meeting",
  "greeting": [
+ "Please plan to attend",
+ "If you have any questions/conflicts, please feel free to call me."
+ ],
+ "closing": [
+ "Thanks,",
+ "Regards,"
+ ],
+ "patterns": [
+ "Please plan to attend the below Meeting:",
+ "If you have any questions/conflicts, please feel free to call me."
+ ],
+ "keywords": [
+ "Meeting",
+ "Please",
+ "Questions",
+ "Plan"
+ ],
+ "signature": "Phillip"
+ },
+ {
+ "context": "When addressing issues or requests related to operational matters.",
+ "tone": {
+ "Colleague": [
+ "Concise",
+ "Data-driven"
+ ]
+ },
+ "intent": "Provide Updates",
+ "example": "Discussing operational issues or requests.",
+ "greeting": [
  "Tim,",
  "Brenda,"
  ],
  "closing": [
  "Thank you,",
- "Phillip"
+ "Sincerely,"
  ],
  "patterns": [
  "Can you please make sure",
@@ -58,15 +59,15 @@
  "signature": "Phillip"
  },
  {
- "context": "Detailed analysis and reporting on financial matters.",
+ "context": "When discussing financial matters or concerns with stakeholders.",
  "tone": {
- "Investor": [
- "Transparent",
- "Detailed"
+ "Client": [
+ "Formal",
+ "Technical"
  ]
  },
- "intent": "Financial Reporting",
- "example": "Sharing fiscal performance",
+ "intent": "Clarify / Request Info",
+ "example": "Explaining investment structures or financial indices.",
  "greeting": [
  "Liane,"
  ],

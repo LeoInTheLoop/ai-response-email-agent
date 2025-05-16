@@ -1,95 +1,36 @@
 ```json[
  {
- "context": "Used in formal business communication, often for updates or requests.",
+ "context": "Used for internal coordination and updates among colleagues.",
  "tone": {
- "Manager": [
- "Formal",
+ "Colleague": [
+ "Friendly",
  "Direct"
  ]
  },
- "intent": "Request Approval",
- "example": "Asking for budget sign-off",
+ "intent": "Coordination",
+ "example": "Scheduling a team meeting",
  "greeting": [
- "Hi Randy,",
- "Hello Greg,"
+ "Hi",
+ "Hello",
+ "Dave,"
  ],
  "closing": [
- "Thank you for your help",
- "Best regards"
+ "Thanks",
+ "Phillip"
  ],
  "patterns": [
- "Can you send me...",
- "How about either..."
+ "Let's shoot for [date/time].",
+ "How about [suggestion]?"
  ],
  "keywords": [
  "schedule",
- "updates",
- "salary",
- "business meetings"
- ],
- "signature": "Phillip Allen"
- },
- {
- "context": "Used in casual conversations with colleagues, often for brainstorming or informal discussions.",
- "tone": {
- "Colleague": [
- "Casual",
- "Collaborative"
- ]
- },
- "intent": "Brainstorming",
- "example": "Discussing project ideas",
- "greeting": [
- "Hey team,",
- "Hi everyone,"
- ],
- "closing": [
- "Let me know your thoughts!",
- "Looking forward to hearing from you."
- ],
- "patterns": [
- "I would suggest...",
- "What do you think about..."
- ],
- "keywords": [
- "fun",
- "productive",
- "discussions",
+ "meeting",
  "suggestion"
  ],
  "signature": "Phillip"
  },
  {
- "context": "Used for quick updates or confirmations, often in a more relaxed tone.",
- "tone": {
- "General": [
- "Neutral",
- "Polite"
- ]
- },
- "intent": "General Purpose",
- "example": "Sharing general updates or announcements",
- "greeting": [
- "Hi,",
- "Hello,"
- ],
- "closing": [
- "Thanks!",
- "Cheers"
- ],
- "patterns": [
- "test successful.",
- "any morning between..."
- ],
- "keywords": [
- "test",
- "successful",
- "updates"
- ],
- "signature": "Phillip"
- },
- {
- "context": "Used in technical discussions, often involving detailed information or requests.",
+ "context": "Used for formal requests or technical discussions with clients or vendors.",
  "tone": {
  "Client": [
  "Formal",
@@ -99,22 +40,52 @@
  "intent": "Clarify / Request Info",
  "example": "Explaining investment structures",
  "greeting": [
- "Mr. Buckner,"
+ "Mr.",
+ "Dear"
  ],
  "closing": [
- "Let me assure you, this is a real deal!!",
- "Should you have additional questions, give me a call."
+ "Thank you for your help",
+ "Best regards"
  ],
  "patterns": [
- "I need your best...",
- "For delivered gas behind..."
+ "Can you send me [information]?",
+ "Please provide [details]."
  ],
  "keywords": [
- "gas price",
- "microturbine",
- "proposal"
+ "forecast",
+ "details",
+ "information"
  ],
  "signature": "Phillip Allen"
+ },
+ {
+ "context": "Used for sharing updates or general information.",
+ "tone": {
+ "General": [
+ "Neutral",
+ "Polite"
+ ]
+ },
+ "intent": "General Purpose",
+ "example": "Sharing general updates or announcements",
+ "greeting": [
+ "Hi team",
+ "Hello everyone"
+ ],
+ "closing": [
+ "Best",
+ "Regards"
+ ],
+ "patterns": [
+ "Here is [information].",
+ "Please find attached [document]."
+ ],
+ "keywords": [
+ "updates",
+ "information",
+ "attached"
+ ],
+ "signature": "Phillip"
  }
 ]
 ```

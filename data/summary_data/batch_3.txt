@@ -1,6 +1,6 @@
 ```json[
  {
- "context": "When discussing investment structures and financial details with clients or stakeholders.",
+ "context": "When providing detailed information about investment structures and financial arrangements to clients or partners.",
  "tone": {
  "Client": [
  "Formal",
@@ -19,7 +19,7 @@
  ],
  "patterns": [
  "The structure is a limited partnership with a corporate general partner.",
- "Typically, the initial investment is used for [specific purposes].",
+ "The initial investment is used for [specific purposes].",
  "We expect to have [number] spec loans to start the project."
  ],
  "keywords": [

@@ -1,0 +1,64 @@
+```json[
+ {
+ "project_id": "proj_001",
+ "project": "Creekside Development",
+ "description": "A multifamily rental development project structured as a limited partnership with a corporate general partner.",
+ "status": "active",
+ "start_date": "unknown",
+ "end_date": "unknown",
+ "milestones": [
+ {
+ "name": "Site Plan Approval",
+ "due": "unknown",
+ "completed": false,
+ "contributors": [
+ "George Richards",
+ "Creekside Builders, LLC"
+ ],
+ "notes": "Approval from the City of Austin is required for the site plan."
+ },
+ {
+ "name": "Lot Improvement Construction",
+ "due": "unknown",
+ "completed": false,
+ "contributors": [
+ "George Richards",
+ "Creekside Builders, LLC"
+ ],
+ "notes": "Expected to start after site plan approval."
+ }
+ ],
+ "members": [
+ {
+ "name": "George Richards",
+ "role": "President",
+ "focus": [
+ "Construction management",
+ "Investor relations"
+ ],
+ "achievements": [
+ "Leading the Creekside Development project"
+ ]
+ },
+ {
+ "name": "Larry Lewter",
+ "role": "Partner",
+ "focus": [
+ "Construction oversight",
+ "Financial management"
+ ],
+ "achievements": [
+ "Involvement in securing loans and managing construction costs"
+ ]
+ }
+ ],
+ "keyword": [
+ "Creekside",
+ "multifamily rental",
+ "limited partnership",
+ "construction loans"
+ ],
+ "lastupdate": "2000-09-26"
+ }
+]
+```
