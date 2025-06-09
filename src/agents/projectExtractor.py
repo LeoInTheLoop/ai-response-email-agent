@@ -3,6 +3,7 @@ import json
 import pandas as pd
 import asyncio
 from dotenv import load_dotenv
+from semantic_kernel.agents import ChatCompletionAgent
 
 from semantic_kernel.kernel import Kernel
 from semantic_kernel.connectors.ai.prompt_execution_settings import PromptExecutionSettings
@@ -71,7 +72,7 @@ You are a project information extractor.
 
 Given several emails, your task is to identify any ongoing or past projects mentioned in them. For each project, summarize the following:
 
-- project ID (ususally a unique identifier,and ususally number less than 4, 归类在已有项目，除非必要不新建)
+- project ID 
 - project name
 - description
 - current status (active / completed / paused / unknown)
@@ -80,6 +81,18 @@ Given several emails, your task is to identify any ongoing or past projects ment
 - members (name, role, focus areas, notable achievements)
 - keywords people use to refer to this project
 - last update time you can infer from the emails
+
+PROJECT IDENTIFICATION RULES:
+1. First check against known projects (listed below) by matching:
+   - Exact or similar project names
+   - Project keywords
+   - Team member names
+   - Milestone references
+
+2. Only create a new project ID if:
+   - The project is clearly distinct from all known projects
+   - It has unique objectives, team members, and timeline
+   - New IDs should follow the pattern: proj_XXX (3-digit number)
 
 Please note that the following projects are known to you:
 {known_projects}
@@ -166,6 +179,111 @@ def update_extracted_projects(projects_batch: list[dict], extracted_projects: di
                 "project_keywords": list(new_keywords),
             }
 
+
+    
+async def batch_with_halving(
+    agent: ChatCompletionAgent,  # The agent instance passed in
+    batch_df: pd.DataFrame,
+    known_projects: list[dict],
+    current_batch_size: int,
+    min_batch_size: int = 1,
+    recursion_depth: int = 0,
+    max_recursion: int = 10
+) -> str:
+    """
+    Process batch recursively, halving batch size when encountering size-related errors.
+    
+    Args:
+        agent: Pre-configured agent instance
+        batch_df: DataFrame containing email batch to process
+        known_projects: List of known projects for reference
+        current_batch_size: Current batch size being attempted
+        min_batch_size: Minimum batch size to attempt (default 1)
+        recursion_depth: Current recursion depth (default 0)
+        max_recursion: Maximum allowed recursion depth (default 10)
+        
+    Returns:
+        Combined JSON response from successful processing
+    """
+    if recursion_depth >= max_recursion:
+        print(f"⚠️ Max recursion depth ({max_recursion}) reached with batch size {current_batch_size}")
+        return "[]"
+    
+    if current_batch_size < min_batch_size:
+        print(f"⚠️ Reached minimum batch size {min_batch_size}")
+        return "[]"
+    
+    # Prepare the input data
+    current_batch = batch_df.head(current_batch_size)
+    emails_text = df_to_text(current_batch)
+    prompt_template = format_batch(current_batch, known_projects)
+    
+    # Update agent instructions with current batch
+    agent.instructions=prompt_template
+    
+    history = ChatHistory()
+    history.add_user_message(emails_text)
+    
+    try:
+        # Attempt processing
+        raw_response = ""
+        async for part in agent.invoke_stream(history):
+            if getattr(part, "content", "").strip():
+                raw_response += part.content
+        
+        if not raw_response:
+            print(f"Empty response with batch size {current_batch_size}")
+            return "[]"
+            
+        return raw_response
+        
+    except Exception as e:
+        error_msg = str(e)
+        print(f"Error with batch size {current_batch_size}: {error_msg}")
+        
+        # Check if error is size-related
+        if "Request body too large" in error_msg or "too long" in error_msg.lower():
+            new_batch_size = max(min_batch_size, current_batch_size // 2)
+            print(f"Halving batch size from {current_batch_size} to {new_batch_size}")
+            
+            # Process first half
+            first_half = await batch_with_halving(
+                agent,
+                batch_df.iloc[:current_batch_size//2],
+                known_projects,
+                new_batch_size,
+                min_batch_size,
+                recursion_depth + 1,
+                max_recursion
+            )
+            
+            # Process second half
+            second_half = await batch_with_halving(
+                agent,
+                batch_df.iloc[current_batch_size//2:current_batch_size],
+                known_projects,
+                new_batch_size,
+                min_batch_size,
+                recursion_depth + 1,
+                max_recursion
+            )
+            
+            # Combine results
+            try:
+                # first_json = json.loads(first_half) if first_half else []
+                # second_json = json.loads(second_half) if second_half else []
+                combined = first_half + second_half
+                return  combined
+            except json.JSONDecodeError:
+                print("Failed to combine JSON responses")
+                return "[]"
+        
+        # For non-size-related errors, return empty array
+        print("Non-size-related error encountered")
+        return "[]"
+    
+
+
 # ✅ 主函数：项目分析
 async def analyze_emails(
     df: pd.DataFrame,
@@ -183,35 +301,31 @@ async def analyze_emails(
 
     project_dict = {p["project_id"]: p for p in known_projects if "project_id" in p}
 
+    # Create agent outside the loop (instructions will be updated per batch)
+    agent = create_agent(
+        kernel=kernel,
+        instructions="",  # Will be updated per batch
+        service_id="github-agent",
+        agent_name="ExtractAgent",
+        settings=PROMPT_SETTING
+    )
+
     for idx, batch_df in enumerate(
         processor.dynamic_batch_generator(df, ["subject", "body"], format_row), start=1
     ):
         print(f"\n---- Processing batch {idx} ----")
 
-        # ✅ 动态生成 prompt_template
-        prompt_template = format_batch(batch_df, known_projects)
-
-        # ✅ 创建 agent 使用 prompt_template
-        agent = create_agent(
-            kernel=kernel,
-            instructions=prompt_template,
-            service_id="github-agent",
-            agent_name="ExtractAgent",
-            settings=PROMPT_SETTING
+        # Get the formatted prompt (but don't use it directly)
+        # prompt_template = format_batch(batch_df, known_projects)
+        
+        # Process with halving logic
+        raw_response = await batch_with_halving(
+            agent=agent,
+            batch_df=batch_df,
+            known_projects=known_projects,
+            current_batch_size=len(batch_df),
+            min_batch_size=1
         )
-
-        emails_text = df_to_text(batch_df)
-        history = ChatHistory()
-        history.add_user_message(emails_text)
-
-        raw_response = ""
-        try:
-            async for part in agent.invoke_stream(history):
-                if getattr(part, "content", "").strip():
-                    raw_response += part.content
-        except Exception as e:
-            print("invoke_stream error:", e)
-            continue
 
         if not raw_response:
             print(f"Batch {idx} returned no response.")
@@ -222,22 +336,9 @@ async def analyze_emails(
         projects = processor.extract_json_from_response(raw_response)
         print(f"Batch {idx}: extracted {len(projects)} project(s)")
 
-        for proj in projects:
-            pid = proj.get("project_id")
-            if not pid:
-                continue
+        update_extracted_projects(projects, project_dict)
 
-            if pid not in project_dict:
-                project_dict[pid] = proj
-            else:
-                existing = project_dict[pid]
-                existing_keywords = set(existing.get("project_keywords", []))
-                new_keywords = set(proj.get("project_keywords", []))
-                existing["project_keywords"] = list(existing_keywords.union(new_keywords))
-
-                if not existing.get("project_name") and proj.get("project_name"):
-                    existing["project_name"] = proj["project_name"]
-
+    # Rest of your function remains the same...
     if not project_dict:
         print("No projects extracted.")
         return None
@@ -258,6 +359,7 @@ async def analyze_emails(
     print(f"✅ Updated global project list saved to {project_list_path}")
 
     return merged_projects
+
 
 # ✅ CLI 测试
 if __name__ == "__main__":

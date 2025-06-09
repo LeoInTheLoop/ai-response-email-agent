@@ -1,8 +1,8 @@
 ```json[
  {
  "project_id": "proj_001",
- "project": "Westgate",
- "description": "A project involving the acquisition and development of a multifamily parcel in West San Marcos, which is approved for134 units.",
+ "project": "Westgate Project",
+ "description": "Development of a multifamily housing project in West San Marcos, focusing on student housing.",
  "status": "unknown",
  "start_date": "unknown",
  "end_date": "unknown",
@@ -13,44 +13,62 @@
  "role": "President",
  "focus": [
  "Real estate development",
- "Investor relations"
+ "Market analysis"
  ],
  "achievements": [
- "Provided demographics and market analysis for the Westgate project"
+ "Identified opportunity for multifamily housing development"
  ]
+ },
+ {
+ "name": "Phillip Allen",
+ "role": "Project Stakeholder",
+ "focus": [
+ "Investment analysis",
+ "Project evaluation"
+ ],
+ "achievements": []
  }
  ],
  "keyword": [
  "Westgate",
  "San Marcos",
- "multifamily development"
+ "student housing"
  ],
  "lastupdate": "2000-10-03"
  },
  {
  "project_id": "proj_002",
- "project": "San Juan Index",
- "description": "An initiative to monitor and ensure the accuracy of the El Paso San Juan monthly index for gas pricing.",
- "status": "active",
- "start_date": "unknown",
+ "project": "San Juan Index Manipulation Investigation",
+ "description": "Investigation into potential manipulation of the El Paso San Juan monthly index related to gas pricing.",
+ "status": "unknown",
+ "start_date": "2000-09-25",
  "end_date": "unknown",
  "milestones": [],
  "members": [
  {
- "name": "Phillip K Allen",
- "role": "Analyst",
+ "name": "Phillip Allen",
+ "role": "Investigator",
  "focus": [
- "Market analysis",
- "Trade monitoring"
+ "Market integrity",
+ "Gas pricing"
  ],
  "achievements": [
- "Identified potential manipulation of the San Juan index"
+ "Compiled evidence of potential price manipulation"
  ]
+ },
+ {
+ "name": "Liane",
+ "role": "Analyst",
+ "focus": [
+ "Trade analysis",
+ "Index calculation"
+ ],
+ "achievements": []
  }
  ],
  "keyword": [
- "San Juan",
- "index manipulation",
+ "San Juan Index",
+ "price manipulation",
  "gas pricing"
  ],
  "lastupdate": "2000-09-28"

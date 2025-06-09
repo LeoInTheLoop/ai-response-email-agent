@@ -1,0 +1,302 @@
+```json[
+ {
+ "project_id": "proj_001",
+ "project": "Creekside Development Project",
+ "description": "A real estate development project structured as a limited partnership for multifamily rental developments.",
+ "status": "active",
+ "start_date": "unknown",
+ "end_date": "unknown",
+ "milestones": [
+ {
+ "name": "Site Plan Approval",
+ "due": "unknown",
+ "completed": false,
+ "contributors": [
+ "George Richards",
+ "Phillip Allen"
+ ],
+ "notes": "Approval from the City of Austin is required before proceeding with lot improvements."
+ }
+ ],
+ "members": [
+ {
+ "name": "George Richards",
+ "role": "President",
+ "focus": [
+ "Construction Management",
+ "Real Estate Development"
+ ],
+ "achievements": [
+ "Leading the Creekside Builders, LLC"
+ ]
+ },
+ {
+ "name": "Phillip Allen",
+ "role": "Investor",
+ "focus": [
+ "Investment Strategy",
+ "Project Oversight"
+ ],
+ "achievements": [
+ "Engaging in discussions for project financing and structure"
+ ]
+ }
+ ],
+ "keyword": [
+ "Creekside",
+ "Investment Structure",
+ "Real Estate Development"
+ ],
+ "lastupdate": "2000-09-26"
+ }
+]
+``````json[
+ {
+ "project_id": "proj_001",
+ "project": "Gas Physical/Financial Positions",
+ "description": "Meetings focused on the management and discussion of gas physical and financial positions.",
+ "status": "active",
+ "start_date": "2000-09-27",
+ "end_date": "unknown",
+ "milestones": [
+ {
+ "name": "Initial Meeting",
+ "due": "2000-09-27",
+ "completed": true,
+ "contributors": [
+ "Richard Burchfield",
+ "Cindy Cicchetti",
+ "Phillip K Allen",
+ "Allan Severude",
+ "Scott Mills",
+ "Russ Severson"
+ ],
+ "notes": "Meeting held to discuss gas physical and financial positions."
+ },
+ {
+ "name": "Follow-up Meeting",
+ "due": "2000-09-28",
+ "completed": true,
+ "contributors": [
+ "Richard Burchfield",
+ "Cindy Cicchetti",
+ "Phillip K Allen",
+ "Allan Severude",
+ "Scott Mills",
+ "Russ Severson"
+ ],
+ "notes": "Follow-up meeting to continue discussions."
+ }
+ ],
+ "members": [
+ {
+ "name": "Phillip K Allen",
+ "role": "Participant",
+ "focus": [
+ "Gas Trading",
+ "Financial Positions"
+ ],
+ "achievements": []
+ },
+ {
+ "name": "Richard Burchfield",
+ "role": "Chairperson",
+ "focus": [
+ "Meeting Coordination",
+ "Gas Trading"
+ ],
+ "achievements": []
+ },
+ {
+ "name": "Allan Severude",
+ "role": "Participant",
+ "focus": [
+ "Gas Trading",
+ "Financial Positions"
+ ],
+ "achievements": []
+ },
+ {
+ "name": "Scott Mills",
+ "role": "Participant",
+ "focus": [
+ "Gas Trading",
+ "Financial Positions"
+ ],
+ "achievements": []
+ },
+ {
+ "name": "Russ Severson",
+ "role": "Participant",
+ "focus": [
+ "Gas Trading",
+ "Financial Positions"
+ ],
+ "achievements": []
+ }
+ ],
+ "keyword": [
+ "Gas Physical Positions",
+ "Gas Financial Positions",
+ "Gas Trading"
+ ],
+ "lastupdate": "2000-09-26"
+ },
+ {
+ "project_id": "proj_002",
+ "project": "Gas Trading Vision Meeting",
+ "description": "Meetings aimed at discussing the vision and strategy for gas trading.",
+ "status": "active",
+ "start_date": "2000-09-27",
+ "end_date": "unknown",
+ "milestones": [
+ {
+ "name": "Initial Vision Meeting",
+ "due": "2000-09-27",
+ "completed": true,
+ "contributors": [
+ "Richard Burchfield",
+ "Cindy Cicchetti",
+ "Phillip K Allen",
+ "Allan Severude",
+ "Scott Mills",
+ "Jeffrey C Gossett",
+ "Colleen Sullivan",
+ "Russ Severson",
+ "Jayant Krishnaswamy",
+ "Russell Long"
+ ],
+ "notes": "Meeting held to discuss the vision for gas trading."
+ }
+ ],
+ "members": [
+ {
+ "name": "Phillip K Allen",
+ "role": "Participant",
+ "focus": [
+ "Gas Trading",
+ "Strategic Planning"
+ ],
+ "achievements": []
+ },
+ {
+ "name": "Richard Burchfield",
+ "role": "Chairperson",
+ "focus": [
+ "Meeting Coordination",
+ "Gas Trading"
+ ],
+ "achievements": []
+ },
+ {
+ "name": "Allan Severude",
+ "role": "Participant",
+ "focus": [
+ "Gas Trading",
+ "Strategic Planning"
+ ],
+ "achievements": []
+ },
+ {
+ "name": "Scott Mills",
+ "role": "Participant",
+ "focus": [
+ "Gas Trading",
+ "Strategic Planning"
+ ],
+ "achievements": []
+ },
+ {
+ "name": "Jeffrey C Gossett",
+ "role": "Participant",
+ "focus": [
+ "Gas Trading",
+ "Strategic Planning"
+ ],
+ "achievements": []
+ },
+ {
+ "name": "Colleen Sullivan",
+ "role": "Participant",
+ "focus": [
+ "Gas Trading",
+ "Strategic Planning"
+ ],
+ "achievements": []
+ },
+ {
+ "name": "Russ Severson",
+ "role": "Participant",
+ "focus": [
+ "Gas Trading",
+ "Strategic Planning"
+ ],
+ "achievements": []
+ },
+ {
+ "name": "Jayant Krishnaswamy",
+ "role": "Participant",
+ "focus": [
+ "Gas Trading",
+ "Strategic Planning"
+ ],
+ "achievements": []
+ },
+ {
+ "name": "Russell Long",
+ "role": "Participant",
+ "focus": [
+ "Gas Trading",
+ "Strategic Planning"
+ ],
+ "achievements": []
+ }
+ ],
+ "keyword": [
+ "Gas Trading Vision",
+ "Gas Trading Strategy"
+ ],
+ "lastupdate": "2000-09-26"
+ }
+]
+``````json[
+ {
+ "project_id": "proj_001",
+ "project": "FHA Financing Project",
+ "description": "A project involving the construction of residential buildings with a focus on obtaining FHA financing.",
+ "status": "active",
+ "start_date": "unknown",
+ "end_date": "unknown",
+ "milestones": [
+ {
+ "name": "Construction Drawings Completion",
+ "due": "unknown",
+ "completed": false,
+ "contributors": [
+ "Kipp Flores"
+ ],
+ "notes": "Construction drawings are currently being worked on."
+ }
+ ],
+ "members": [
+ {
+ "name": "Phillip Allen",
+ "role": "Project Manager",
+ "focus": [
+ "Construction management",
+ "Financing"
+ ],
+ "achievements": [
+ "Successfully changed unit mix and reduced number of buildings."
+ ]
+ }
+ ],
+ "keyword": [
+ "FHA financing",
+ "construction drawings",
+ "unit mix"
+ ],
+ "lastupdate": "unknown"
+ }
+]
+```

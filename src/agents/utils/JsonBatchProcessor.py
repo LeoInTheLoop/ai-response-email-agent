@@ -96,4 +96,119 @@ class JsonBatchProcessor:
         with open(path, "w", encoding="utf-8") as f:
             json.dump(results, f, ensure_ascii=False, indent=2)
         return path
+    
+
+    def df_to_text(df: pd.DataFrame) -> str:
+        lines = []
+        for idx, row in df.iterrows():
+            subj = str(row.get("subject", "")).strip()
+            body = str(row.get("body", "")).strip()
+            lines.append(f"--- Email {len(lines) + 1} ---")
+            lines.append(f"Subject: {subj}")
+            lines.append("Body:")
+            lines.append(body)
+            lines.append("")
+        return "\n".join(lines)
+    
+    async def batch_with_halving(
+        agent: object,  # The agent instance passed in
+        batch_df: pd.DataFrame,
+        known_projects: list[dict],
+        current_batch_size: int,
+        min_batch_size: int = 1,
+        recursion_depth: int = 0,
+        max_recursion: int = 10
+    ) -> str:
+        """
+        Process batch recursively, halving batch size when encountering size-related errors.
+        
+        Args:
+            agent: Pre-configured agent instance
+            batch_df: DataFrame containing email batch to process
+            known_projects: List of known projects for reference
+            current_batch_size: Current batch size being attempted
+            min_batch_size: Minimum batch size to attempt (default 1)
+            recursion_depth: Current recursion depth (default 0)
+            max_recursion: Maximum allowed recursion depth (default 10)
+            
+        Returns:
+            Combined JSON response from successful processing
+        """
+        if recursion_depth >= max_recursion:
+            print(f"⚠️ Max recursion depth ({max_recursion}) reached with batch size {current_batch_size}")
+            return "[]"
+        
+        if current_batch_size < min_batch_size:
+            print(f"⚠️ Reached minimum batch size {min_batch_size}")
+            return "[]"
+        
+        # Prepare the input data
+        current_batch = batch_df.head(current_batch_size)
+        emails_text = df_to_text(current_batch)
+        prompt_template = format_batch(current_batch, known_projects)
+        
+        # Update agent instructions with current batch
+        agent.update_instructions(prompt_template)
+        
+        history = ChatHistory()
+        history.add_user_message(emails_text)
+        
+        try:
+            # Attempt processing
+            raw_response = ""
+            async for part in agent.invoke_stream(history):
+                if getattr(part, "content", "").strip():
+                    raw_response += part.content
+            
+            if not raw_response:
+                print(f"Empty response with batch size {current_batch_size}")
+                return "[]"
+                
+            return raw_response
+            
+        except Exception as e:
+            error_msg = str(e)
+            print(f"Error with batch size {current_batch_size}: {error_msg}")
+            
+            # Check if error is size-related
+            if "Request body too large" in error_msg or "too long" in error_msg.lower():
+                new_batch_size = max(min_batch_size, current_batch_size // 2)
+                print(f"Halving batch size from {current_batch_size} to {new_batch_size}")
+                
+                # Process first half
+                first_half = await batch_with_halving(
+                    agent,
+                    batch_df.iloc[:current_batch_size//2],
+                    known_projects,
+                    new_batch_size,
+                    min_batch_size,
+                    recursion_depth + 1,
+                    max_recursion
+                )
+                
+                # Process second half
+                second_half = await batch_with_halving(
+                    agent,
+                    batch_df.iloc[current_batch_size//2:current_batch_size],
+                    known_projects,
+                    new_batch_size,
+                    min_batch_size,
+                    recursion_depth + 1,
+                    max_recursion
+                )
+                
+                # Combine results
+                try:
+                    first_json = json.loads(first_half) if first_half else []
+                    second_json = json.loads(second_half) if second_half else []
+                    combined = first_json + second_json
+                    return json.dumps(combined)
+                except json.JSONDecodeError:
+                    print("Failed to combine JSON responses")
+                    return "[]"
+            
+            # For non-size-related errors, return empty array
+            print("Non-size-related error encountered")
+            return "[]"
+        
 

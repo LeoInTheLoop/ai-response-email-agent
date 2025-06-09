@@ -1,9 +1,9 @@
 ```json[
  {
  "project_id": "proj_001",
- "project": "Creekside Development",
- "description": "A multifamily rental development project structured as a limited partnership with a corporate general partner.",
- "status": "active",
+ "project": "Creekside Development Project",
+ "description": "A real estate development project structured as a limited partnership focusing on multifamily rental developments and residential construction.",
+ "status": "unknown",
  "start_date": "unknown",
  "end_date": "unknown",
  "milestones": [
@@ -13,19 +13,9 @@
  "completed": false,
  "contributors": [
  "George Richards",
- "Creekside Builders, LLC"
+ "Phillip Allen"
  ],
- "notes": "Approval from the City of Austin is required for the site plan."
- },
- {
- "name": "Lot Improvement Construction",
- "due": "unknown",
- "completed": false,
- "contributors": [
- "George Richards",
- "Creekside Builders, LLC"
- ],
- "notes": "Expected to start after site plan approval."
+ "notes": "Approval from the City of Austin is required for the development to proceed."
  }
  ],
  "members": [
@@ -33,30 +23,29 @@
  "name": "George Richards",
  "role": "President",
  "focus": [
- "Construction management",
- "Investor relations"
+ "Construction Management",
+ "Real Estate Development"
  ],
  "achievements": [
- "Leading the Creekside Development project"
+ "Led the development of the Creekside project."
  ]
  },
  {
- "name": "Larry Lewter",
- "role": "Partner",
+ "name": "Phillip Allen",
+ "role": "Investor",
  "focus": [
- "Construction oversight",
- "Financial management"
+ "Investment Strategy",
+ "Project Oversight"
  ],
  "achievements": [
- "Involvement in securing loans and managing construction costs"
+ "Involved in the financial structuring of the project."
  ]
  }
  ],
  "keyword": [
  "Creekside",
- "multifamily rental",
- "limited partnership",
- "construction loans"
+ "Investment Structure",
+ "Real Estate Development"
  ],
  "lastupdate": "2000-09-26"
  }
