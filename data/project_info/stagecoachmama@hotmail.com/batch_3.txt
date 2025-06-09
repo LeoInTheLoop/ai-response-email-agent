@@ -1,53 +1,36 @@
-```json[
+```json{
+ "projects": [
  {
- "project_id": "proj_001",
- "project": "Creekside Development Project",
- "description": "A real estate development project structured as a limited partnership focusing on multifamily rental developments and residential construction.",
- "status": "unknown",
- "start_date": "unknown",
- "end_date": "unknown",
- "milestones": [
- {
- "name": "Site Plan Approval",
+ "name": "Creekside Development",
  "due": "unknown",
  "completed": false,
- "contributors": [
- "George Richards",
- "Phillip Allen"
+ "contributors": {
+ "George Richards": [
+ "cbpres@austin.rr.com",
+ "President"
  ],
- "notes": "Approval from the City of Austin is required for the development to proceed."
- }
+ "Phillip Allen": [
+ "pallen@enron.com",
+ "Contributor"
  ],
- "members": [
- {
- "name": "George Richards",
- "role": "President",
- "focus": [
- "Construction Management",
- "Real Estate Development"
+ "Larry Lewter": [
+ "retwell@mail.sanmarcos.net",
+ "Contributor"
  ],
- "achievements": [
- "Led the development of the Creekside project."
+ "Claudia L. Crocker": [
+ "clclegal2@aol.com",
+ "Contributor"
  ]
  },
- {
- "name": "Phillip Allen",
- "role": "Investor",
- "focus": [
- "Investment Strategy",
- "Project Oversight"
- ],
- "achievements": [
- "Involved in the financial structuring of the project."
+ "notes": "Discussion on investment structure, land ownership, loans, and construction processes for a multifamily rental development.",
+ "project_keywords": [
+ "investment",
+ "structure",
+ "Creekside",
+ "development",
+ "construction"
  ]
  }
- ],
- "keyword": [
- "Creekside",
- "Investment Structure",
- "Real Estate Development"
- ],
- "lastupdate": "2000-09-26"
- }
-]
+ ]
+}
 ```

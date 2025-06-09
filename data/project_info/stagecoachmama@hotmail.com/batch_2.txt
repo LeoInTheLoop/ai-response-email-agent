@@ -1,77 +1,84 @@
-```json[
+```json{
+ "projects": [
  {
- "project_id": "proj_001",
- "project": "Westgate Project",
- "description": "Development of a multifamily housing project in West San Marcos, focusing on student housing.",
- "status": "unknown",
- "start_date": "unknown",
- "end_date": "unknown",
- "milestones": [],
- "members": [
- {
- "name": "George W. Richards",
- "role": "President",
- "focus": [
- "Real estate development",
- "Market analysis"
+ "name": "Westgate",
+ "due": "unknown",
+ "completed": false,
+ "contributors": {
+ "George W. Richards": [
+ "cbpres@austin.rr.com",
+ "President, Creekside Builders, LLC"
  ],
- "achievements": [
- "Identified opportunity for multifamily housing development"
+ "Phillip K Allen": [
+ "pallen@enron.com",
+ ""
  ]
  },
- {
- "name": "Phillip Allen",
- "role": "Project Stakeholder",
- "focus": [
- "Investment analysis",
- "Project evaluation"
- ],
- "achievements": []
- }
- ],
- "keyword": [
+ "notes": "Demographics on the Westgate site from Investor's Alliance. Short window of opportunity for investment.",
+ "project_keywords": [
  "Westgate",
  "San Marcos",
+ "demographics",
  "student housing"
- ],
- "lastupdate": "2000-10-03"
- },
- {
- "project_id": "proj_002",
- "project": "San Juan Index Manipulation Investigation",
- "description": "Investigation into potential manipulation of the El Paso San Juan monthly index related to gas pricing.",
- "status": "unknown",
- "start_date": "2000-09-25",
- "end_date": "unknown",
- "milestones": [],
- "members": [
- {
- "name": "Phillip Allen",
- "role": "Investigator",
- "focus": [
- "Market integrity",
- "Gas pricing"
- ],
- "achievements": [
- "Compiled evidence of potential price manipulation"
  ]
  },
  {
- "name": "Liane",
- "role": "Analyst",
- "focus": [
- "Trade analysis",
- "Index calculation"
+ "name": "Storage Strategies in the West",
+ "due": "2023-10-10",
+ "completed": false,
+ "contributors": {
+ "Nancy Hall": [
+ "nanc.hall@enron.com",
+ ""
  ],
- "achievements": []
+ "Phillip K Allen": [
+ "pallen@enron.com",
+ ""
+ ],
+ "Mark Whitt": [
+ "mark.whitt@enron.com",
+ ""
+ ],
+ "Paul T Lucci": [
+ "paul.lucci@enron.com",
+ ""
+ ],
+ "Paul Bieniawski": [
+ "paul.bieniawski@enron.com",
+ ""
+ ],
+ "Tyrell Harrison": [
+ "tyrell.harrison@enron.com",
+ ""
+ ]
+ },
+ "notes": "Meeting scheduled to discuss storage strategies.",
+ "project_keywords": [
+ "Storage Strategies",
+ "West"
+ ]
+ },
+ {
+ "name": "San Juan Index",
+ "due": "unknown",
+ "completed": false,
+ "contributors": {
+ "Phillip K Allen": [
+ "pallen@enron.com",
+ ""
+ ],
+ "Liane": [
+ "",
+ ""
+ ]
+ },
+ "notes": "Concerns about manipulation of the El Paso San Juan monthly index.",
+ "project_keywords": [
+ "San Juan",
+ "index",
+ "manipulation"
+ ]
  }
- ],
- "keyword": [
- "San Juan Index",
- "price manipulation",
- "gas pricing"
- ],
- "lastupdate": "2000-09-28"
- }
-]
+ ]
+}
 ```

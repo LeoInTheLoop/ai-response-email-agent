@@ -1,107 +1,30 @@
-```json[]
-``````json[
+```json{
+ "projects": [
  {
- "project_id": "proj_001",
- "project": "Parallon Microturbine Power Generation",
- "description": "Proposal to sell power to a national accounts customer using microturbines for onsite electricity generation.",
- "status": "active",
- "start_date": "unknown",
- "end_date": "unknown",
- "milestones": [
- {
- "name": "Proposal Development",
+ "name": "Consolidated positions: Issues & To Do list",
  "due": "unknown",
  "completed": false,
- "contributors": [
- "Buck Buckner",
- "Phillip Allen"
+ "contributors": {
+ "Phillip Allen": [
+ "pallen@enron.com",
+ "Contributor"
  ],
- "notes": "Developing a proposal for fixed or collar/floor price gas supply for microturbines."
- }
+ "Richard Burchfield": [
+ "",
+ "Contributor"
  ],
- "members": [
- {
- "name": "Phillip Allen",
- "role": "Manager",
- "focus": [
- "Gas pricing",
- "Energy services"
- ],
- "achievements": [
- "Facilitated communication with Honeywell for microturbine project."
+ "Allan Severude": [
+ "",
+ "Contributor"
  ]
  },
- {
- "name": "Buck Buckner",
- "role": "Manager, Business Development and Planning",
- "focus": [
- "Power generation",
- "Business development"
- ],
- "achievements": [
- "Developed proposal for microturbine installations."
+ "notes": "Focus on documenting requirements for consolidated physical/financial positions and transport trade capture.",
+ "project_keywords": [
+ "consolidated positions",
+ "trade capture",
+ "requirements"
  ]
  }
- ],
- "keyword": [
- "microturbine",
- "power generation",
- "fixed price gas",
- "collar price"
- ],
- "lastupdate": "2000-10-16"
- }
-]
-``````json[
- {
- "project_id": "proj_001",
- "project": "Consolidated positions",
- "description": "Project focused on documenting the requirements for consolidated physical/financial positions and transport trade capture.",
- "status": "active",
- "start_date": "2000-10-06",
- "end_date": "unknown",
- "milestones": [
- {
- "name": "Design layout for consolidated position screen",
- "due": "2000-10-09",
- "completed": false,
- "contributors": [
- "Richard Burchfield",
- "Allan Severude"
- ],
- "notes": "Critical effort to create a flexible position presentation."
- }
- ],
- "members": [
- {
- "name": "Richard Burchfield",
- "role": "Manager",
- "focus": [
- "Project management",
- "Trader requirements"
- ],
- "achievements": [
- "Facilitated meetings to gather trader requirements."
  ]
- },
- {
- "name": "Allan Severude",
- "role": "Developer",
- "focus": [
- "Technical design",
- "Position management"
- ],
- "achievements": [
- "Drafted initial project goals and requirements."
- ]
- }
- ],
- "keyword": [
- "Consolidated positions",
- "Transport trade capture",
- "Position management"
- ],
- "lastupdate": "2000-10-09"
- }
-]
+}
 ```
