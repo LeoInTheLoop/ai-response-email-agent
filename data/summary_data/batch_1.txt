@@ -1,6 +1,37 @@
 ```json[
  {
- "context": "Used for internal coordination and updates among colleagues.",
+ "context": "Applying for internships or job positions, often in a formal setting.",
+ "tone": {
+ "Client": [
+ "Formal",
+ "Polite"
+ ]
+ },
+ "intent": "Follow-up / Update",
+ "example": "Sending application materials for a job position.",
+ "greeting": [
+ "Hi [Name]",
+ "Dear [Hiring Team]"
+ ],
+ "closing": [
+ "Best regards",
+ "Warm regards"
+ ],
+ "patterns": [
+ "I’m excited to apply for [Position] at [Company].",
+ "I’ve attached my résumé and would be thrilled to discuss [topic]."
+ ],
+ "keywords": [
+ "application",
+ "intern",
+ "experience",
+ "attached",
+ "resume"
+ ],
+ "signature": "Leo Kong"
+ },
+ {
+ "context": "Engaging in discussions or brainstorming ideas, often in a collaborative environment.",
  "tone": {
  "Colleague": [
  "Friendly",
@@ -8,58 +39,29 @@
  ]
  },
  "intent": "Coordination",
- "example": "Scheduling a team meeting",
+ "example": "Discussing project ideas or team collaboration.",
  "greeting": [
- "Hi",
- "Hello",
- "Dave,"
+ "Hi [Name]",
+ "Thanks for reaching out"
  ],
  "closing": [
- "Thanks",
- "Phillip"
+ "Looking forward to your thoughts!",
+ "Best"
  ],
  "patterns": [
- "Let's shoot for [date/time].",
- "How about [suggestion]?"
+ "What if [idea]?",
+ "I’d be happy to brainstorm together if needed."
  ],
  "keywords": [
- "schedule",
- "meeting",
- "suggestion"
+ "thought",
+ "idea",
+ "team",
+ "collaboration"
  ],
- "signature": "Phillip"
+ "signature": "Leo"
  },
  {
- "context": "Used for formal requests or technical discussions with clients or vendors.",
- "tone": {
- "Client": [
- "Formal",
- "Technical"
- ]
- },
- "intent": "Clarify / Request Info",
- "example": "Explaining investment structures",
- "greeting": [
- "Mr.",
- "Dear"
- ],
- "closing": [
- "Thank you for your help",
- "Best regards"
- ],
- "patterns": [
- "Can you send me [information]?",
- "Please provide [details]."
- ],
- "keywords": [
- "forecast",
- "details",
- "information"
- ],
- "signature": "Phillip Allen"
- },
- {
- "context": "Used for sharing updates or general information.",
+ "context": "Requesting information or assistance, often in an academic or administrative context.",
  "tone": {
  "General": [
  "Neutral",
@@ -67,25 +69,26 @@
  ]
  },
  "intent": "General Purpose",
- "example": "Sharing general updates or announcements",
+ "example": "Inquiring about grades or scheduling.",
  "greeting": [
- "Hi team",
- "Hello everyone"
+ "Hi [Name]",
+ "Hope you’re doing well!"
  ],
  "closing": [
- "Best",
- "Regards"
+ "Thanks a lot in advance!",
+ "Best"
  ],
  "patterns": [
- "Here is [information].",
- "Please find attached [document]."
+ "Could you please verify [issue]?",
+ "Would it be okay if I [request]?"
  ],
  "keywords": [
- "updates",
- "information",
- "attached"
+ "grade",
+ "issue",
+ "verify",
+ "request"
  ],
- "signature": "Phillip"
+ "signature": "Lingyu Kong"
  }
 ]
 ```

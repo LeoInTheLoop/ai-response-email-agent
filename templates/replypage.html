@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Email Reply Generator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      textarea,
+      select,
+      button {
+        display: block;
+        margin-top: 10px;
+        width: 100%;
+        max-width: 600px;
+      }
+      .output {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+        max-width: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Reply Email Generator</h2>
+
+    <form id="replyForm">
+      <label for="replyTo">Reply To (optional):</label>
+      <input
+        type="text"
+        id="replyTo"
+        placeholder="Enter recipient if needed..."
+      />
+      <label for="emailContent">Received Email Content:</label>
+      <textarea
+        id="emailContent"
+        rows="6"
+        placeholder="Paste the email you received here..."
+      ></textarea>
+      <label for="additionalInfo">Additional Info (optional):</label>
+      <textarea
+        id="additionalInfo"
+        rows="3"
+        placeholder="Add any extra details you want to include..."
+      ></textarea>
+
+      <label for="replyType">Select Reply Type:</label>default is none
+      <select id="replyType">
+        <option value="">Select a reply type</option>
+        <option value="thanks">Thanks</option>
+        <option value="agree">Agree</option>
+        <option value="refuse">Refuse</option>
+        <option value="ask_more_info">Ask for More Info</option>
+      </select>
+
+      <button type="button" onclick="GenerateReply()">
+        Generate Reply
+      </button>
+    </form>
+
+    <div class="output" id="replyOutput">
+      <h3>Generated Reply:</h3>
+      <p id="replyText">(Your reply will appear here)</p>
+
+      <h4>Used Style Agent:</h4>
+      <p id="styleAgent">(Style agent info will appear here)</p>
+    </div>
+
+    <script>
+      function fakeGenerateReply() {
+        const emailContent = document.getElementById("emailContent").value;
+        const replyType = document.getElementById("replyType").value;
+        const additionalInfo = document.getElementById("additionalInfo").value;
+
+        // 模拟生成回复（你将来可以通过 API 调用 GPT 或自己的后端）
+        let reply = "";
+        let style = "";
+
+        switch (replyType) {
+          case "thanks":
+            reply = "Thank you for your message. I appreciate your input.";
+            style = "Polite & Appreciative";
+            break;
+          case "agree":
+            reply =
+              "I completely agree with your points. Let's proceed accordingly.";
+            style = "Affirmative & Cooperative";
+            break;
+          case "refuse":
+            reply =
+              "Thank you for the suggestion, but I must respectfully decline.";
+            style = "Polite & Assertive";
+            break;
+          case "ask_more_info":
+            reply = "Could you please provide more details on the topic?";
+            style = "Inquisitive & Professional";
+            break;
+          default:
+            reply = "Thank you for your message.";
+            style = "Neutral & Professional";
+        }
+
+        document.getElementById("replyText").textContent = reply;
+        document.getElementById("styleAgent").textContent = style;
+      }
+    
+      async function GenerateReply() {
+        const replyTo = document.getElementById("replyTo").value;
+        const emailContent = document.getElementById("emailContent").value;
+        const replyType = document.getElementById("replyType").value;
+        const additionalInfo = document.getElementById("additionalInfo").value;
+
+        const payload = {
+            to: replyTo,
+            emailContent: emailContent,
+            replyType: replyType,
+            additionalInfo: additionalInfo
+        };
+
+        try {
+            const response = await fetch("/reply/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            // 假设后端返回结构：{ replyText: "...", styleAgent: "..." }
+            document.getElementById("replyText").textContent = data.replyText || "(No reply generated)";
+            document.getElementById("styleAgent").textContent = data.styleAgent || "(No style info)";
+        } catch (error) {
+            document.getElementById("replyText").textContent = "Error: " + error.message;
+            document.getElementById("styleAgent").textContent = "(N/A)";
+        }
+    }
+        
+    </script>
+  </body>
+</html>

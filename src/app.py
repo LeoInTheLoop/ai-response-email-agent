@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 import re
 from html import unescape
 from uuid import uuid4
+from pydantic import BaseModel
 
 from agents.emailStyleExtractor import analyze_emails
 from agents.mainAgent import generate_email_reply
@@ -178,9 +179,9 @@ async def style_extractor(
         error_detail = e.response.json().get("error", {}).get("message", str(e))
         raise HTTPException(status_code=e.response.status_code, detail=error_detail)
 
-@app.get("/reply/")  #/reply/{email_id}
+@app.get("/replytest/")  #/reply/{email_id}
 # todo
-async def reply_email(
+async def reply_email_test(
     # email_id: str,
     session_id: str = Cookie(default=None)
 ):
@@ -206,6 +207,56 @@ async def reply_email(
     )
     return JSONResponse(content=reply_email)
 
+@app.get("/reply/")
+async def reply(session_id: str = Cookie(default=None)):
+    if not session_id or not get_token(session_id):
+        return RedirectResponse("/")
+    
+    html_path = os.path.join(TEMPLATE_DIR,  "replypage.html")
+    with open(html_path, "r", encoding="utf-8") as f:  
+        html_content = f.read()
+    return Response(content=html_content, media_type="text/html")
+
+
+class ReplyRequest(BaseModel):
+    to: str | None = None
+    emailContent: str
+    replyType: str | None = None
+    additionalInfo: str | None = None
+
+@app.post("/reply/")
+async def reply_email(
+    request: Request,
+    payload: ReplyRequest,
+    session_id: str = Cookie(default=None)
+):
+    """Generate email reply based on input JSON and session"""
+    access_token = get_token(session_id)
+    if not access_token:
+        return RedirectResponse("/")
+
+    # 构造 message
+    message_parts = []
+    if payload.to:
+        message_parts.append(f"To: {payload.to}")
+    message_parts.append(f"Original Email: {payload.emailContent}")
+    if payload.replyType:
+        message_parts.append(f"Reply Type: {payload.replyType}")
+    if payload.additionalInfo:
+        message_parts.append(f"Additional Info: {payload.additionalInfo}")
+    
+    full_message = "\n\n".join(message_parts)
+
+    try:
+        reply_email = await generate_email_reply(
+            sender_email=payload.to or "unknown@example.com",
+            message=full_message,
+            include_debug=True
+        )
+        return JSONResponse(content=reply_email)
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
