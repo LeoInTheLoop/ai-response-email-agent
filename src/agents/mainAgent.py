@@ -20,16 +20,17 @@ from semantic_kernel.contents.function_result_content import FunctionResultConte
 from semantic_kernel.contents.streaming_text_content import StreamingTextContent
 
 from agents.plugins.email_style_plugin import EmailStylePlugin
+import xml.etree.ElementTree as ET
 
 
 # ------------------------------
 # Util function to extract <tag>content</tag>
 # ------------------------------
-def extract_tagged_content(text: str, tag: str) -> str:
-    pattern = rf"<{tag}>(.*?)</{tag}>"
-    match = re.search(pattern, text, re.DOTALL)
-    return match.group(1).strip() if match else None
 
+def extract_custom_xml_content(text: str, tag: str) -> str:
+    pattern = rf"<xml {tag}>\s*(.*?)\s*</xml>"
+    match = re.search(pattern, text, re.DOTALL)
+    return match.group(1).strip() if match else ""
 # ------------------------------
 # Plugin Definition
 # ------------------------------
@@ -112,7 +113,7 @@ agent = ChatCompletionAgent(
 async def generate_email_reply(sender_email: str, message: str, include_debug=False) -> dict:
     chat_history = ChatHistory()
     chat_history.add_user_message(f"Sender: {sender_email}\nMessage: {message}")
-    print(f"message: {message}")
+    # print(f"message: {message}")
     response = ""
     function_calls = []
     function_results = []
@@ -123,12 +124,12 @@ async def generate_email_reply(sender_email: str, message: str, include_debug=Fa
         async for content in agent.invoke_stream(chat_history):
             if hasattr(content, "content") and content.content:
                 response += content.content
-            if isinstance(content, StreamingTextContent):
-                for item in content.items:
-                    if isinstance(item, FunctionCallContent):
-                        function_calls.append(f"{item.function_name}{item.arguments}")
-                    elif isinstance(item, FunctionResultContent):
-                        function_results.append(str(item.result))
+            # if isinstance(content, StreamingTextContent):
+            #     for item in content.items:
+            #         if isinstance(item, FunctionCallContent):
+            #             function_calls.append(f"{item.function_name}{item.arguments}")
+            #         elif isinstance(item, FunctionResultContent):
+            #             function_results.append(str(item.result))
     except GeneratorExit:
         print("[Warning] Generator was closed before completion.")
     except Exception as ex:
@@ -137,13 +138,14 @@ async def generate_email_reply(sender_email: str, message: str, include_debug=Fa
     print(f"original response: {response}")
 
     if not include_debug:
+        print("[Debug] Returning raw response without parsing.")
         return {"raw": response}
     
 
     try:
-        agent_use_plugin = extract_tagged_content(response, "usepluginmethod")
-        style_data_str = extract_tagged_content(response, "style_data")
-        reply_text = extract_tagged_content(response, "reply")
+        agent_use_plugin = extract_custom_xml_content(response, "usepluginmethod")
+        style_data_str = extract_custom_xml_content(response, "style_data")
+        reply_text = extract_custom_xml_content(response, "reply")
         style_data = json.loads(style_data_str) if style_data_str else None
     except Exception as ex:
         return {
@@ -157,16 +159,14 @@ async def generate_email_reply(sender_email: str, message: str, include_debug=Fa
     print(f"reply_text: {reply_text}")
     print(f"style_data: {style_data}")
     print(f"agent_use_plugin: {agent_use_plugin}")
-    print(f"[DEBUG] Function calls: {function_calls}")
-    print(f"[DEBUG] Function results: {function_results}")
+    # print(f"[DEBUG] Function calls: {function_calls}")
+    # print(f"[DEBUG] Function results: {function_results}")
 
     return {
         "replyText": reply_text,
         "styleAgent": style_data,
         "agent_use_plugin": agent_use_plugin,
-        "function_calls": function_calls,
-        "function_results": function_results,
-        "raw_response": response
+
     }
 
 

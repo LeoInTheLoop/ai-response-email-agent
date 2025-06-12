@@ -21,7 +21,9 @@ class SummaryDataHelper:
             self._load_file(SUMMARY_DATA_PATH)
         else:
             # Treat as a single file
-            print(f"[INFO] can't Loading summary data from directory: {data_path}")
+            print(f"[SummaryDataHelper INFO] can't Loading summary data from directory: {data_path}")
+
+        print(f"[SummaryDataHelper INFO] Loaded {len(self.data)} summary entries from {data_path}, first 10 entries: {self.data[:10]} /n /n ")
     
     def _load_file(self, filepath: str):
         """Load a single JSON file."""
@@ -34,14 +36,8 @@ class SummaryDataHelper:
         except Exception as e:
             print(f"[WARN] Failed to load {filepath}: {e}")
     
-    def get_by_key(self, key: str, value: str) -> Optional[Dict]:
-        """Get first match by exact value for a specific key (e.g., 'tone', 'email', 'project')."""
-        for entry in self.data:
-            if entry.get(key, "").lower() == value.lower():
-                return entry
-        return None
     
-    def find_best_match(self, query: str) -> Optional[Dict]:
+    def find_best_match(self, keylist: list[str]) -> Optional[Dict]:
         """
         Find the best matching entry based on keywords in the query.
         
@@ -51,10 +47,78 @@ class SummaryDataHelper:
         Returns:
             The best matching entry or None if no match is found
         """
+        role, tone, intent = keylist
+        if not self.data:
+            print("[WARN] No summary data loaded.")
+            return None
+        summary = []
         for entry in self.data:
-            if "keywords" in entry and any(keyword.lower() in query.lower() for keyword in entry.get("keywords", [])):
-                return entry
-        return None
+            if (role in entry.get("tone", {}) or
+                tone in entry["tone"].get(role, []) or
+                intent in entry.get("intent")):
+                summary.append(entry)
+        
+        return summary
     
     def get_all(self) -> List[Dict]:
         return self.data
+    
+
+# data example = [
+#       {
+#     "context": "Used in technical discussions, often involving detailed information or requests.",
+#     "tone": {
+#       "Client": [
+#         "Formal",
+#         "Technical"
+#       ]
+#     },
+#     "intent": "Clarify / Request Info",
+#     "example": "Explaining investment structures",
+#     "greeting": [
+#       "Mr. Buckner,"
+#     ],
+#     "closing": [
+#       "Let me assure you, this is a real deal!!",
+#       "Should you have additional questions, give me a call."
+#     ],
+#     "patterns": [
+#       "I need your best...",
+#       "For delivered gas behind..."
+#     ],
+#     "keywords": [
+#       "gas price",
+#       "microturbine",
+#       "proposal"
+#     ],
+#     "signature": "Phillip Allen"
+#   },
+#   {
+#     "context": "Formal communication regarding meetings and project updates.",
+#     "tone": {
+#       "Manager": [
+#         "Formal",
+#         "Direct"
+#       ]
+#     },
+#     "intent": "Request Approval",
+#     "example": "Asking for budget sign-off",
+#     "greeting": [
+#       "Please plan to attend",
+#       "If you have any questions/conflicts, please feel free to call me."
+#     ],
+#     "closing": [
+#       "Thanks,",
+#       "Sincerely,"
+#     ],
+#     "patterns": [
+#       "Please plan to attend the below Meeting:",
+#       "If you have any questions/conflicts, please feel free to call me."
+#     ],
+#     "keywords": [
+#       "Meeting",
+#       "Please",
+#       "Thank you"
+#     ],
+#     "signature": "Phillip"
+#   },]

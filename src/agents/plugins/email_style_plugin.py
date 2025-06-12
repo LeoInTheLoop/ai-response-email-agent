@@ -12,8 +12,8 @@ class EmailStylePlugin:
     async def get_email_style_summary(self, input_list: Annotated[list[str], "List of role, tone, and intent."]) -> Annotated[str, "Returns the style description."]:
         role, tone, intent = input_list
         print(f"[Plugin called] role = {role}, tone = {tone}, intent = {intent}")
-        query_str = " ".join(input_list)
-        summary = summary_helper.find_best_match(query_str)
+       
+        summary = summary_helper.find_best_match(input_list)
         if not summary:
             summary = {"note": "No tone match found. Using default style."}
         print("Generated summary:", summary)
@@ -22,7 +22,3 @@ class EmailStylePlugin:
 
 
 
-class EmailStylePlugintest:
-    def get_email_style_summary(self, input_list):
-        # 测试返回内容
-        return json.dumps({"test_key": "yougotme"})
