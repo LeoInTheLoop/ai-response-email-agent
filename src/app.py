@@ -186,9 +186,9 @@ async def reply_email_test(
     session_id: str = Cookie(default=None)
 ):
     """Receive email list from inbox folder"""
-    access_token = get_token(session_id)
-    if not access_token:
-        return RedirectResponse("/")
+    # access_token = get_token(session_id)
+    # if not access_token:
+    #     return RedirectResponse("/")
 
     try:
         emails = get_cleaned_emails("inbox", 1, access_token)
@@ -209,8 +209,8 @@ async def reply_email_test(
 
 @app.get("/reply/")
 async def reply(session_id: str = Cookie(default=None)):
-    if not session_id or not get_token(session_id):
-        return RedirectResponse("/")
+    # if not session_id or not get_token(session_id):
+    #     return RedirectResponse("/")
     
     html_path = os.path.join(TEMPLATE_DIR,  "replypage.html")
     with open(html_path, "r", encoding="utf-8") as f:  
@@ -230,10 +230,11 @@ async def reply_email(
     payload: ReplyRequest,
     session_id: str = Cookie(default=None)
 ):
+    # print("Received payload:", payload)
     """Generate email reply based on input JSON and session"""
-    access_token = get_token(session_id)
-    if not access_token:
-        return RedirectResponse("/")
+    # access_token = get_token(session_id)
+    # if not access_token:
+    #     return RedirectResponse("/")
 
     # 构造 message
     message_parts = []
@@ -246,6 +247,7 @@ async def reply_email(
         message_parts.append(f"Additional Info: {payload.additionalInfo}")
     
     full_message = "\n\n".join(message_parts)
+    # print("Full message to process:", full_message)
 
     try:
         reply_email = await generate_email_reply(
@@ -253,6 +255,7 @@ async def reply_email(
             message=full_message,
             include_debug=True
         )
+        # print("Generated reply email:", reply_email)
         return JSONResponse(content=reply_email)
 
     except Exception as e:

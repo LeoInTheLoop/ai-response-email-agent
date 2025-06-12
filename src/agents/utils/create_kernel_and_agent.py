@@ -9,7 +9,7 @@ from semantic_kernel.functions import KernelArguments
 
 load_dotenv()
 
-DEFAULT_AI_MODEL = "gpt-4o-mini"
+DEFAULT_AI_MODEL = "gpt-4o"
 DEFAULT_PROMPT_SETTINGS = PromptExecutionSettings(
     temperature=0.7,
     top_p=0.9,

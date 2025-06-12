@@ -66,8 +66,8 @@
       <h3>Generated Reply:</h3>
       <p id="replyText">(Your reply will appear here)</p>
 
-      <h4>Used Style Agent:</h4>
-      <p id="styleAgent">(Style agent info will appear here)</p>
+      <!-- <h4>Used Style Agent:</h4>
+      <p id="styleAgent">(Style agent info will appear here)</p> -->
     </div>
 
     <script>
@@ -138,7 +138,8 @@
 
             // 假设后端返回结构：{ replyText: "...", styleAgent: "..." }
             document.getElementById("replyText").textContent = data.replyText || "(No reply generated)";
-            document.getElementById("styleAgent").textContent = data.styleAgent || "(No style info)";
+            // document.getElementById("styleAgent").textContent = data.styleAgent || "(No style info)";
+            console.log("Reply styleAgent", data.styleAgent);
         } catch (error) {
             document.getElementById("replyText").textContent = "Error: " + error.message;
             document.getElementById("styleAgent").textContent = "(N/A)";

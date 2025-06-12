@@ -1,9 +1,11 @@
 import os
 import json
 from typing import List, Dict, Optional
+from config import SUMMARY_DATA_PATH
+
 
 class SummaryDataHelper:
-    def __init__(self, data_path: str):
+    def __init__(self, data_path: str = SUMMARY_DATA_PATH):
         """
         Load summary data from a specified path.
         
@@ -12,18 +14,14 @@ class SummaryDataHelper:
         """
         self.data: List[Dict] = []
         
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        data_dir = os.path.normpath(os.path.join(base_dir, "../../", data_path))
-        
+
         # Check if it's a directory or file
-        if os.path.isdir(data_dir):
-            # Load all JSON files in the directory
-            for filename in os.listdir(data_dir):
-                if filename.endswith('.json'):
-                    self._load_file(os.path.join(data_dir, filename))
+
+        if SUMMARY_DATA_PATH.is_file():
+            self._load_file(SUMMARY_DATA_PATH)
         else:
             # Treat as a single file
-            self._load_file(data_dir)
+            print(f"[INFO] can't Loading summary data from directory: {data_path}")
     
     def _load_file(self, filepath: str):
         """Load a single JSON file."""
